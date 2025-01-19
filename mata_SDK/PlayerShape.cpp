@@ -10,22 +10,34 @@ void PlayerShape::InputKey(KeyEvent& Event) {
 		case SK_ARROW_RIGHT:
 			CurrentShape += 1;
 			EX.ClampValue(CurrentShape, 2, CLAMP_GREATER);
+			ChangeShapeRotationDest();
 			break;
 
 		case SK_ARROW_LEFT:
 			CurrentShape -= 1;
 			EX.ClampValue(CurrentShape, 0, CLAMP_LESS);
+			ChangeShapeRotationDest();
 			break;
 		}
 	}
 }
 
-void PlayerShape::UpdateFunc(float FrameTime) {
+void PlayerShape::ChangeShapeRotationDest() {
+	if (PrevShape != CurrentShape) {
+		ShapeRotation += (ShapeRotationDest[CurrentShape] - ShapeRotationDest[PrevShape]) * 0.5;
+		CurrentRotationDest = ShapeRotationDest[CurrentShape];
+		PrevShape = CurrentShape;
+	}
+}
 
+void PlayerShape::UpdateFunc(float FrameTime) {
+	// Shape Rotation
+	mathUtil.UpdateLerp(ShapeRotation, CurrentRotationDest, 35.0, FrameTime);
 }
 
 void PlayerShape::RenderFunc() {
 	BeginRender();
+	transform.Rotate(RotateMatrix, ShapeRotation);
 	transform.Scale(ScaleMatrix, ShapeSize, ShapeSize);
 
 	switch (CurrentShape) {
