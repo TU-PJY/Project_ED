@@ -9,6 +9,7 @@ public:
 	Image Pentagon[5]{};
 
 	Image ImagePlayerShape[3]{};
+	Image ImagePlayerFeedBack{};
 };
 
 // Declare the sound resource or directory here. 
@@ -38,6 +39,7 @@ public:
 constexpr const char* FONT_PATH[]
 {
 	"Assets//Font//Exo-Light.otf",
+	"Assets//Font//Exo-Bold.otf",
 	"Assets//Font//SCDream3.otf",
 };
 #endif

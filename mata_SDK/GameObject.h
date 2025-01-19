@@ -111,6 +111,9 @@ public:
 	// Shape Generator Function
 	virtual void Stop() {}
 
+	// PlayScore Function
+	virtual void PlusScore() {};
+
 private:
 	void PrepareRender(Image& ImageStruct);
 	void PrepareRender(SpriteSheet& SpriteSheetStruct);

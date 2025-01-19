@@ -159,7 +159,9 @@
     <ClCompile Include="Library\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="ObstacleShape.cpp" />
+    <ClCompile Include="Playerfeedback.cpp" />
     <ClCompile Include="PlayerShape.cpp" />
+    <ClCompile Include="PlayScore.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="LineBrush.cpp" />
     <ClCompile Include="MathUtil.cpp" />
@@ -196,12 +198,14 @@
     <ClInclude Include="CollisionUtil.h" />
     <ClInclude Include="ComputeUtil.h" />
     <ClInclude Include="ErrorMessage.h" />
+    <ClInclude Include="PlayerFeedback.h" />
     <ClInclude Include="FPSInd.h" />
     <ClInclude Include="FileUtil.h" />
     <ClInclude Include="ExUtil.h" />
     <ClInclude Include="FontUtil.h" />
     <ClInclude Include="ObstacleShape.h" />
     <ClInclude Include="PlayerShape.h" />
+    <ClInclude Include="PlayScore.h" />
     <ClInclude Include="SDKHeader.h" />
     <ClInclude Include="Library\tinyxml\tinystr.h" />
     <ClInclude Include="Library\tinyxml\tinyxml.h" />

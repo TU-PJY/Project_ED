@@ -163,6 +163,12 @@
     <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]">
       <UniqueIdentifier>{d2d0893b-69ae-4ace-94d2-278665d3d3a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerFeedback ]">
+      <UniqueIdentifier>{21c39052-b2ef-49fc-9de5-ef4ee7088e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ PlayScore ]">
+      <UniqueIdentifier>{17f12e38-2e81-4cdc-89cb-38befddcd8e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -290,6 +296,12 @@
     </ClCompile>
     <ClCompile Include="ObstacleShape.cpp">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]</Filter>
+    </ClCompile>
+    <ClCompile Include="Playerfeedback.cpp">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerFeedback ]</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScore.cpp">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ PlayScore ]</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -436,6 +448,12 @@
     </ClInclude>
     <ClInclude Include="ObstacleShape.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerFeedback.h">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerFeedback ]</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScore.h">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ PlayScore ]</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

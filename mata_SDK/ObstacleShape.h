@@ -15,9 +15,11 @@ private:
 	int ShapeType{}; // 0: triangle, 1: square, 2: pentagon
 	int ShapeIndex{}; // shape's variation number
 	GLfloat Rotation{}; // random rotation
-	GLfloat CurrentSize{ 20.0 }; // shape's size
+	GLfloat CurrentSize{ 16.0 }; // shape's size
+	GLfloat Opacity{};
 
 	bool RotateDirectionChanger{};
+	bool DestroyState{};
 
 public:
 	ObstacleShape(int Type);

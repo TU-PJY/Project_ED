@@ -93,25 +93,32 @@ public:
 		imageUtil.PreLoad(SysRes.COLOR_TEXTURE, SysRes.COLOR_TEXTURE_DIRECTORY);
 
 		// game resoueces
-		imageUtil.PreLoad(Sprite.Triangle[0], "Assets//Image//Shapes//Triangle//obstacle_triangle_1.png");
-		imageUtil.PreLoad(Sprite.Triangle[1], "Assets//Image//Shapes//Triangle//obstacle_triangle_2.png");
-		imageUtil.PreLoad(Sprite.Triangle[2], "Assets//Image//Shapes//Triangle//obstacle_triangle_3.png");
+		for (int i = 0; i < 3; ++i) {
+			std::string FileName = "Assets//Image//Shapes//Triangle//obstacle_triangle_";
+			FileName += std::to_string(i + 1);
+			FileName += ".png";
+			imageUtil.PreLoad(Sprite.Triangle[i], FileName);
+		}
 
-		imageUtil.PreLoad(Sprite.Square[0], "Assets//Image//Shapes//Square//obstacle_square_1.png");
-		imageUtil.PreLoad(Sprite.Square[1], "Assets//Image//Shapes//Square//obstacle_square_2.png");
-		imageUtil.PreLoad(Sprite.Square[2], "Assets//Image//Shapes//Square//obstacle_square_3.png");
-		imageUtil.PreLoad(Sprite.Square[3], "Assets//Image//Shapes//Square//obstacle_square_4.png");
-		imageUtil.PreLoad(Sprite.Square[4], "Assets//Image//Shapes//Square//obstacle_square_5.png");
+		for (int i = 0; i < 5; ++i) {
+			std::string FileName = "Assets//Image//Shapes//Square//obstacle_square_";
+			FileName += std::to_string(i + 1);
+			FileName += ".png";
+			imageUtil.PreLoad(Sprite.Square[i], FileName);
+		}
 
-		imageUtil.PreLoad(Sprite.Pentagon[0], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_1.png");
-		imageUtil.PreLoad(Sprite.Pentagon[1], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_2.png");
-		imageUtil.PreLoad(Sprite.Pentagon[2], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_3.png");
-		imageUtil.PreLoad(Sprite.Pentagon[3], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_4.png");
-		imageUtil.PreLoad(Sprite.Pentagon[4], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_5.png");
+		for (int i = 0; i < 5; ++i) {
+			std::string FileName = "Assets//Image//Shapes//Pentagon//obstacle_pentagon_";
+			FileName += std::to_string(i + 1);
+			FileName += ".png";
+			imageUtil.PreLoad(Sprite.Pentagon[i], FileName);
+		}
 
-		imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//PlayerShapes//triangle.png");
-		imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//PlayerShapes//square.png");
-		imageUtil.PreLoad(Sprite.ImagePlayerShape[2], "Assets//Image//PlayerShapes//pentagon.png");
+		imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//Player//triangle.png");
+		imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//Player//square.png");
+		imageUtil.PreLoad(Sprite.ImagePlayerShape[2], "Assets//Image//Player//pentagon.png");
+
+		imageUtil.PreLoad(Sprite.ImagePlayerFeedBack, "Assets//Image//Player//feedback.png");
 
 		SysRes.GLU_CIRCLE = gluNewQuadric();
 		SysRes.GLU_LINE_CIRCLE = gluNewQuadric();
