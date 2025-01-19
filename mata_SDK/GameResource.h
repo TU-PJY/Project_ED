@@ -4,9 +4,11 @@
 // Declare the sprite resource or directory here. 
 class SpriteResource {
 public:
-	Image Triangle[5]{};
-	Image Square[6]{};
-	Image Pentagon[6]{};
+	Image Triangle[3]{};
+	Image Square[5]{};
+	Image Pentagon[5]{};
+
+	Image ImagePlayerShape[3]{};
 };
 
 // Declare the sound resource or directory here. 

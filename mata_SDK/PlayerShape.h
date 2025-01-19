@@ -13,8 +13,8 @@ private:
 	int PrevShape{};
 
 	GLfloat ShapeRotation{};
-	GLfloat CurrentRotationDest{};
-	GLfloat ShapeRotationDest[3]{ 0.0, -90.0, -192.0 };
+	GLfloat RotationDest{};
+	GLfloat ShapeRotationValue[3]{ 0.0, -90.0, -192.0 };
 
 	GLfloat ShapeSize{ 1.2 };
 

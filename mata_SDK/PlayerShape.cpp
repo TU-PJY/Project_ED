@@ -24,33 +24,20 @@ void PlayerShape::InputKey(KeyEvent& Event) {
 
 void PlayerShape::ChangeShapeRotationDest() {
 	if (PrevShape != CurrentShape) {
-		ShapeRotation += (ShapeRotationDest[CurrentShape] - ShapeRotationDest[PrevShape]) * 0.5;
-		CurrentRotationDest = ShapeRotationDest[CurrentShape];
+		ShapeRotation += (ShapeRotationValue[CurrentShape] - ShapeRotationValue[PrevShape]) * 0.5;
+		RotationDest = ShapeRotationValue[CurrentShape];
 		PrevShape = CurrentShape;
 	}
 }
 
 void PlayerShape::UpdateFunc(float FrameTime) {
 	// Shape Rotation
-	mathUtil.UpdateLerp(ShapeRotation, CurrentRotationDest, 35.0, FrameTime);
+	mathUtil.UpdateLerp(ShapeRotation, RotationDest, 35.0, FrameTime);
 }
 
 void PlayerShape::RenderFunc() {
 	BeginRender();
 	transform.Rotate(RotateMatrix, ShapeRotation);
 	transform.Scale(ScaleMatrix, ShapeSize, ShapeSize);
-
-	switch (CurrentShape) {
-	case Triangle:
-		RenderSprite(Sprite.Triangle[0]);
-		break;
-
-	case Square:
-		RenderSprite(Sprite.Square[0]);
-		break;
-
-	case Pentagon:
-		RenderSprite(Sprite.Pentagon[0]);
-		break;
-	}
+	RenderSprite(Sprite.ImagePlayerShape[CurrentShape]);
 }

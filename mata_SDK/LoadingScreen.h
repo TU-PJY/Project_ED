@@ -96,22 +96,22 @@ public:
 		imageUtil.PreLoad(Sprite.Triangle[0], "Assets//Image//Shapes//Triangle//obstacle_triangle_1.png");
 		imageUtil.PreLoad(Sprite.Triangle[1], "Assets//Image//Shapes//Triangle//obstacle_triangle_2.png");
 		imageUtil.PreLoad(Sprite.Triangle[2], "Assets//Image//Shapes//Triangle//obstacle_triangle_3.png");
-		imageUtil.PreLoad(Sprite.Triangle[3], "Assets//Image//Shapes//Triangle//obstacle_triangle_4.png");
-		imageUtil.PreLoad(Sprite.Triangle[4], "Assets//Image//Shapes//Triangle//obstacle_triangle_5.png");
 
 		imageUtil.PreLoad(Sprite.Square[0], "Assets//Image//Shapes//Square//obstacle_square_1.png");
 		imageUtil.PreLoad(Sprite.Square[1], "Assets//Image//Shapes//Square//obstacle_square_2.png");
 		imageUtil.PreLoad(Sprite.Square[2], "Assets//Image//Shapes//Square//obstacle_square_3.png");
 		imageUtil.PreLoad(Sprite.Square[3], "Assets//Image//Shapes//Square//obstacle_square_4.png");
 		imageUtil.PreLoad(Sprite.Square[4], "Assets//Image//Shapes//Square//obstacle_square_5.png");
-		imageUtil.PreLoad(Sprite.Square[5], "Assets//Image//Shapes//Square//obstacle_square_6.png");
 
 		imageUtil.PreLoad(Sprite.Pentagon[0], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_1.png");
 		imageUtil.PreLoad(Sprite.Pentagon[1], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_2.png");
 		imageUtil.PreLoad(Sprite.Pentagon[2], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_3.png");
 		imageUtil.PreLoad(Sprite.Pentagon[3], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_4.png");
 		imageUtil.PreLoad(Sprite.Pentagon[4], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_5.png");
-		imageUtil.PreLoad(Sprite.Pentagon[5], "Assets//Image//Shapes//Pentagon//obstacle_pentagon_6.png");
+
+		imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//PlayerShapes//triangle.png");
+		imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//PlayerShapes//square.png");
+		imageUtil.PreLoad(Sprite.ImagePlayerShape[2], "Assets//Image//PlayerShapes//pentagon.png");
 
 		SysRes.GLU_CIRCLE = gluNewQuadric();
 		SysRes.GLU_LINE_CIRCLE = gluNewQuadric();
