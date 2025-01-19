@@ -366,4 +366,5 @@ FodyWeavers.xsd
 # Not ignored files
 !mata_SDK/Library/**
 !mata_SDK/SDKResource/**
+!mata_SDK/Assets/**
 !ScriptTools/**

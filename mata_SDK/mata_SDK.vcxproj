@@ -72,7 +72,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>Library\FMOD\api\core\inc;Library\OpenGL\freeglut\include\GL;Library\OpenGL\glew\include\GL;Library\OpenGL;$(IncludePath)</IncludePath>
+    <IncludePath>Library\FMOD\api\core\inc;Library\OpenGL\freeglut\include\GL;Library\OpenGL\glew\include\GL;Library\OpenGL;SDK;$(IncludePath)</IncludePath>
     <LibraryPath>Library\FMOD\api\core\lib\x64;Library\OpenGL\freeglut\lib\x64;Library\OpenGL\glew\lib\Release\x64;Library\cryptopp\lib;$(LibraryPath)</LibraryPath>
     <TargetName>ED_DREAM_OF_SHAPES</TargetName>
   </PropertyGroup>
