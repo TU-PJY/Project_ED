@@ -3,7 +3,7 @@
 
 //////////////////////////////////// Window options
 // window name
-constexpr const char* WINDOW_NAME = "mata_SDK";
+constexpr const char* WINDOW_NAME = "ED: DREAM OF SHAPES";
 
 // window size
 constexpr int WINDOW_WIDTH = 1200;
@@ -73,7 +73,7 @@ constexpr bool USE_FILE_SECURITY = false;
 // Recommend that you make this part private or 
 // modify it with the default password before distributing
 constexpr unsigned char AES_KEY[16]
-{ "1234567890" };
+{ "552109273434218" };
 
 constexpr unsigned char IV_KEY[16]
-{ "1234567890" };
+{ "552109273434218" };
