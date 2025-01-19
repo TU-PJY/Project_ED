@@ -28,7 +28,7 @@ public:
 // Declare the global value here.
 class GlobalValue {
 public:
-	GLfloat ShapeMoveSpeed{ 0.3 };
+	GLfloat ShapeMoveSpeed{ 1.6 };
 };
 
 // Load your custom font.

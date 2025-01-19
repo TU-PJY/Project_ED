@@ -103,6 +103,7 @@ public:
 	virtual void CameraZoom(int ZoomType, GLfloat ZoomValue) {}
 	virtual void ChangeCameraZoom(GLfloat ZoomValue) {}
 	virtual GLfloat ComputeNextZoom(int ZoomType, GLfloat ZoomValue) { return {}; }
+	virtual void ChangeRotateDirection() {}
 
 	// FPS indicator function
 	virtual void RenderIndicator() {}

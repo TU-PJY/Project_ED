@@ -6,7 +6,7 @@ class ShapeGenerator : public GameObject {
 private:
 	TimerUtil Timer{};
 	RandomUtil Random{};
-	GLfloat GenerateTime{ 2.0 };
+	GLfloat GenerateTime{ 1.0 };
 	bool RunningState{ true };
 
 public:

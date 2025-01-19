@@ -15,6 +15,9 @@ public:
 	void ChangeCameraZoom(GLfloat ZoomValue);
 	GLfloat ComputeNextZoom(int ZoomType, GLfloat ZoomValue);
 
+	void ChangeRotateDirection();
+	int RotateDirection{ 1 };
+
 private:
 	void ComputeCameraMatrix();
 };

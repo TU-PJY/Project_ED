@@ -7,7 +7,7 @@ void CameraController::InputKey(KeyEvent& Event) {
 }
 
 void CameraController::UpdateFunc(float FT){
-	// add logic here
+	Rotation += 10.0 * RotateDirection * FT;
 	ComputeCameraMatrix();
 }
 
@@ -47,6 +47,10 @@ GLfloat CameraController::ComputeNextZoom(int ZoomType, GLfloat ZoomValue) {
 		return camera.ZoomValue * (1.0f - ZoomValue);
 	else
 		return camera.ZoomValue;
+}
+
+void CameraController::ChangeRotateDirection() {
+	RotateDirection *= -1;
 }
 
 ///////////////////////////////////////// private
