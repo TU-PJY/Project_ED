@@ -54,7 +54,12 @@ void ObstacleShape::UpdateFunc(float FrameTime) {
 	if (CurrentSize <= 1.4) {
 		if (RotateDirectionChanger)
 			CameraControl->ChangeRotateDirection();
+
 		scene.AddObject(new PlayerFeedback, "player_feedback", LAYER1);
+
+		if (auto PlayScore = scene.Find("play_score"); PlayScore)
+			PlayScore->PlusScore();
+
 		scene.DeleteObject(this);
 	}
 }

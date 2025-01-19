@@ -10,11 +10,15 @@ PlayScore::PlayScore() {
 
 void PlayScore::PlusScore() {
 	Score += 1;
+	Feedback = 0.2;
+}
+
+void PlayScore::UpdateFunc(float FrameTime) {
+	mathUtil.UpdateLerp(Feedback, 0.0, 5.0, FrameTime);
 }
 
 void PlayScore::RenderFunc() {
-	//if(OverHighScore)
-		Text.Render(0.0, -0.5, 0.1, L"HIGH SCORE!");
-	//else
-		Text.Render(0.0, -0.6, 0.3, L"%d", Score);
-}//
+	if (OverHighScore)
+		Text.Render(0.0, -0.4, 0.1 + Feedback, L"HIGH SCORE!");
+	Text.Render(0.0, -0.6, 0.3 + Feedback, L"%d", Score);
+}

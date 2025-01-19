@@ -7,10 +7,13 @@ private:
 	int HighScore{};
 	int Score{};
 
+	GLfloat Feedback{};
+
 	bool OverHighScore{};
 
 public:
 	PlayScore();
 	void PlusScore();
+	void UpdateFunc(float FrameTime);
 	void RenderFunc();
 };
