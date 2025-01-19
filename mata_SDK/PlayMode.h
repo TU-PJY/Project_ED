@@ -3,19 +3,21 @@
 #include "MouseUtil.h"
 #include "CameraController.h"
 
-class GameMode1 {
+#include "PlayerShape.h"
+
+class Play_Mode {
 public:
 	// define mode name and mode type here
-	std::string ModeName { "GameMode1" };
+	std::string ModeName { "PlayMode" };
 	int         ModeType { MODE_TYPE_DEFAULT };
 
 	// when you activate this option, you can access the camera controller.
-	bool        UseCameraController{ false };
+	bool        UseCameraController{ true };
 
 	// type object tag to input device event
 	std::vector<std::string> InputObjectTag
 	{
-
+		"player_shape"
 	};
 
 	// this is a container that stores object pointers for accessing object controllers.
@@ -25,10 +27,7 @@ public:
 	/////////////////////////////////////////////////////////////
 
 	static void Start() {
-		System.SetBackColor(0.3, 0.3, 0.3);
-
-		// Add task here
-
+		scene.AddObject(new PlayerShape, "player_shape", LAYER1);
 		SetUp();
 	}
 
@@ -52,9 +51,9 @@ public:
 	/////////////////////////////////////////////////////////////
 	// Fold here
 #pragma region FoldRegion 
-	static GameMode1* M_Inst;
+	static Play_Mode* M_Inst;
 
-	GameMode1() {
+	Play_Mode() {
 		M_Inst = this;
 	}
 
@@ -166,4 +165,4 @@ public:
 	}
 #pragma endregion
 };
-extern GameMode1 Mode1;
+extern Play_Mode PlayMode;

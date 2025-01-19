@@ -4,7 +4,9 @@
 // Declare the sprite resource or directory here. 
 class SpriteResource {
 public:
-
+	Image Triangle[5]{};
+	Image Square[6]{};
+	Image Pentagon[6]{};
 };
 
 // Declare the sound resource or directory here. 
@@ -29,11 +31,12 @@ public:
 
 // Load your custom font.
 // USE_CUSTON_FONT must be enabled.
-//#define USE_CUSTOM_FONT
+#define USE_CUSTOM_FONT
 #ifdef USE_CUSTOM_FONT
 constexpr const char* FONT_PATH[]
 {
-
+	"Assets//Font//Exo-Light.otf",
+	"Assets//Font//SCDream3.otf",
 };
 #endif
 

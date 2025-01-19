@@ -158,6 +158,7 @@
     <ClCompile Include="Library\tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="Library\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="PlayerShape.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="LineBrush.cpp" />
     <ClCompile Include="MathUtil.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="FileUtil.h" />
     <ClInclude Include="ExUtil.h" />
     <ClInclude Include="FontUtil.h" />
+    <ClInclude Include="PlayerShape.h" />
     <ClInclude Include="SDKHeader.h" />
     <ClInclude Include="Library\tinyxml\tinystr.h" />
     <ClInclude Include="Library\tinyxml\tinyxml.h" />
@@ -210,7 +212,7 @@
     <ClInclude Include="LoadingMode.h" />
     <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="MathUtil.h" />
-    <ClInclude Include="GameMode1.h" />
+    <ClInclude Include="PlayMode.h" />
     <ClInclude Include="MouseUtil.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="MoveUtil.h" />
