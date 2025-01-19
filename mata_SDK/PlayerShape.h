@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 
-enum shapeenum {
+enum ShapeEnum {
 	Triangle,
 	Square,
 	Pentagon
@@ -14,7 +14,9 @@ private:
 
 	GLfloat ShapeRotation{};
 	GLfloat RotationDest{};
-	GLfloat ShapeRotationValue[3]{ 0.0, -90.0, -192.0 };
+
+	// triangle, square, pentagon
+	GLfloat ShapeRotationValue[3]{ 0.0, -90.0, -144.0 };
 
 	GLfloat ShapeSize{ 1.2 };
 

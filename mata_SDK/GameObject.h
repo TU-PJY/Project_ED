@@ -107,6 +107,9 @@ public:
 	// FPS indicator function
 	virtual void RenderIndicator() {}
 
+	// Shape Generator Function
+	virtual void Stop() {}
+
 private:
 	void PrepareRender(Image& ImageStruct);
 	void PrepareRender(SpriteSheet& SpriteSheetStruct);

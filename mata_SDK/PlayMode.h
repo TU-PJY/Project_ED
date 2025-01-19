@@ -4,6 +4,7 @@
 #include "CameraController.h"
 
 #include "PlayerShape.h"
+#include "ShapeGenerator.h"
 
 class Play_Mode {
 public:
@@ -28,6 +29,7 @@ public:
 
 	static void Start() {
 		scene.AddObject(new PlayerShape, "player_shape", LAYER1);
+		scene.AddObject(new ShapeGenerator, "shape_generator", LAYER1);
 		SetUp();
 	}
 
