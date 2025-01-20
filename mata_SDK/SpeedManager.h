@@ -4,7 +4,6 @@
 
 class SpeedManager : public GameObject {
 private:
-	bool RunningState{ true };
 	// ratio of generate speed and shape move speed
 	GLfloat TimeElapsRatio1{ 1.66 };
 
@@ -12,9 +11,6 @@ private:
 	GLfloat TimeElapsRatio2{ 142.8 };
 
 public:
-	void Stop();
-	void Resume();
+	SpeedManager();
 	void UpdateFunc(float FrameTime);
-	void UpdateGenerateSpeed();
-	void UpdateRotateSpeed();
 };

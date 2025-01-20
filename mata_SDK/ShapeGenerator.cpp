@@ -2,7 +2,7 @@
 #include "ObstacleShape.h"
 
 void ShapeGenerator::UpdateFunc(float FrameTime) {
-	if (RunningState) {
+	if (Global.RunningState) {
 		Timer.Update(FrameTime);
 
 		if (Timer.CheckMiliSec(Global.ShapeGenerateTime, 1, CHECK_AND_INTERPOLATE)) {
@@ -75,12 +75,4 @@ void ShapeGenerator::UpdateFunc(float FrameTime) {
 		}
 	}
 
-}
-
-void ShapeGenerator::Stop() {
-	RunningState = false;
-}
-
-void ShapeGenerator::Resume() {
-	RunningState = true;
 }
