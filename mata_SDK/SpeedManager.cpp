@@ -23,7 +23,7 @@ SpeedManager::SpeedManager(){
 		break;
 	case 5:
 		IncreaseSpeed = 50.0; 
-		MaxRotateSpeed = 160.0;
+		MaxRotateSpeed = 170.0;
 		break;
 	}
 }
