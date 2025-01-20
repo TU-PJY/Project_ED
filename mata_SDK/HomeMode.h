@@ -1,10 +1,9 @@
-#pragma once
+﻿#pragma once
 #include "Scene.h"
 #include "MouseUtil.h"
 #include "CameraController.h"
 
 #include "HomeScreen.h"
-#include "Cursor.h"
 
 class Home_Mode {
 public:
@@ -23,9 +22,9 @@ public:
 	/////////////////////////////////////////////////////////////
 
 	static void Start() {
-		System.HideCursor();
+		//System.HideCursor();
 		scene.AddObject(new HomeScreen, "home_screen", LAYER1);
-		scene.AddObject(new Cursor, "cursor", EOL - 1);
+		//scene.AddObject(new Cursor, "cursor", EOL - 1);
 		SetUp();
 	}
 
@@ -73,8 +72,8 @@ public:
 	static void ProcessKeyEvent(KeyEvent& Event) {
 		for (auto const& Object : M_Inst->InputObject)
 			if (Object)  Object->InputKey(Event);
-
 	}
+
 	static void KeyDown(unsigned char KEY, int X, int Y) {
 #ifdef ENABLE_DEV_EXIT
 		if (KEY == NK_ESCAPE)

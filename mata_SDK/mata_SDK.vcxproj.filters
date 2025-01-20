@@ -181,6 +181,9 @@
     <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Cursor ]">
       <UniqueIdentifier>{fd9af844-d64f-4e82-922f-ba0097a64e99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="[2]___________[ Object ]\[2][ Floating Object ]\[ Option Window ]">
+      <UniqueIdentifier>{3e8f83a6-e235-42a6-9bb4-7611d8893b68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -487,6 +490,12 @@
     </ClInclude>
     <ClInclude Include="Cursor.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Cursor ]</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionMode.h">
+      <Filter>[1]___________[ GameMode ]</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionWindow.h">
+      <Filter>[2]___________[ Object ]\[2][ Floating Object ]\[ Option Window ]</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

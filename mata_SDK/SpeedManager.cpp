@@ -5,23 +5,23 @@ SpeedManager::SpeedManager(){
 	Global.RunningState = true;
 
 	switch (Global.Diff) {
-	case 1:
+	case 0:
 		IncreaseSpeed = 0.5; 
 		MaxRotateSpeed = 80.0;
 		break;
-	case 2:
+	case 1:
 		IncreaseSpeed = 1.0; 
 		MaxRotateSpeed = 80.0;
 		break;
-	case 3:
+	case 2:
 		IncreaseSpeed = 3.0; 
 		MaxRotateSpeed = 100.0; 
 		break;
-	case 4:
+	case 3:
 		IncreaseSpeed = 5.0; 
 		MaxRotateSpeed = 120.0;
 		break;
-	case 5:
+	case 4:
 		IncreaseSpeed = 50.0; 
 		MaxRotateSpeed = 170.0;
 		break;

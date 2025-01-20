@@ -46,11 +46,12 @@ public:
 	GLfloat ElapsedTime{};
 	GLfloat PlaySpeed{ 1.0 };
 
-	int Diff{ 5 }; // 1: easy, 2: normal, 3: hard , 4: harder, 5: hardest
+	int Diff{ 0 }; // 0: easy, 1: normal, 2: hard , 3: harder, 4: hardest
 	bool RunningState{};
 	bool GameOverState{};
 
-	int HighScore[5]{};// 1: easy, 2: normal, 3: hard , 4: harder, 5: hardest
+	int HighScore[5]{};// 0: easy, 1: normal, 2: hard , 3: harder, 4: hardest
+	int PrevHighScore[5]{}; // 0: easy, 1: normal, 2: hard, 3: harder, 4: hardest
 };
 
 // Load your custom font.

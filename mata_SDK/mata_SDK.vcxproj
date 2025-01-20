@@ -204,6 +204,8 @@
     <ClInclude Include="ErrorMessage.h" />
     <ClInclude Include="HomeMode.h" />
     <ClInclude Include="HomeScreen.h" />
+    <ClInclude Include="OptionMode.h" />
+    <ClInclude Include="OptionWindow.h" />
     <ClInclude Include="PlayerFeedback.h" />
     <ClInclude Include="FPSInd.h" />
     <ClInclude Include="FileUtil.h" />

@@ -36,7 +36,7 @@ constexpr bool SHOW_FPS = true;
 
 // Program termination options when developing a program
 // When this option is activated, pressing ESC will immediately terminate the program.
-#define ENABLE_DEV_EXIT
+//#define ENABLE_DEV_EXIT
 
 
 

@@ -3,43 +3,39 @@
 #include "MouseUtil.h"
 #include "CameraController.h"
 
-class Template {
-public:
-	// define mode name and mode type here
-	std::string ModeName { "Template" };
-	int         ModeType { MODE_TYPE_DEFAULT };
+#include "OptionWindow.h"
 
-	// when you activate this option, you can access the camera controller.
+class Option_Mode {
+public:
+	std::string ModeName{ "OptionMode" };
+	int         ModeType{ MODE_TYPE_FLOATING };
+
 	bool        UseCameraController{ false };
 
-	// type object tag to input device event
 	std::vector<std::string> InputObjectTag
 	{
-
+		"option_window"
 	};
 
-	// this is a container that stores object pointers for accessing object controllers.
-	// a pointer to the object corresponding to the tag entered in InputObjectTag is added when the mode starts.
 	std::vector<GameObject*> InputObject{};
 
 	/////////////////////////////////////////////////////////////
 
 	static void Start() {
-		// Add task here
+		scene.AddObject(new OptionWindow, "option_window", LAYER4, OBJECT_TYPE_STATIC);
 		SetUp();
 	}
 
 	static void Destructor() {
-		// Add task here
+
 	}
 
 	/////////////////////////////////////////////////////////////
-	// Adds a control object to the mode.
+
 	void AddControlObject(GameObject* Object) {
 		InputObject.emplace_back(Object);
 	}
 
-	// Deletes a control object from mode.
 	void DeleteControlObject(GameObject* Object) {
 		auto Target = std::find(begin(InputObject), end(InputObject), Object);
 		if (Target != end(InputObject))
@@ -49,9 +45,9 @@ public:
 	/////////////////////////////////////////////////////////////
 	// Fold here
 #pragma region FoldRegion 
-	static Template* M_Inst;
+	static Option_Mode* M_Inst;
 
-	Template() {
+	Option_Mode() {
 		M_Inst = this;
 	}
 
@@ -65,7 +61,7 @@ public:
 
 		if (M_Inst->UseCameraController)
 			M_Inst->InputObject.emplace_back(CameraControl);
-		
+
 		scene.RegisterModeName(M_Inst->ModeName);
 		scene.RegisterDestructor(Destructor);
 		scene.RegisterController(Controller, M_Inst->ModeType);
@@ -146,7 +142,7 @@ public:
 			}
 			break;
 		}
-	
+
 		for (auto const& Object : M_Inst->InputObject)
 			if (Object)  Object->InputMouse(ButtonEvent);
 	}
@@ -163,4 +159,4 @@ public:
 	}
 #pragma endregion
 };
-extern Template TemplateMode;
+extern Option_Mode OptionMode;

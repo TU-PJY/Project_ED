@@ -4,12 +4,7 @@
 class HomeScreen : public GameObject {
 private:
 	FileUtil HighScoreData{};
-	TextUtil Text{};
-	AABB ArrowAABB[2]{};
-
-	int CurrentPage{ 0 };
-	int HighScore[5]{}; // 0: easy, 1: normal, 2: hard, 3: harder, 4: hardest
-	bool NewHighScore[5]{};
+	TextUtil DiffText{};
 
 	std::string DiffString[5]{
 		"EASY",
@@ -19,10 +14,23 @@ private:
 		"INSANE"
 	};
 
+	int CurrentPage{};
+	bool NewHighScore[5]{};
+
+	PopBounce TitleBounce{};
+	GLfloat TitleSize{};
+
+	GLfloat ArrowPosition = WindowRect.rx + 0.2;
+	GLfloat ArrowFeedback[2]{};
+	bool CursorOnArrow[2]{};
+	GLfloat ArrowOpacity[2]{};
+
+	glm::vec2 TextPosition{ 0.0, -1.5 };
+
 public:
 	HomeScreen();
 	void UpdateFunc(float FrameTime);
 	void RenderFunc();
+	void UpdateArrow(float FrameTime);
 	void InputKey(KeyEvent& Event);
-	void InputMouse(int Type);
 };
