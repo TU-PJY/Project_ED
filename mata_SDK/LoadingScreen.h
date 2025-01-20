@@ -114,11 +114,18 @@ public:
 			imageUtil.PreLoad(Sprite.Pentagon[i], FileName);
 		}
 
-		imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//Player//triangle.png");
-		imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//Player//square.png");
-		imageUtil.PreLoad(Sprite.ImagePlayerShape[2], "Assets//Image//Player//pentagon.png");
+		imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//Player//triangle.png", IMAGE_TYPE_LINEAR);
+		imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//Player//square.png", IMAGE_TYPE_LINEAR);
+		imageUtil.PreLoad(Sprite.ImagePlayerShape[2], "Assets//Image//Player//pentagon.png", IMAGE_TYPE_LINEAR);
 
 		imageUtil.PreLoad(Sprite.ImagePlayerFeedBack, "Assets//Image//Player//feedback.png");
+
+		imageUtil.PreLoad(Sprite.Title, "Assets//Image//UI//title.png", IMAGE_TYPE_LINEAR);
+
+		imageUtil.PreLoad(Sprite.ArrowLeft, "Assets//Image//UI//arrow_left.png", IMAGE_TYPE_LINEAR);
+		imageUtil.PreLoad(Sprite.ArrowRight, "Assets//Image//UI//arrow_right.png", IMAGE_TYPE_LINEAR);
+
+		imageUtil.PreLoad(Sprite.Cursor, "Assets//Image//UI//cursor.png", IMAGE_TYPE_LINEAR);
 
 		SysRes.GLU_CIRCLE = gluNewQuadric();
 		SysRes.GLU_LINE_CIRCLE = gluNewQuadric();

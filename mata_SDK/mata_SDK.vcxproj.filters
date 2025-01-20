@@ -25,6 +25,72 @@
     <Filter Include="[5]___________[ System ]">
       <UniqueIdentifier>{7f6a4887-d06e-4c65-963d-2b7d61cea12c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="[5]___________[ System ]\[ GLSL ]">
+      <UniqueIdentifier>{4eec4c3d-2375-48d7-85d7-413e0553d75c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ Header ]">
+      <UniqueIdentifier>{2f35df9f-153e-4b4a-906d-058f259a0979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ Scene ]">
+      <UniqueIdentifier>{f7b86d35-cb50-4352-9482-a8fb321f19f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ System Config ]">
+      <UniqueIdentifier>{6d7cc11a-2226-40e3-82ce-9a1d561e46ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ System Mode ]">
+      <UniqueIdentifier>{9d92d68b-96f8-4a78-90d4-bd16df8b7372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ System Object ]">
+      <UniqueIdentifier>{c8dde2fb-f4fd-4595-9cdf-614100ed40cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ System Resource ]">
+      <UniqueIdentifier>{60990a8d-71aa-447d-aab7-dfa6b035b3b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ TinyXML ]">
+      <UniqueIdentifier>{b411906d-dba6-43b2-9fb9-8fdc86ab615a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ TinyXML ]\[ Header ]">
+      <UniqueIdentifier>{0e3bd161-f85a-4c63-9fec-ca808700d64f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ TinyXML ]\[ CPP ]">
+      <UniqueIdentifier>{8687cc53-1f7c-47a2-a2ed-4388623b0fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[4]___________[ Resources ]">
+      <UniqueIdentifier>{a23e0c3a-d6ca-4199-bc98-de8c1d7c55be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ GameObject ]">
+      <UniqueIdentifier>{f67944b9-c91f-464e-976e-0b8958cf7ab9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ Main ]">
+      <UniqueIdentifier>{0db3b7f8-93be-4b88-bfa5-da8ad252be70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ Matrix ]">
+      <UniqueIdentifier>{8b8a436e-7668-404f-9fa0-864c2eec418e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]">
+      <UniqueIdentifier>{afcdf49e-0875-4ec0-a2da-ed1926162779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ ShapeGenerator ]">
+      <UniqueIdentifier>{94cf7465-9668-4aae-a278-1a689d3f73b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]">
+      <UniqueIdentifier>{d2d0893b-69ae-4ace-94d2-278665d3d3a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerFeedback ]">
+      <UniqueIdentifier>{21c39052-b2ef-49fc-9de5-ef4ee7088e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ PlayScore ]">
+      <UniqueIdentifier>{17f12e38-2e81-4cdc-89cb-38befddcd8e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Speed Manager ]">
+      <UniqueIdentifier>{0fd3e3b9-f4e8-4b41-afd1-d70483a90877}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerShape ]">
+      <UniqueIdentifier>{20273fa7-0e56-4735-a64f-fe9d6b37ca1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Home Screen ]">
+      <UniqueIdentifier>{8c9863cf-616b-4638-8bae-59158fc49678}</UniqueIdentifier>
+    </Filter>
     <Filter Include="[5]___________[ System ]\[ Util ]">
       <UniqueIdentifier>{019278b2-60d4-4cad-b935-d813a31f2c87}</UniqueIdentifier>
     </Filter>
@@ -103,39 +169,6 @@
     <Filter Include="[5]___________[ System ]\[ Util ]\[ String Util ]">
       <UniqueIdentifier>{0d426163-3f7a-4344-9513-1c4da459934c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="[5]___________[ System ]\[ GLSL ]">
-      <UniqueIdentifier>{4eec4c3d-2375-48d7-85d7-413e0553d75c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ Header ]">
-      <UniqueIdentifier>{2f35df9f-153e-4b4a-906d-058f259a0979}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ Scene ]">
-      <UniqueIdentifier>{f7b86d35-cb50-4352-9482-a8fb321f19f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ System Config ]">
-      <UniqueIdentifier>{6d7cc11a-2226-40e3-82ce-9a1d561e46ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ System Mode ]">
-      <UniqueIdentifier>{9d92d68b-96f8-4a78-90d4-bd16df8b7372}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ System Object ]">
-      <UniqueIdentifier>{c8dde2fb-f4fd-4595-9cdf-614100ed40cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ System Resource ]">
-      <UniqueIdentifier>{60990a8d-71aa-447d-aab7-dfa6b035b3b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ TinyXML ]">
-      <UniqueIdentifier>{b411906d-dba6-43b2-9fb9-8fdc86ab615a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ TinyXML ]\[ Header ]">
-      <UniqueIdentifier>{0e3bd161-f85a-4c63-9fec-ca808700d64f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ TinyXML ]\[ CPP ]">
-      <UniqueIdentifier>{8687cc53-1f7c-47a2-a2ed-4388623b0fa3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[4]___________[ Resources ]">
-      <UniqueIdentifier>{a23e0c3a-d6ca-4199-bc98-de8c1d7c55be}</UniqueIdentifier>
-    </Filter>
     <Filter Include="[5]___________[ System ]\[ Util ]\[ AnimationUtil ]">
       <UniqueIdentifier>{4850e16c-dcfa-4087-ac33-4dcbebf53e98}</UniqueIdentifier>
     </Filter>
@@ -145,35 +178,8 @@
     <Filter Include="[5]___________[ System ]\[ Util ]\[ Camera Util ]">
       <UniqueIdentifier>{f246ec1e-8aa5-4a4c-86c6-75a511ec4ed6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="[5]___________[ System ]\[ GameObject ]">
-      <UniqueIdentifier>{f67944b9-c91f-464e-976e-0b8958cf7ab9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ Main ]">
-      <UniqueIdentifier>{0db3b7f8-93be-4b88-bfa5-da8ad252be70}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[5]___________[ System ]\[ Matrix ]">
-      <UniqueIdentifier>{8b8a436e-7668-404f-9fa0-864c2eec418e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]">
-      <UniqueIdentifier>{afcdf49e-0875-4ec0-a2da-ed1926162779}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ ShapeGenerator ]">
-      <UniqueIdentifier>{94cf7465-9668-4aae-a278-1a689d3f73b7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]">
-      <UniqueIdentifier>{d2d0893b-69ae-4ace-94d2-278665d3d3a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerFeedback ]">
-      <UniqueIdentifier>{21c39052-b2ef-49fc-9de5-ef4ee7088e92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ PlayScore ]">
-      <UniqueIdentifier>{17f12e38-2e81-4cdc-89cb-38befddcd8e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Speed Manager ]">
-      <UniqueIdentifier>{0fd3e3b9-f4e8-4b41-afd1-d70483a90877}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerShape ]">
-      <UniqueIdentifier>{20273fa7-0e56-4735-a64f-fe9d6b37ca1b}</UniqueIdentifier>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Cursor ]">
+      <UniqueIdentifier>{fd9af844-d64f-4e82-922f-ba0097a64e99}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +317,12 @@
     </ClCompile>
     <ClCompile Include="SpeedManager.cpp">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Speed Manager ]</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeScreen.cpp">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Home Screen ]</Filter>
+    </ClCompile>
+    <ClCompile Include="Cursor.cpp">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Cursor ]</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -466,6 +478,15 @@
     </ClInclude>
     <ClInclude Include="SpeedManager.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Speed Manager ]</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeMode.h">
+      <Filter>[1]___________[ GameMode ]</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeScreen.h">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Home Screen ]</Filter>
+    </ClInclude>
+    <ClInclude Include="Cursor.h">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Cursor ]</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 #include "PlayScore.h"
 
 PlayScore::PlayScore() {
-	Text.Init(L"Exo", FW_BOLD);
+	Text.Init(L"Ronduit Capitals Light", FW_NORMAL);
 	Text.SetColor(0.7, 0.7, 0.7);
 	Text.SetAlign(ALIGN_MIDDLE);
 	Text.SetHeightAlign(HEIGHT_ALIGN_MIDDLE);
@@ -18,7 +18,7 @@ void PlayScore::UpdateFunc(float FrameTime) {
 }
 
 void PlayScore::RenderFunc() {
-	if (OverHighScore)
-		Text.Render(0.0, -0.4, 0.1 + Feedback, L"HIGH SCORE!");
-	Text.Render(0.0, -0.7, 0.3 + Feedback, L"%d", Score);
+	if (!OverHighScore)
+		Text.Render(0.0, -0.4, 0.1 + Feedback * 0.25, L"HIGH SCORE!");
+	Text.Render(0.0, -0.7, 0.2 + Feedback, L"%d", Score);
 }

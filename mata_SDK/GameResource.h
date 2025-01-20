@@ -10,6 +10,10 @@ public:
 
 	Image ImagePlayerShape[3]{};
 	Image ImagePlayerFeedBack{};
+
+	Image Title{};
+	Image ArrowRight{}, ArrowLeft{};
+	Image Cursor{};
 };
 
 // Declare the sound resource or directory here. 
@@ -23,6 +27,13 @@ public:
 // {  Data Type, Category Name, Data Name, Digit Value, String Value }
 class DataFormatResource {
 public:
+	DataFormat HighScoreDataFormat = {
+		{DATA_TYPE_DIGIT, "HighScore", "EasyModeHighScore", 0.0, ""},
+		{DATA_TYPE_DIGIT, "HighScore", "NormalModeHighScore", 0.0, ""},
+		{DATA_TYPE_DIGIT, "HighScore", "HardModeHighScore", 0.0, ""},
+		{DATA_TYPE_DIGIT, "HighScore", "HarderModeHighScore", 0.0, ""},
+		{DATA_TYPE_DIGIT, "HighScore", "HardestModeHighScore", 0.0, ""},
+	};
 
 };
 
@@ -51,6 +62,7 @@ constexpr const char* FONT_PATH[]
 	"Assets//Font//Exo-Light.otf",
 	"Assets//Font//Exo-Bold.otf",
 	"Assets//Font//SCDream3.otf",
+	"Assets//Font//RondiutCapitalsLight-rPnO.otf"
 };
 #endif
 

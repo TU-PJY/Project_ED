@@ -3,16 +3,19 @@
 #include "MouseUtil.h"
 #include "CameraController.h"
 
-class Template {
+#include "HomeScreen.h"
+#include "Cursor.h"
+
+class Home_Mode {
 public:
-	std::string ModeName { "Template" };
-	int         ModeType { MODE_TYPE_DEFAULT };
+	std::string ModeName{ "HomeMode" };
+	int         ModeType{ MODE_TYPE_DEFAULT };
 
 	bool        UseCameraController{ false };
 
 	std::vector<std::string> InputObjectTag
 	{
-
+		"home_screen"
 	};
 
 	std::vector<GameObject*> InputObject{};
@@ -20,6 +23,9 @@ public:
 	/////////////////////////////////////////////////////////////
 
 	static void Start() {
+		System.HideCursor();
+		scene.AddObject(new HomeScreen, "home_screen", LAYER1);
+		scene.AddObject(new Cursor, "cursor", EOL - 1);
 		SetUp();
 	}
 
@@ -42,9 +48,9 @@ public:
 	/////////////////////////////////////////////////////////////
 	// Fold here
 #pragma region FoldRegion 
-	static Template* M_Inst;
+	static Home_Mode* M_Inst;
 
-	Template() {
+	Home_Mode() {
 		M_Inst = this;
 	}
 
@@ -58,7 +64,7 @@ public:
 
 		if (M_Inst->UseCameraController)
 			M_Inst->InputObject.emplace_back(CameraControl);
-		
+
 		scene.RegisterModeName(M_Inst->ModeName);
 		scene.RegisterDestructor(Destructor);
 		scene.RegisterController(Controller, M_Inst->ModeType);
@@ -139,7 +145,7 @@ public:
 			}
 			break;
 		}
-	
+
 		for (auto const& Object : M_Inst->InputObject)
 			if (Object)  Object->InputMouse(ButtonEvent);
 	}
@@ -156,4 +162,4 @@ public:
 	}
 #pragma endregion
 };
-extern Template TemplateMode;
+extern Home_Mode HomeMode;
