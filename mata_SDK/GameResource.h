@@ -35,7 +35,7 @@ public:
 	GLfloat ElapsedTime{};
 	GLfloat PlaySpeed{ 1.0 };
 
-	int Diff{1}; // 1: easy, 2: normal, 3: hard , 4: harder, 5: hardest
+	int Diff{5}; // 1: easy, 2: normal, 3: hard , 4: harder, 5: hardest
 	bool RunningState{};
 	bool GameOverState{};
 };

@@ -10,6 +10,8 @@ private:
 	//ratio of generate speed and camera rotate speed
 	GLfloat TimeElapsRatio2{ 142.8 };
 
+	GLfloat IncreaseSpeed{};
+
 public:
 	SpeedManager();
 	void UpdateFunc(float FrameTime);
