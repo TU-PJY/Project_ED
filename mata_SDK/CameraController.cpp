@@ -7,7 +7,7 @@ void CameraController::InputKey(KeyEvent& Event) {
 }
 
 void CameraController::UpdateFunc(float FT){
-	Rotation += 10.0 * RotateDirection * FT;
+	Rotation += Global.CameraRotateSpeed * RotateDirection * FT;
 	ComputeCameraMatrix();
 }
 

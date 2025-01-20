@@ -18,7 +18,7 @@ private:
 	// triangle, square, pentagon
 	GLfloat ShapeRotationValue[3]{ 0.0, -90.0, -144.0 };
 
-	GLfloat ShapeSize{ 1.0 };
+	GLfloat ShapeSize{ 0.8 };
 
 public:
 	PlayerShape();

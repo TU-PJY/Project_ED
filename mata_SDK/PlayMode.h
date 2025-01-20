@@ -3,9 +3,10 @@
 #include "MouseUtil.h"
 #include "CameraController.h"
 
-#include "PlayerShape.h"
+#include "SpeedManager.h"
 #include "ShapeGenerator.h"
 #include "PlayScore.h"
+#include "PlayerShape.h"
 
 class Play_Mode {
 public:
@@ -29,6 +30,7 @@ public:
 	/////////////////////////////////////////////////////////////
 
 	static void Start() {
+		scene.AddObject(new SpeedManager, "speed_manager", LAYER1);
 		scene.AddObject(new ShapeGenerator, "shape_generator", LAYER1);
 		scene.AddObject(new PlayScore, "play_score", LAYER1);
 		scene.AddObject(new PlayerShape, "player_shape", LAYER3);
@@ -36,7 +38,6 @@ public:
 	}
 
 	static void Destructor() {
-		// Add task here
 	}
 
     /////////////////////////////////////////////////////////////

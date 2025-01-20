@@ -15,10 +15,12 @@ private:
 	GLfloat GenerateTime{ 1.0 };
 
 	int PrevShape{-1};
+	int SameShapeCount{};
 
 	bool RunningState{ true };
 
 public:
 	void UpdateFunc(float FrameTime);
 	void Stop();
+	void Resume();
 };

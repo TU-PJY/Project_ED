@@ -29,7 +29,14 @@ public:
 // Declare the global value here.
 class GlobalValue {
 public:
-	GLfloat ShapeMoveSpeed{ 1.6 };
+	GLfloat ShapeMoveSpeed{};
+	GLfloat ShapeGenerateTime{};
+	GLfloat CameraRotateSpeed{};
+	GLfloat ElapsedTime{};
+	GLfloat PlaySpeed{ 1.0 };
+
+	int Diff{5}; // 1: easy, 2: normal, 3: hard , 4: harder, 5: hardest
+	bool GameOverState{};
 };
 
 // Load your custom font.

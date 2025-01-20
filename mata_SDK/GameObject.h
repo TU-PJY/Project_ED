@@ -108,8 +108,9 @@ public:
 	// FPS indicator function
 	virtual void RenderIndicator() {}
 
-	// Shape Generator Function
+	// Shape Generator, Speed Manager Function
 	virtual void Stop() {}
+	virtual void Resume() {}
 
 	// PlayScore Function
 	virtual void PlusScore() {};

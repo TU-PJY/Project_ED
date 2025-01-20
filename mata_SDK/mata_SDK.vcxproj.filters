@@ -169,6 +169,12 @@
     <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ PlayScore ]">
       <UniqueIdentifier>{17f12e38-2e81-4cdc-89cb-38befddcd8e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Speed Manager ]">
+      <UniqueIdentifier>{0fd3e3b9-f4e8-4b41-afd1-d70483a90877}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerShape ]">
+      <UniqueIdentifier>{20273fa7-0e56-4735-a64f-fe9d6b37ca1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -288,9 +294,6 @@
     <ClCompile Include="[0]_Modes.cpp">
       <Filter>[1]___________[ GameMode ]</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerShape.cpp">
-      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]</Filter>
-    </ClCompile>
     <ClCompile Include="ShapeGenerator.cpp">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ ShapeGenerator ]</Filter>
     </ClCompile>
@@ -302,6 +305,12 @@
     </ClCompile>
     <ClCompile Include="PlayScore.cpp">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ PlayScore ]</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerShape.cpp">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerShape ]</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeedManager.cpp">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Speed Manager ]</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -440,9 +449,6 @@
     <ClInclude Include="ErrorMessage.h">
       <Filter>[5]___________[ System ]\[ System Object ]</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerShape.h">
-      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]</Filter>
-    </ClInclude>
     <ClInclude Include="ShapeGenerator.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ ShapeGenerator ]</Filter>
     </ClInclude>
@@ -454,6 +460,12 @@
     </ClInclude>
     <ClInclude Include="PlayScore.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ PlayScore ]</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerShape.h">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerShape ]</Filter>
+    </ClInclude>
+    <ClInclude Include="SpeedManager.h">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Speed Manager ]</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
