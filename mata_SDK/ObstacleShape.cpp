@@ -1,6 +1,7 @@
 #include "ObstacleShape.h"
 #include "CameraController.h"
 #include "PlayerFeedback.h"
+#include "ShapeGenerator.h"
 
 ObstacleShape::ObstacleShape(int Type) {
 	SetColor(1.0, 1.0, 1.0);

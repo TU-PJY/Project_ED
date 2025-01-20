@@ -2,12 +2,6 @@
 #include "GameObject.h"
 #include "Scene.h"
 
-enum GenerateTypeEnum {
-	ObTriangle,
-	ObSquare,
-	ObPentagon
-};
-
 class ObstacleShape : public GameObject {
 private:
 	RandomUtil Random{};

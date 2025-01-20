@@ -56,8 +56,8 @@ void CameraController::ChangeRotateDirection() {
 ///////////////////////////////////////// private
 
 void CameraController::ComputeCameraMatrix(){
-	transform.Identity(camera.TranslateMatrix);
 	transform.Identity(camera.RotateMatrix);
+	transform.Identity(camera.TranslateMatrix);
 	transform.Move(camera.TranslateMatrix, Position.x, Position.y);
 	transform.Rotate(camera.RotateMatrix, Rotation);
 }
