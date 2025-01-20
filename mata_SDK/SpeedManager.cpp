@@ -6,15 +6,25 @@ SpeedManager::SpeedManager(){
 
 	switch (Global.Diff) {
 	case 1:
-		IncreaseSpeed = 0.5; break;
+		IncreaseSpeed = 0.5; 
+		MaxRotateSpeed = 80.0;
+		break;
 	case 2:
-		IncreaseSpeed = 1.8; break;
+		IncreaseSpeed = 1.0; 
+		MaxRotateSpeed = 80.0;
+		break;
 	case 3:
-		IncreaseSpeed = 5.0; break;
+		IncreaseSpeed = 3.0; 
+		MaxRotateSpeed = 100.0; 
+		break;
 	case 4:
-		IncreaseSpeed = 10.0; break;
+		IncreaseSpeed = 5.0; 
+		MaxRotateSpeed = 120.0;
+		break;
 	case 5:
-		IncreaseSpeed = 40.0; break;
+		IncreaseSpeed = 50.0; 
+		MaxRotateSpeed = 160.0;
+		break;
 	}
 }
 
@@ -28,6 +38,6 @@ void SpeedManager::UpdateFunc(float FrameTime){
 
 		EX.ClampValue(Global.ShapeMoveSpeed, 2.6, CLAMP_GREATER);
 		EX.ClampValue(Global.ShapeGenerateTime, 0.4, CLAMP_LESS);
-		EX.ClampValue(Global.CameraRotateSpeed, 150.0, CLAMP_GREATER);
+		EX.ClampValue(Global.CameraRotateSpeed, MaxRotateSpeed, CLAMP_GREATER);
 	}
 }

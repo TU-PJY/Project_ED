@@ -11,6 +11,7 @@ private:
 	GLfloat TimeElapsRatio2{ 142.8 };
 
 	GLfloat IncreaseSpeed{};
+	GLfloat MaxRotateSpeed{};
 
 public:
 	SpeedManager();
