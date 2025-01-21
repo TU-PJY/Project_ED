@@ -34,6 +34,7 @@ public:
 		Text.SetAlign(ALIGN_MIDDLE);
 		Text.SetHeightAlign(HEIGHT_ALIGN_MIDDLE);
 		Text.SetColor(1.0, 1.0, 1.0);
+		soundUtil.PlaySound(Audio.GameExitSound, Ch);
 	}
 
 	void InputKey(KeyEvent& Event) {
@@ -41,12 +42,14 @@ public:
 			switch (Event.NormalKey) {
 			case NK_ESCAPE:
 				if (!ExitToHome && !ExitToDesktop) {
+					soundUtil.PlaySound(Audio.GameStartSound, Ch);
 					scene.EndFloatingMode();
 					ObjectTag = "";
 					Global.PlaySpeed = 1.0;
 					ExitScreenState = true;
 				}
 				else if (ExitToHome || ExitToDesktop) {
+					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 					ExitToHome = false;
 					ExitToDesktop = false;
 				}
@@ -55,18 +58,21 @@ public:
 			case NK_ENTER:
 				if (!ExitToHome && !ExitToDesktop) {
 					if (CurrentPauseIndex == 0) {
+						soundUtil.PlaySound(Audio.GameStartSound, Ch);
 						scene.EndFloatingMode();
 						ObjectTag = "";
 						Global.PlaySpeed = 1.0;
 						ExitScreenState = true;
 					}
 					else if (CurrentPauseIndex == 1) {
+						soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 						ExitToHome = true;
 						CurrentQuestionIndex = 0;
 						DestQuestionTextHeight = 0.0;
 						QuestionTextHeight = 0.0;
 					}
 					else if (CurrentPauseIndex == 2) {
+						soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 						ExitToDesktop = true;
 						CurrentQuestionIndex = 0;
 						DestQuestionTextHeight = 0.0;
@@ -75,6 +81,8 @@ public:
 				}
 
 				else if (ExitToHome && !ExitToDesktop) {
+					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
+
 					if (CurrentQuestionIndex == 0) {
 						scene.SwitchMode(HomeMode.Start);
 						ObjectTag = "";
@@ -98,6 +106,8 @@ public:
 		else if (Event.Type == SPECIAL_KEY_DOWN) {
 			switch (Event.SpecialKey) {
 			case SK_ARROW_UP:
+				soundUtil.PlaySound(Audio.KeyMoveSound, Ch);
+
 				if (!ExitToHome && !ExitToDesktop) {
 					--CurrentPauseIndex;
 					DestPauseTextHeight -= 0.16;
@@ -117,6 +127,8 @@ public:
 				break;
 
 			case SK_ARROW_DOWN:
+				soundUtil.PlaySound(Audio.KeyMoveSound, Ch);
+
 				if (!ExitToHome && !ExitToDesktop) {
 					++CurrentPauseIndex;
 					DestPauseTextHeight += 0.16;

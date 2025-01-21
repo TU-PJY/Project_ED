@@ -124,6 +124,7 @@ public:
 		soundUtil.Load(Audio.KeySelectSound, "Assets//Sound//key_select.wav");
 		soundUtil.Load(Audio.OptionSelectSound, "Assets//Sound//option_select.wav");
 		soundUtil.Load(Audio.GameStartSound, "Assets//Sound//game_start.wav");
+		soundUtil.Load(Audio.GameExitSound, "Assets//Sound//game_exit.wav");
 
 		imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//Player//triangle.png", IMAGE_TYPE_LINEAR);
 		imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//Player//square.png", IMAGE_TYPE_LINEAR);
