@@ -11,24 +11,28 @@ SpeedManager::SpeedManager(){
 		LessGenerateTime = 0.45;
 		MaxMoveSpeed = 2.6;
 		break;
+
 	case 1:
 		IncreaseSpeed = 1.0; 
 		MaxRotateSpeed = 80.0;
 		LessGenerateTime = 0.4;
 		MaxMoveSpeed = 2.6;
 		break;
+
 	case 2:
 		IncreaseSpeed = 3.0; 
 		MaxRotateSpeed = 100.0; 
 		LessGenerateTime = 0.4;
 		MaxMoveSpeed = 2.6;
 		break;
+
 	case 3:
 		IncreaseSpeed = 5.0; 
 		MaxRotateSpeed = 120.0;
 		LessGenerateTime = 0.35;
 		MaxMoveSpeed = 2.6;
 		break;
+
 	case 4:
 		IncreaseSpeed = 50.0; 
 		MaxRotateSpeed = 170.0;

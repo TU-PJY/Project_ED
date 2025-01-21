@@ -7,7 +7,6 @@ private:
 	GLfloat BackOpacity{};
 	TextUtil Text{};
 
-
 	int CurrentIndex{};
 	GLfloat MenuTextOpacity{};
 	GLfloat BlockOpacity{};
@@ -64,8 +63,9 @@ public:
 				break;
 
 			case NK_ENTER:
-				soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 				if (!SettingScreen) {
+					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
+
 					if (CurrentIndex == 2)
 						System.Exit();
 
@@ -86,6 +86,7 @@ public:
 				else if (SettingScreen && !ResetWarning) {
 					switch (CurrentSettingIndex) {
 					case 0:
+						soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 						Global.UserSettingData.UpdateDigitData("Option", "FullscreenMode", Global.FullscreenMode);
 						Global.UserSettingData.UpdateDigitData("Option", "MusicPlayOption", Global.MusicPlayOption);
 						Global.UserSettingData.UpdateDigitData("Option", "UseMusicEffect", Global.UseMusicEffect);
@@ -94,6 +95,7 @@ public:
 						break;
 
 					case 5:
+						soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 						WarningTextHeight = 0.0;
 						DestWarningTextHeight = 0.0;
 						CurrentWarningIndex = 0;
@@ -102,6 +104,8 @@ public:
 					}
 				}
 				else if(SettingScreen && ResetWarning) {
+					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
+
 					switch (CurrentWarningIndex) {
 					case 0:
 						ResetWarning = false;
@@ -121,6 +125,7 @@ public:
 			switch (Event.SpecialKey) {
 			case SK_ARROW_UP:
 				soundUtil.PlaySound(Audio.KeyMoveSound, Ch);
+
 				if (!SettingScreen) {
 					--CurrentIndex;
 					DestTextHeight -= 0.16;
@@ -152,6 +157,7 @@ public:
 
 			case SK_ARROW_DOWN:
 				soundUtil.PlaySound(Audio.KeyMoveSound, Ch);
+
 				if (!SettingScreen) {
 					++CurrentIndex;
 					DestTextHeight += 0.16;
@@ -182,6 +188,7 @@ public:
 				if (SettingScreen && !ResetWarning) {
 					if(0 < CurrentSettingIndex && CurrentSettingIndex < 5)
 						soundUtil.PlaySound(Audio.OptionSelectSound, Ch);
+
 					switch (CurrentSettingIndex) {
 					case 1:
 						++Global.FullscreenMode;
@@ -213,6 +220,7 @@ public:
 				if (SettingScreen && !ResetWarning) {
 					if (0 < CurrentSettingIndex && CurrentSettingIndex < 5)
 						soundUtil.PlaySound(Audio.OptionSelectSound, Ch);
+
 					switch (CurrentSettingIndex) {
 					case 1:
 						--Global.FullscreenMode;
