@@ -9,7 +9,7 @@ private:
 
 
 	int CurrentIndex{};
-	GLfloat TextOpacity{};
+	GLfloat MenuTextOpacity{};
 	GLfloat BlockOpacity{};
 	GLfloat DestTextHeight{};
 	GLfloat TextHeight{};
@@ -19,6 +19,12 @@ private:
 	GLfloat SettingTextOpacity{};
 	GLfloat SettingTextHeight{};
 	GLfloat DestSettingTextHeight{};
+
+	bool ResetWarning{};
+	int CurrentWarningIndex{};
+	GLfloat WarningTextOpacity{};
+	GLfloat WarningTextHeight{};
+	GLfloat DestWarningTextHeight{};
 
 	bool ExitOption{};
 
@@ -43,13 +49,15 @@ public:
 					ExitOption = true;
 					ObjectTag = "";
 				}
-				else {
+				else if(SettingScreen && !ResetWarning) {
 					Global.UserSettingData.UpdateDigitData("Option", "FullscreenMode", Global.FullscreenMode);
 					Global.UserSettingData.UpdateDigitData("Option", "MusicPlayOption", Global.MusicPlayOption);
 					Global.UserSettingData.UpdateDigitData("Option", "UseMusicEffect", Global.UseMusicEffect);
 					Global.UserSettingData.UpdateDigitData("Option", "MusicEffectValue", Global.MusicEffectValue);
 					SettingScreen = false;
 				}
+				else if (SettingScreen && ResetWarning) 
+					ResetWarning = false;
 				break;
 
 			case NK_ENTER:
@@ -71,7 +79,7 @@ public:
 					}
 				}
 
-				else {
+				else if (SettingScreen && !ResetWarning) {
 					switch (CurrentSettingIndex) {
 					case 0:
 						Global.UserSettingData.UpdateDigitData("Option", "FullscreenMode", Global.FullscreenMode);
@@ -79,6 +87,25 @@ public:
 						Global.UserSettingData.UpdateDigitData("Option", "UseMusicEffect", Global.UseMusicEffect);
 						Global.UserSettingData.UpdateDigitData("Option", "MusicEffectValue", Global.MusicEffectValue);
 						SettingScreen = false;
+						break;
+
+					case 5:
+						WarningTextHeight = 0.0;
+						DestWarningTextHeight = 0.0;
+						CurrentWarningIndex = 0;
+						ResetWarning = true;
+						break;
+					}
+				}
+				else if(SettingScreen && ResetWarning) {
+					switch (CurrentWarningIndex) {
+					case 0:
+						ResetWarning = false;
+						break;
+
+					case 1:
+						Global.HighScoreData.ResetData();
+						ResetWarning = false;
 						break;
 					}
 				}
@@ -90,32 +117,63 @@ public:
 			switch (Event.SpecialKey) {
 			case SK_ARROW_UP:
 				if (!SettingScreen) {
-					if (CurrentIndex == 0) break;
 					--CurrentIndex;
 					DestTextHeight -= 0.16;
+
+					if (CurrentIndex < 0) {
+						CurrentIndex = 2;
+						DestTextHeight = 0.16 * 2;
+					}
 				}
-				else {
-					if (CurrentSettingIndex == 0) break;
+
+				else if (SettingScreen && !ResetWarning) {
 					--CurrentSettingIndex;
 					DestSettingTextHeight -= 0.16;
+					if (CurrentSettingIndex < 0) {
+						CurrentSettingIndex = 5;
+						DestSettingTextHeight = 0.16 * 5;
+					}
+				}
+
+				else if (SettingScreen && ResetWarning) {
+					--CurrentWarningIndex;
+					DestWarningTextHeight -= 0.16;
+					if (CurrentWarningIndex < 0) {
+						CurrentWarningIndex = 1;
+						DestWarningTextHeight = 0.16;
+					}
 				}
 				break;
 
 			case SK_ARROW_DOWN:
 				if (!SettingScreen) {
-					if (CurrentIndex == 2) break;
 					++CurrentIndex;
 					DestTextHeight += 0.16;
+					if (CurrentIndex > 2) {
+						CurrentIndex = 0;
+						DestTextHeight = 0.0;
+					}
 				}
-				else {
-					if (CurrentSettingIndex == 4) break;
+				else if(SettingScreen && !ResetWarning) {
 					++CurrentSettingIndex;
 					DestSettingTextHeight += 0.16;
+					if (CurrentSettingIndex > 5) {
+						CurrentSettingIndex = 0;
+						DestSettingTextHeight = 0.0;
+					}
+				}
+				else if (SettingScreen && ResetWarning) {
+					++CurrentWarningIndex;
+					DestWarningTextHeight += 0.16;
+					if (CurrentWarningIndex > 1) {
+						CurrentWarningIndex = 0;
+						DestWarningTextHeight = 0.0;
+					}
 				}
 				break;
 
 			case SK_ARROW_RIGHT:
-				if (SettingScreen) {
+				if (SettingScreen && !ResetWarning) {
 					switch (CurrentSettingIndex) {
 					case 1:
 						++Global.FullscreenMode;
@@ -144,7 +202,7 @@ public:
 				break;
 
 			case SK_ARROW_LEFT:
-				if (SettingScreen) {
+				if (SettingScreen && !ResetWarning) {
 					switch (CurrentSettingIndex) {
 					case 1:
 						--Global.FullscreenMode;
@@ -188,30 +246,45 @@ public:
 		transform.Scale(ScaleMatrix, WindowRect.rx - WindowRect.lx, 0.15);
 		RenderSprite(SysRes.COLOR_TEXTURE, BlockOpacity);
 
-		RenderMenu();
-		RenderSettingMenu();
+		if(MenuTextOpacity > 0)
+			RenderMenu();
+
+		if(SettingTextOpacity > 0)
+			RenderSettingMenu();
+
+		if (WarningTextOpacity > 0)
+			RenderResetWarning();
 	}
 
 	void UpdateMenu(float FrameTime) {
 		if (!ExitOption) {
-			mathUtil.UpdateLerp(BackOpacity, 0.7, 20.0, FrameTime);
+			mathUtil.UpdateLerp(BackOpacity, 0.8, 20.0, FrameTime);
 			mathUtil.UpdateLerp(BlockOpacity, 0.2, 20.0, FrameTime);
 
 			if (!SettingScreen) {
-				mathUtil.UpdateLerp(TextOpacity, 1.0, 20.0, FrameTime);
+				mathUtil.UpdateLerp(MenuTextOpacity, 1.0, 20.0, FrameTime);
 				mathUtil.UpdateLerp(SettingTextOpacity, 0.0, 20.0, FrameTime);
+				mathUtil.UpdateLerp(WarningTextOpacity, 0.0, 20.0, FrameTime);
 			}
-			else {
-				mathUtil.UpdateLerp(TextOpacity, 0.0, 20.0, FrameTime);
+			else if(SettingScreen && !ResetWarning) {
+				mathUtil.UpdateLerp(MenuTextOpacity, 0.0, 20.0, FrameTime);
+				mathUtil.UpdateLerp(WarningTextOpacity, 0.0, 20.0, FrameTime);
 				mathUtil.UpdateLerp(SettingTextOpacity, 1.0, 20.0, FrameTime);
+			}
+
+			else if(SettingScreen && ResetWarning) {
+				mathUtil.UpdateLerp(MenuTextOpacity, 0.0, 20.0, FrameTime);
+				mathUtil.UpdateLerp(SettingTextOpacity, 0.0, 20.0, FrameTime);
+				mathUtil.UpdateLerp(WarningTextOpacity, 1.0, 20.0, FrameTime);
 			}
 		}
 
 		else {
 			mathUtil.UpdateLerp(BackOpacity, 0.0, 20.0, FrameTime);
 			mathUtil.UpdateLerp(BlockOpacity, 0.0, 20.0, FrameTime);
-			mathUtil.UpdateLerp(TextOpacity, 0.0, 20.0, FrameTime);
+			mathUtil.UpdateLerp(MenuTextOpacity, 0.0, 20.0, FrameTime);
 			mathUtil.UpdateLerp(SettingTextOpacity, 0.0, 20.0, FrameTime);
+			mathUtil.UpdateLerp(WarningTextOpacity, 0.0, 20.0, FrameTime);
 
 			if (BackOpacity <= 0.0001)
 				scene.DeleteObject(this);
@@ -219,17 +292,18 @@ public:
 
 		mathUtil.UpdateLerp(TextHeight, DestTextHeight, 20.0, FrameTime);
 		mathUtil.UpdateLerp(SettingTextHeight, DestSettingTextHeight, 20.0, FrameTime);
+		mathUtil.UpdateLerp(WarningTextHeight, DestWarningTextHeight, 20.0, FrameTime);
 	}
 
 	void RenderMenu() {
-		Text.SetOpacity(TextOpacity);
+		Text.SetOpacity(MenuTextOpacity);
 		Text.Render(0.0, 0.0 + TextHeight + 0.02, 0.1, L"환경설정");
 		Text.Render(0.0, -0.16 + TextHeight + 0.02, 0.1, L"홈으로 돌아가기");
 		Text.Render(0.0, -0.32 + TextHeight + 0.02, 0.1, L"바탕화면으로 나가기");
 	}
 
 	void RenderSettingMenu() {
-		if (CurrentSettingIndex > 0) {
+		if (0 < CurrentSettingIndex && CurrentSettingIndex <= 4) {
 			BeginRender(RENDER_TYPE_STATIC);
 			transform.Move(TranslateMatrix, -0.7, 0.0);
 			transform.Scale(ScaleMatrix, 0.1, 0.1);
@@ -242,6 +316,10 @@ public:
 		}
 
 		Text.SetOpacity(SettingTextOpacity);
+		Text.SetAlign(ALIGN_DEFAULT);
+		Text.Render(WindowRect.lx + 0.1, 0.02, 0.1, L"환경설정");
+
+		Text.SetAlign(ALIGN_MIDDLE);
 		Text.Render(0.0, 0.0 + SettingTextHeight + 0.02, 0.1, L"저장하고 돌아가기");
 
 		if(Global.FullscreenMode == 1)
@@ -265,5 +343,18 @@ public:
 			Text.SetOpacity(SettingTextOpacity - 0.7);
 			Text.Render(0.0, -0.64 + SettingTextHeight + 0.02, 0.1, L"음향 효과 조정: %.1f", Global.MusicEffectValue);
 		}
+
+		Text.SetOpacity(SettingTextOpacity);
+		Text.Render(0.0, -0.8 + SettingTextHeight + 0.02, 0.1, L"진행 상황 초기화");
+	}
+
+	void RenderResetWarning() {
+		Text.SetOpacity(WarningTextOpacity);
+		Text.SetAlign(ALIGN_DEFAULT);
+		Text.Render(WindowRect.lx + 0.1, 0.02, 0.1, L"정말인가요?");
+
+		Text.SetAlign(ALIGN_MIDDLE);
+		Text.Render(0.0, 0.0 + WarningTextHeight + 0.02, 0.1, L"아니오");
+		Text.Render(0.0, -0.16 + WarningTextHeight + 0.02, 0.1, L"예");
 	}
 };

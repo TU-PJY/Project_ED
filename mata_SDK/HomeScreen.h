@@ -3,7 +3,6 @@
 
 class HomeScreen : public GameObject {
 private:
-	FileUtil HighScoreData{};
 	TextUtil DiffText{};
 
 	std::string DiffString[5]{

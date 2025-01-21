@@ -12,8 +12,8 @@ HomeScreen::HomeScreen() {
 	DiffText.SetHeightAlign(HEIGHT_ALIGN_MIDDLE);
 
 	// HighScore Data Load
-	HighScoreData.Load("GameData//Data", Format.HighScoreDataFormat);
-	DigitDataSet HighScoreDataSet = HighScoreData.LoadCategoryDigitData("HighScore");
+	Global.HighScoreData.Load("GameData//Data", Format.HighScoreDataFormat);
+	DigitDataSet HighScoreDataSet = Global.HighScoreData.LoadCategoryDigitData("HighScore");
 	size_t Size = HighScoreDataSet.size();
 	for (int i = 0; i < Size; ++i)
 		Global.PrevHighScore[i] = HighScoreDataSet[i];
