@@ -1,6 +1,7 @@
 #include "OptionMode.h"
 #include "HomeMode.h"
 #include "PlayMode.h"
+#include "PauseMode.h"
 
 //////////////////////////////////// Start Mode Option
 // Specifies the mode to run first when the program starts.
@@ -14,5 +15,8 @@ Home_Mode* Home_Mode::M_Inst;
 
 Play_Mode PlayMode;
 Play_Mode* Play_Mode::M_Inst;
+
+Pause_Mode PauseMode;
+Pause_Mode* Pause_Mode::M_Inst;
 
 START_MODE_PTR START_MODE = HomeMode.Start;

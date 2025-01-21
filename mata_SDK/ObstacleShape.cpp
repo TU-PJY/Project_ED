@@ -61,28 +61,30 @@ ObstacleShape::ObstacleShape(int Type) {
 }
 
 void ObstacleShape::UpdateFunc(float FrameTime) {
-	if (!DestroyState) {
-		CurrentSize -= Global.ShapeMoveSpeed * CurrentSize * FrameTime;
-		mathUtil.UpdateLerp(Opacity, 1.0, Global.ShapeMoveSpeed * 5.0, FrameTime);
+	if (MoveState) {
+		if (!DestroyState) {
+			CurrentSize -= Global.ShapeMoveSpeed * CurrentSize * FrameTime * Global.PlaySpeed;
+			mathUtil.UpdateLerp(Opacity, 1.0, Global.ShapeMoveSpeed * 5.0, FrameTime * Global.PlaySpeed);
 
-		if (CurrentSize <= 1.15) {
-			if (RotateDirectionChanger)
-				CameraControl->ChangeRotateDirection();
+			if (CurrentSize <= 1.15) {
+				if (RotateDirectionChanger)
+					CameraControl->ChangeRotateDirection();
 
-			scene.AddObject(new PlayerFeedback, "player_feedback", LAYER1);
+				scene.AddObject(new PlayerFeedback, "player_feedback", LAYER1);
 
-			if (auto PlayScore = scene.Find("play_score"); PlayScore)
-				PlayScore->PlusScore();
+				if (auto PlayScore = scene.Find("play_score"); PlayScore)
+					PlayScore->PlusScore();
 
-			DestroyState = true;
+				DestroyState = true;
+			}
 		}
-	}
 
-	else {
-		mathUtil.UpdateLerp(CurrentSize, 0.0, 10.0, FrameTime);
-		mathUtil.UpdateLerp(Opacity, 0.0, 10.0, FrameTime);
-		if (Opacity <= 0.01)
-			scene.DeleteObject(this);
+		else {
+			mathUtil.UpdateLerp(CurrentSize, 0.0, 10.0, FrameTime * Global.PlaySpeed);
+			mathUtil.UpdateLerp(Opacity, 0.0, 10.0, FrameTime * Global.PlaySpeed);
+			if (Opacity <= 0.01)
+				scene.DeleteObject(this);
+		}
 	}
 }
 
@@ -106,4 +108,8 @@ void ObstacleShape::RenderFunc() {
 		RenderSprite(Sprite.Pentagon[ShapeIndex], Opacity);
 		break;
 	}
+}
+
+void ObstacleShape::Stop() {
+	MoveState = false;
 }

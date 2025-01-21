@@ -5,10 +5,10 @@
 class SpeedManager : public GameObject {
 private:
 	// ratio of generate speed and shape move speed
-	GLfloat TimeElapsRatio1{ 1.66 };
+	GLfloat TimeElapsRatio1{ 2.2 };
 
 	//ratio of generate speed and camera rotate speed
-	GLfloat TimeElapsRatio2{ 142.8 };
+	GLfloat TimeElapsRatio2{ 242.85 };
 
 	GLfloat IncreaseSpeed{};
 	GLfloat MaxRotateSpeed{};

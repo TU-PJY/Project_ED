@@ -178,10 +178,10 @@
     <Filter Include="[5]___________[ System ]\[ Util ]\[ Camera Util ]">
       <UniqueIdentifier>{f246ec1e-8aa5-4a4c-86c6-75a511ec4ed6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Cursor ]">
-      <UniqueIdentifier>{fd9af844-d64f-4e82-922f-ba0097a64e99}</UniqueIdentifier>
+    <Filter Include="[2]___________[ Object ]\[2][ Floating Object ]\[ Pause Screen ]">
+      <UniqueIdentifier>{b76eab7b-fca6-4ee9-b091-81be050ad835}</UniqueIdentifier>
     </Filter>
-    <Filter Include="[2]___________[ Object ]\[2][ Floating Object ]\[ Option Window ]">
+    <Filter Include="[2]___________[ Object ]\[2][ Floating Object ]\[ Option Screen ]">
       <UniqueIdentifier>{3e8f83a6-e235-42a6-9bb4-7611d8893b68}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -323,9 +323,6 @@
     </ClCompile>
     <ClCompile Include="HomeScreen.cpp">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Home Screen ]</Filter>
-    </ClCompile>
-    <ClCompile Include="Cursor.cpp">
-      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Cursor ]</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -488,14 +485,17 @@
     <ClInclude Include="HomeScreen.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Home Screen ]</Filter>
     </ClInclude>
-    <ClInclude Include="Cursor.h">
-      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Cursor ]</Filter>
-    </ClInclude>
     <ClInclude Include="OptionMode.h">
       <Filter>[1]___________[ GameMode ]</Filter>
     </ClInclude>
     <ClInclude Include="OptionWindow.h">
-      <Filter>[2]___________[ Object ]\[2][ Floating Object ]\[ Option Window ]</Filter>
+      <Filter>[2]___________[ Object ]\[2][ Floating Object ]\[ Option Screen ]</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.h">
+      <Filter>[2]___________[ Object ]\[2][ Floating Object ]\[ Pause Screen ]</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMode.h">
+      <Filter>[1]___________[ GameMode ]</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

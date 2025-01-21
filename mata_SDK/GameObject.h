@@ -109,7 +109,10 @@ public:
 	virtual void RenderIndicator() {}
 
 	// PlayScore Function
-	virtual void PlusScore() {};
+	virtual void PlusScore() {}
+
+	// obstacle shape function
+	virtual void Stop() {}
 
 private:
 	void PrepareRender(Image& ImageStruct);

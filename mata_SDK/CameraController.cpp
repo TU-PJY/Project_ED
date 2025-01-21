@@ -1,13 +1,21 @@
 #include "CameraController.h"
 #include "CameraUtil.h"
 #include "TransformUtil.h"
+#include "Scene.h"
 
 void CameraController::InputKey(KeyEvent& Event) {
 
 }
 
 void CameraController::UpdateFunc(float FT){
-	Rotation += Global.CameraRotateSpeed * RotateDirection * FT;
+	if (scene.Mode() == "PlayMode") 
+		Rotation += Global.CameraRotateSpeed * RotateDirection * FT * Global.PlaySpeed;
+
+	else if (scene.Mode() == "HomeMode") {
+		RotateDirection = 1;
+		Rotation = 0.0;
+	}
+	
 	ComputeCameraMatrix();
 }
 

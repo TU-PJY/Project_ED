@@ -14,9 +14,11 @@ private:
 
 	bool RotateDirectionChanger{};
 	bool DestroyState{};
+	bool MoveState{ true };
 
 public:
 	ObstacleShape(int Type);
 	void UpdateFunc(float FrameTime);
 	void RenderFunc();
+	void Stop();
 };

@@ -6,7 +6,7 @@ PlayerFeedback::PlayerFeedback() {
 }
 
 void PlayerFeedback::UpdateFunc(float FrameTime) {
-	Opacity -= FrameTime * 3.0;
+	Opacity -= FrameTime * 3.0 * Global.PlaySpeed;
 	if (Opacity <= 0.0)
 		scene.DeleteObject(this);
 }

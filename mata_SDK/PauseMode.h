@@ -1,20 +1,20 @@
-﻿#pragma once
+#pragma once
 #include "Scene.h"
 #include "MouseUtil.h"
 #include "CameraController.h"
 
-#include "HomeScreen.h"
+#include "PauseScreen.h"
 
-class Home_Mode {
+class Pause_Mode {
 public:
-	std::string ModeName{ "HomeMode" };
-	int         ModeType{ MODE_TYPE_DEFAULT };
+	std::string ModeName{ "PauseMode" };
+	int         ModeType{ MODE_TYPE_FLOATING };
 
 	bool        UseCameraController{ false };
 
 	std::vector<std::string> InputObjectTag
 	{
-		"home_screen"
+		"pause_screen"
 	};
 
 	std::vector<GameObject*> InputObject{};
@@ -22,9 +22,7 @@ public:
 	/////////////////////////////////////////////////////////////
 
 	static void Start() {
-		//System.HideCursor();
-		scene.AddObject(new HomeScreen, "home_screen", LAYER2);
-		//scene.AddObject(new Cursor, "cursor", EOL - 1);
+		scene.AddObject(new PauseScreen, "pause_screen", LAYER4, OBJECT_TYPE_STATIC);
 		SetUp();
 	}
 
@@ -47,9 +45,9 @@ public:
 	/////////////////////////////////////////////////////////////
 	// Fold here
 #pragma region FoldRegion 
-	static Home_Mode* M_Inst;
+	static Pause_Mode* M_Inst;
 
-	Home_Mode() {
+	Pause_Mode() {
 		M_Inst = this;
 	}
 
@@ -161,4 +159,4 @@ public:
 	}
 #pragma endregion
 };
-extern Home_Mode HomeMode;
+extern Pause_Mode PauseMode;

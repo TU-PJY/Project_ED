@@ -14,7 +14,6 @@ public:
 
 	Image Title{};
 	Image ArrowRight{}, ArrowLeft{};
-	Image Cursor{};
 };
 
 // Declare the sound resource or directory here. 
@@ -58,7 +57,6 @@ public:
 	GLfloat PlaySpeed{ 1.0 };
 
 	int Diff{ 0 }; // 0: easy, 1: normal, 2: hard , 3: harder, 4: hardest
-	bool RunningState{};
 	bool GameOverState{};
 
 	int HighScore[5]{};// 0: easy, 1: normal, 2: hard , 3: harder, 4: hardest

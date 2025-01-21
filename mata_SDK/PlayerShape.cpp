@@ -1,4 +1,6 @@
 #include "PlayerShape.h"
+#include "Scene.h"
+#include "PauseMode.h"
 
 PlayerShape::PlayerShape() {
 	SetColor(1.0, 1.0, 1.0);
@@ -20,6 +22,11 @@ void PlayerShape::InputKey(KeyEvent& Event) {
 			break;
 		}
 	}
+
+	else if (Event.Type == NORMAL_KEY_DOWN && Event.NormalKey == NK_ESCAPE) {
+		Global.PlaySpeed = 0.0;
+		scene.StartFloatingMode(PauseMode.Start);
+	}
 }
 
 void PlayerShape::ChangeShapeRotationDest() {
@@ -32,7 +39,7 @@ void PlayerShape::ChangeShapeRotationDest() {
 
 void PlayerShape::UpdateFunc(float FrameTime) {
 	// Shape Rotation
-	mathUtil.UpdateLerp(ShapeRotation, RotationDest, 35.0, FrameTime);
+	mathUtil.UpdateLerp(ShapeRotation, RotationDest, 35.0, FrameTime * Global.PlaySpeed);
 }
 
 void PlayerShape::RenderFunc() {

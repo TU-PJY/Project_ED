@@ -25,7 +25,7 @@ private:
 	GLfloat WarningTextHeight{};
 	GLfloat DestWarningTextHeight{};
 
-	bool ExitOption{};
+	bool ExitScreenState{};
 
 	SoundChannel Ch{};
 
@@ -48,7 +48,7 @@ public:
 				soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 				if (!SettingScreen) {
 					scene.EndFloatingMode();
-					ExitOption = true;
+					ExitScreenState = true;
 					ObjectTag = "";
 				}
 				else if(SettingScreen && !ResetWarning) {
@@ -71,7 +71,7 @@ public:
 
 					else if (CurrentIndex == 1) {
 						scene.EndFloatingMode();
-						ExitOption = true;
+						ExitScreenState = true;
 						ObjectTag = "";
 					}
 
@@ -211,6 +211,7 @@ public:
 					case 4:
 						if (Global.UseMusicEffect == 1) 
 							Global.MusicEffectValue += 0.1;
+						EX.ClampValue(Global.MusicEffectValue, 2.0, CLAMP_GREATER);
 						break;
 					}
 				}
@@ -243,6 +244,7 @@ public:
 					case 4:
 						if (Global.UseMusicEffect == 1)
 							Global.MusicEffectValue -= 0.1;
+						EX.ClampValue(Global.MusicEffectValue, 0.1, CLAMP_LESS);
 						break;
 					}
 				}
@@ -275,7 +277,7 @@ public:
 	}
 
 	void UpdateMenu(float FrameTime) {
-		if (!ExitOption) {
+		if (!ExitScreenState) {
 			mathUtil.UpdateLerp(BackOpacity, 0.8, 20.0, FrameTime);
 			mathUtil.UpdateLerp(BlockOpacity, 0.2, 20.0, FrameTime);
 

@@ -136,8 +136,6 @@ public:
 		imageUtil.PreLoad(Sprite.ArrowLeft, "Assets//Image//UI//arrow_left.png", IMAGE_TYPE_LINEAR);
 		imageUtil.PreLoad(Sprite.ArrowRight, "Assets//Image//UI//arrow_right.png", IMAGE_TYPE_LINEAR);
 
-		imageUtil.PreLoad(Sprite.Cursor, "Assets//Image//UI//cursor.png", IMAGE_TYPE_LINEAR);
-
 		SysRes.GLU_CIRCLE = gluNewQuadric();
 		SysRes.GLU_LINE_CIRCLE = gluNewQuadric();
 		gluQuadricDrawStyle(SysRes.GLU_CIRCLE, GLU_FILL);

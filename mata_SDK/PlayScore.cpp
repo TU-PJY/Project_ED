@@ -14,7 +14,7 @@ void PlayScore::PlusScore() {
 }
 
 void PlayScore::UpdateFunc(float FrameTime) {
-	mathUtil.UpdateLerp(Feedback, 0.0, 5.0, FrameTime);
+	mathUtil.UpdateLerp(Feedback, 0.0, 5.0, FrameTime * Global.PlaySpeed);
 }
 
 void PlayScore::RenderFunc() {
