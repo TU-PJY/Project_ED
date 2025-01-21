@@ -114,6 +114,12 @@ public:
 			imageUtil.PreLoad(Sprite.Pentagon[i], FileName);
 		}
 
+		Global.UserSettingData.Load("GameData//UserSetting", Format.UsetSettingDataFormat);
+		Global.FullscreenMode = Global.UserSettingData.LoadDigitData("Option", "FullscreenMode");
+		Global.MusicPlayOption = Global.UserSettingData.LoadDigitData("Option", "MusicPlayOption");
+		Global.UseMusicEffect = Global.UserSettingData.LoadDigitData("Option", "UseMusicEffect");
+		Global.MusicEffectValue = Global.UserSettingData.LoadDigitData("Option", "MusicEffectValue");
+
 		imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//Player//triangle.png", IMAGE_TYPE_LINEAR);
 		imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//Player//square.png", IMAGE_TYPE_LINEAR);
 		imageUtil.PreLoad(Sprite.ImagePlayerShape[2], "Assets//Image//Player//pentagon.png", IMAGE_TYPE_LINEAR);

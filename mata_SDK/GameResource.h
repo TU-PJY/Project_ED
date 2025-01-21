@@ -1,5 +1,6 @@
 #pragma once
 #include "SDKHeader.h"
+#include "FileUtil.h"
 
 // Declare the sprite resource or directory here. 
 class SpriteResource {
@@ -35,6 +36,12 @@ public:
 		{DATA_TYPE_DIGIT, "HighScore", "HardestModeHighScore", 0.0, ""},
 	};
 
+	DataFormat UsetSettingDataFormat = {
+		{DATA_TYPE_DIGIT, "Option", "FullscreenMode", 1.0, ""},
+		{DATA_TYPE_DIGIT, "Option", "MusicPlayOption", 0, ""},
+		{DATA_TYPE_DIGIT, "Option", "UseMusicEffect", 1.0, ""},
+		{DATA_TYPE_DIGIT, "Option", "MusicEffectValue", 1.0, ""},
+	};
 };
 
 // Declare the global value here.
@@ -52,6 +59,14 @@ public:
 
 	int HighScore[5]{};// 0: easy, 1: normal, 2: hard , 3: harder, 4: hardest
 	int PrevHighScore[5]{}; // 0: easy, 1: normal, 2: hard, 3: harder, 4: hardest
+
+	// user settings
+	int FullscreenMode{}; // 0: windowded, 1: fullscreen
+	int MusicPlayOption{}; // 0: resume, 1: random point, 2: replay
+	int UseMusicEffect{}; // 0: dont use, 1: use
+	GLfloat MusicEffectValue{};
+	FileUtil UserSettingData{};
+
 };
 
 // Load your custom font.
