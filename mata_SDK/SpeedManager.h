@@ -12,6 +12,8 @@ private:
 
 	GLfloat IncreaseSpeed{};
 	GLfloat MaxRotateSpeed{};
+	GLfloat LessGenerateTime{};
+	GLfloat MaxMoveSpeed{};
 
 public:
 	SpeedManager();

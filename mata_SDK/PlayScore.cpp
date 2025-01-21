@@ -18,7 +18,7 @@ void PlayScore::UpdateFunc(float FrameTime) {
 }
 
 void PlayScore::RenderFunc() {
-	if (!OverHighScore)
+	if (OverHighScore)
 		Text.Render(0.0, -0.4, 0.1 + Feedback * 0.25, L"HIGH SCORE!");
 	Text.Render(0.0, -0.7, 0.2 + Feedback, L"%d", Score);
 }

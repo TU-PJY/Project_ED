@@ -120,6 +120,11 @@ public:
 		Global.UseMusicEffect = Global.UserSettingData.LoadDigitData("Option", "UseMusicEffect");
 		Global.MusicEffectValue = Global.UserSettingData.LoadDigitData("Option", "MusicEffectValue");
 
+		soundUtil.Load(Audio.KeyMoveSound, "Assets//Sound//key_click.wav");
+		soundUtil.Load(Audio.KeySelectSound, "Assets//Sound//key_select.wav");
+		soundUtil.Load(Audio.OptionSelectSound, "Assets//Sound//option_select.wav");
+		soundUtil.Load(Audio.GameStartSound, "Assets//Sound//game_start.wav");
+
 		imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//Player//triangle.png", IMAGE_TYPE_LINEAR);
 		imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//Player//square.png", IMAGE_TYPE_LINEAR);
 		imageUtil.PreLoad(Sprite.ImagePlayerShape[2], "Assets//Image//Player//pentagon.png", IMAGE_TYPE_LINEAR);

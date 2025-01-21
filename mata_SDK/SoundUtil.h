@@ -5,6 +5,8 @@
 #include "SDKHeader.h"
 #include <string>
 
+#undef PlaySound
+
 class SoundUtil {
 private:
 	FMOD::System* SoundSystem{};

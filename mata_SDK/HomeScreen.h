@@ -26,6 +26,8 @@ private:
 
 	glm::vec2 TextPosition{ 0.0, -1.5 };
 
+	SoundChannel Ch{};
+
 public:
 	HomeScreen();
 	void UpdateFunc(float FrameTime);

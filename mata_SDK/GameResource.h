@@ -20,7 +20,11 @@ public:
 // Declare the sound resource or directory here. 
 class AudioResource {
 public:
-
+	Sound KeyMoveSound{};
+	Sound KeySelectSound{};
+	Sound OptionSelectSound{};
+	Sound GameStartSound{};
+	Sound GameExitSound{};
 };
 
 // Data Format list

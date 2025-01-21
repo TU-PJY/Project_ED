@@ -28,6 +28,7 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 		switch (Event.SpecialKey) {
 		case SK_ARROW_LEFT:
 			if (CurrentPage == 0) break;
+			soundUtil.PlaySound(Audio.KeyMoveSound, Ch);
 			--CurrentPage;
 			TextPosition.x = 0.5;
 			ArrowFeedback[0] = -0.1;
@@ -35,6 +36,7 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 
 		case SK_ARROW_RIGHT:
 			if (CurrentPage == 4) break;
+			soundUtil.PlaySound(Audio.KeyMoveSound, Ch);
 			++CurrentPage;
 			TextPosition.x = -0.5;
 			ArrowFeedback[1] = 0.1;
@@ -46,11 +48,13 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 	else if (Event.Type == NORMAL_KEY_DOWN) {
 		switch (Event.NormalKey) {
 		case NK_ENTER:
+			soundUtil.PlaySound(Audio.GameStartSound, Ch);
 			Global.Diff = CurrentPage;
 			scene.SwitchMode(PlayMode.Start);
 			break;
 
 		case NK_ESCAPE:
+			soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 			scene.StartFloatingMode(OptionMode.Start);
 			break;
 		}

@@ -28,6 +28,8 @@ private:
 
 	bool ExitOption{};
 
+	SoundChannel Ch{};
+
 public:
 	OptionWindow() {
 		Text.Init(L"에스코어 드림 3 Light", FW_DONTCARE);
@@ -44,6 +46,7 @@ public:
 		if (Event.Type == NORMAL_KEY_DOWN) {
 			switch (Event.NormalKey) {
 			case NK_ESCAPE:
+				soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 				if (!SettingScreen) {
 					scene.EndFloatingMode();
 					ExitOption = true;
@@ -61,6 +64,7 @@ public:
 				break;
 
 			case NK_ENTER:
+				soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 				if (!SettingScreen) {
 					if (CurrentIndex == 2)
 						System.Exit();
@@ -116,6 +120,7 @@ public:
 		else if (Event.Type == SPECIAL_KEY_DOWN) {
 			switch (Event.SpecialKey) {
 			case SK_ARROW_UP:
+				soundUtil.PlaySound(Audio.KeyMoveSound, Ch);
 				if (!SettingScreen) {
 					--CurrentIndex;
 					DestTextHeight -= 0.16;
@@ -146,6 +151,7 @@ public:
 				break;
 
 			case SK_ARROW_DOWN:
+				soundUtil.PlaySound(Audio.KeyMoveSound, Ch);
 				if (!SettingScreen) {
 					++CurrentIndex;
 					DestTextHeight += 0.16;
@@ -174,6 +180,8 @@ public:
 
 			case SK_ARROW_RIGHT:
 				if (SettingScreen && !ResetWarning) {
+					if(0 < CurrentSettingIndex && CurrentSettingIndex < 5)
+						soundUtil.PlaySound(Audio.OptionSelectSound, Ch);
 					switch (CurrentSettingIndex) {
 					case 1:
 						++Global.FullscreenMode;
@@ -203,6 +211,8 @@ public:
 
 			case SK_ARROW_LEFT:
 				if (SettingScreen && !ResetWarning) {
+					if (0 < CurrentSettingIndex && CurrentSettingIndex < 5)
+						soundUtil.PlaySound(Audio.OptionSelectSound, Ch);
 					switch (CurrentSettingIndex) {
 					case 1:
 						--Global.FullscreenMode;
