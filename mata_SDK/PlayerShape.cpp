@@ -11,12 +11,32 @@ PlayerShape::PlayerShape() {
 		break;
 
 	case 1:
-		soundUtil.PlaySound(Audio.Track[Global.Diff], Global.TrackChannel);
+		soundUtil.PlaySound(Audio.Track[Global.Diff], Global.TrackChannel, Global.PrevPlayTime[Global.Diff]);
 		break;
 
 	case 2:
 		Global.PrevPlayTime[Global.Diff] = 0;
 		soundUtil.PlaySound(Audio.Track[Global.Diff], Global.TrackChannel);
+		break;
+	}
+
+	soundUtil.SetBeatDetect(Global.TrackChannel);
+
+	switch (Global.Diff) {
+	case 0:
+		Global.EffectStrength = 10.0;
+		break;
+	case 1:
+		Global.EffectStrength = 3.0;
+		break;
+	case 2:
+		Global.EffectStrength = 3.0;
+		break;
+	case 3:
+		Global.EffectStrength = 3.0;
+		break;
+	case 4:
+		Global.EffectStrength = 3.0;
 		break;
 	}
 }
@@ -63,6 +83,9 @@ void PlayerShape::UpdateFunc(float FrameTime) {
 		EX.ClampValue(Global.PlaySpeed, 1.0, CLAMP_GREATER);
 
 		Global.PrevPlayTime[Global.Diff] = soundUtil.GetPlayTime(Global.TrackChannel);
+
+		if (Global.UseMusicEffect)
+			mathUtil.UpdateLerp(Global.BeatDetectValue, soundUtil.DetectBeat(0.65, 10) * Global.MusicEffectValue, 10.0, FrameTime);
 	}
 }
 
@@ -71,4 +94,8 @@ void PlayerShape::RenderFunc() {
 	transform.Rotate(RotateMatrix, ShapeRotation);
 	transform.Scale(ScaleMatrix, ShapeSize, ShapeSize);
 	RenderSprite(Sprite.ImagePlayerShape[CurrentShape]);
+	RenderSprite(Sprite.ImagePlayerShapeLight[CurrentShape]);
+
+	if (Global.UseMusicEffect)
+		RenderSprite(Sprite.ImagePlayerShapeLight[CurrentShape], Global.BeatDetectValue * Global.EffectStrength);
 }

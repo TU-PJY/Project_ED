@@ -83,6 +83,8 @@ public:
 				}
 
 				else if (!ExitToHome && ExitToDesktop) {
+					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
+
 					if (CurrentQuestionIndex == 0)
 						System.Exit();
 					else if (CurrentQuestionIndex == 1)

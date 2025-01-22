@@ -96,18 +96,27 @@ void ObstacleShape::RenderFunc() {
 
 	switch (ShapeType) {
 	case ObTriangle:
-		transform.Scale(ScaleMatrix, CurrentSize + 0.1, CurrentSize + 0.1);
+		transform.Scale(ScaleMatrix, CurrentSize + 0.3, CurrentSize + 0.3);
 		RenderSprite(Sprite.Triangle[ShapeIndex], Opacity);
+		RenderSprite(Sprite.TriangleLight[ShapeIndex], Opacity * 0.55);
+		if(Global.UseMusicEffect)
+			RenderSprite(Sprite.TriangleLight[ShapeIndex], Global.BeatDetectValue * Global.EffectStrength * Opacity * 0.55);
 		break;
 
 	case ObSquare:
-		transform.Scale(ScaleMatrix, CurrentSize - 0.05, CurrentSize - 0.05);
+		transform.Scale(ScaleMatrix, CurrentSize + 0.15, CurrentSize + 0.15);
 		RenderSprite(Sprite.Square[ShapeIndex], Opacity);
+		RenderSprite(Sprite.SquareLight[ShapeIndex], Opacity * 0.55);
+		if (Global.UseMusicEffect)
+			RenderSprite(Sprite.SquareLight[ShapeIndex], Global.BeatDetectValue * Global.EffectStrength * Opacity * 0.55);
 		break;
 
 	case ObPentagon:
-		transform.Scale(ScaleMatrix, CurrentSize - 0.1, CurrentSize - 0.1);
+		transform.Scale(ScaleMatrix, CurrentSize + 0.1, CurrentSize + 0.1);
 		RenderSprite(Sprite.Pentagon[ShapeIndex], Opacity);
+		RenderSprite(Sprite.PentagonLight[ShapeIndex], Opacity * 0.55);
+		if (Global.UseMusicEffect)
+			RenderSprite(Sprite.PentagonLight[ShapeIndex], Global.BeatDetectValue * Global.EffectStrength * Opacity * 0.55);
 		break;
 	}
 }

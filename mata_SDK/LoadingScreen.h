@@ -9,7 +9,7 @@
 
 class LoadingScreen : public GameObject {
 private:
-	HANDLE  SystemResourceLoadHangle{};
+	HANDLE  SystemResourceLoadHandle{};
 	HANDLE  UserResourceLoadHandle{};
 	GLfloat Rotation{};
 	GLfloat SpinnerOpacity{1.0};
@@ -31,8 +31,9 @@ public:
 		if (LoadStartCommand) {
 			Rotation -= 200 * FrameTime;
 
-			if (!threadUtil.IsRunning(SystemResourceLoadHangle) && !SystemResourceLoadEnd) {
-				threadUtil.Close(SystemResourceLoadHangle);
+			if (!threadUtil.IsRunning(SystemResourceLoadHandle) && !SystemResourceLoadEnd) {
+				threadUtil.Close(SystemResourceLoadHandle);
+				threadUtil.Create(UserResourceLoadHandle, ResourceLoader);
 				SystemResourceLoadEnd = true;
 			}
 
@@ -75,8 +76,7 @@ public:
 			soundUtil.Init();
 #endif
 			imageUtil.Load(SysRes.LOADING_SPINNER, SysRes.SDK_LOADING_SPINNER_DIRECTORY, IMAGE_TYPE_LINEAR);
-			threadUtil.Create(SystemResourceLoadHangle, SystemResourceCreateThread);
-			threadUtil.Create(UserResourceLoadHandle, ResourceLoader);
+			threadUtil.Create(SystemResourceLoadHandle, SystemResourceCreateThread);
 
 			LoadStartCommand = true;
 		}
