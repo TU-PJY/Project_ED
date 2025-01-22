@@ -1,6 +1,9 @@
 #pragma once
 #include "SDKHeader.h"
 #include "FileUtil.h"
+#include "SoundUtil.h"
+#include "ImageUtil.h"
+#include "FontUtil.h"
 
 // Declare the sprite resource or directory here. 
 class SpriteResource {
@@ -24,6 +27,8 @@ public:
 	Sound OptionSelectSound{};
 	Sound GameStartSound{};
 	Sound GameExitSound{};
+
+	Sound Track[5]{};
 };
 
 // Data Format list
@@ -59,6 +64,7 @@ public:
 	int Diff{ 0 }; // 0: easy, 1: normal, 2: hard , 3: harder, 4: hardest
 	bool GameOverState{};
 
+	// score
 	int HighScore[5]{};// 0: easy, 1: normal, 2: hard , 3: harder, 4: hardest
 	int PrevHighScore[5]{}; // 0: easy, 1: normal, 2: hard, 3: harder, 4: hardest
 	FileUtil HighScoreData{};
@@ -89,3 +95,4 @@ extern SpriteResource Sprite;
 extern AudioResource Audio;
 extern DataFormatResource Format;
 extern GlobalValue Global;
+DWORD WINAPI ResourceLoader(LPVOID Param);

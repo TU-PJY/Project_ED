@@ -110,7 +110,7 @@ public:
 
 				if (!ExitToHome && !ExitToDesktop) {
 					--CurrentPauseIndex;
-					DestPauseTextHeight -= 0.16;
+					DestPauseTextHeight -= 0.16; 
 					if (CurrentPauseIndex < 0) {
 						CurrentPauseIndex = 2;
 						DestPauseTextHeight = 0.32;

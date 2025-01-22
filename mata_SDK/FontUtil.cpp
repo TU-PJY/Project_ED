@@ -24,3 +24,11 @@ bool FontUtil::Load(const std::string& FontFilePath, bool LoadInThread) {
 
     return true;
 }
+
+void FontUtil::LoadUserFont() {
+    int TotalSize = sizeof(FONT_PATH);
+    int ElementSize = sizeof(FONT_PATH[0]);
+    int Length = TotalSize / ElementSize;
+    for (int i = 0; i < Length; ++i)
+        fontUtil.Load(FONT_PATH[i], true);
+}

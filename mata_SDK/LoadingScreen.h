@@ -9,11 +9,13 @@
 
 class LoadingScreen : public GameObject {
 private:
-	HANDLE  ThreadHandle{};
+	HANDLE  SystemResourceLoadHangle{};
+	HANDLE  UserResourceLoadHandle{};
 	GLfloat Rotation{};
 	GLfloat SpinnerOpacity{1.0};
-	bool    LoadCommand{};
-	bool    ThreadEnd{};
+	bool    LoadStartCommand{};
+	bool    SystemResourceLoadEnd{};
+	bool    UserResourceLoadEnd{};
 
 public:
 	void InputKey(KeyEvent& Event) {
@@ -26,15 +28,20 @@ public:
 	}
 
 	void UpdateFunc(float FrameTime) {
-		if (LoadCommand) {
+		if (LoadStartCommand) {
 			Rotation -= 200 * FrameTime;
 
-			if (!threadUtil.IsRunning(ThreadHandle) && !ThreadEnd) {
-				threadUtil.Close(ThreadHandle);
-				ThreadEnd = true;
+			if (!threadUtil.IsRunning(SystemResourceLoadHangle) && !SystemResourceLoadEnd) {
+				threadUtil.Close(SystemResourceLoadHangle);
+				SystemResourceLoadEnd = true;
 			}
 
-			if(ThreadEnd) {
+			if (!threadUtil.IsRunning(UserResourceLoadHandle) && !UserResourceLoadEnd) {
+				threadUtil.Close(UserResourceLoadHandle);
+				UserResourceLoadEnd = true;
+			}
+
+			if(SystemResourceLoadEnd && UserResourceLoadEnd) {
 				imageUtil.Map();
 
 				if (!ENABLE_INTRO_SCREEN) {
@@ -68,9 +75,10 @@ public:
 			soundUtil.Init();
 #endif
 			imageUtil.Load(SysRes.LOADING_SPINNER, SysRes.SDK_LOADING_SPINNER_DIRECTORY, IMAGE_TYPE_LINEAR);
-			threadUtil.Create(ThreadHandle, SystemResourceCreateThread);
+			threadUtil.Create(SystemResourceLoadHangle, SystemResourceCreateThread);
+			threadUtil.Create(UserResourceLoadHandle, ResourceLoader);
 
-			LoadCommand = true;
+			LoadStartCommand = true;
 		}
 	}
 
@@ -92,65 +100,12 @@ public:
 		imageUtil.PreLoad(SysRes.FMOD_LOGO, SysRes.FMOD_LOGO_DIRECTORY, IMAGE_TYPE_LINEAR);
 		imageUtil.PreLoad(SysRes.COLOR_TEXTURE, SysRes.COLOR_TEXTURE_DIRECTORY);
 
-		// game resoueces
-		for (int i = 0; i < 3; ++i) {
-			std::string FileName = "Assets//Image//Shapes//Triangle//obstacle_triangle_";
-			FileName += std::to_string(i + 1);
-			FileName += ".png";
-			imageUtil.PreLoad(Sprite.Triangle[i], FileName);
-		}
-
-		for (int i = 0; i < 5; ++i) {
-			std::string FileName = "Assets//Image//Shapes//Square//obstacle_square_";
-			FileName += std::to_string(i + 1);
-			FileName += ".png";
-			imageUtil.PreLoad(Sprite.Square[i], FileName);
-		}
-
-		for (int i = 0; i < 5; ++i) {
-			std::string FileName = "Assets//Image//Shapes//Pentagon//obstacle_pentagon_";
-			FileName += std::to_string(i + 1);
-			FileName += ".png";
-			imageUtil.PreLoad(Sprite.Pentagon[i], FileName);
-		}
-
-		Global.UserSettingData.Load("GameData//UserSetting", Format.UsetSettingDataFormat);
-		Global.FullscreenMode = Global.UserSettingData.LoadDigitData("Option", "FullscreenMode");
-		Global.MusicPlayOption = Global.UserSettingData.LoadDigitData("Option", "MusicPlayOption");
-		Global.UseMusicEffect = Global.UserSettingData.LoadDigitData("Option", "UseMusicEffect");
-		Global.MusicEffectValue = Global.UserSettingData.LoadDigitData("Option", "MusicEffectValue");
-
-		soundUtil.Load(Audio.KeyMoveSound, "Assets//Sound//key_click.wav");
-		soundUtil.Load(Audio.KeySelectSound, "Assets//Sound//key_select.wav");
-		soundUtil.Load(Audio.OptionSelectSound, "Assets//Sound//option_select.wav");
-		soundUtil.Load(Audio.GameStartSound, "Assets//Sound//game_start.wav");
-		soundUtil.Load(Audio.GameExitSound, "Assets//Sound//game_exit.wav");
-
-		imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//Player//triangle.png", IMAGE_TYPE_LINEAR);
-		imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//Player//square.png", IMAGE_TYPE_LINEAR);
-		imageUtil.PreLoad(Sprite.ImagePlayerShape[2], "Assets//Image//Player//pentagon.png", IMAGE_TYPE_LINEAR);
-
-		imageUtil.PreLoad(Sprite.ImagePlayerFeedBack, "Assets//Image//Player//feedback.png");
-
-		imageUtil.PreLoad(Sprite.Title, "Assets//Image//UI//title.png", IMAGE_TYPE_LINEAR);
-
-		imageUtil.PreLoad(Sprite.ArrowLeft, "Assets//Image//UI//arrow_left.png", IMAGE_TYPE_LINEAR);
-		imageUtil.PreLoad(Sprite.ArrowRight, "Assets//Image//UI//arrow_right.png", IMAGE_TYPE_LINEAR);
-
 		SysRes.GLU_CIRCLE = gluNewQuadric();
 		SysRes.GLU_LINE_CIRCLE = gluNewQuadric();
 		gluQuadricDrawStyle(SysRes.GLU_CIRCLE, GLU_FILL);
 		gluQuadricDrawStyle(SysRes.GLU_LINE_CIRCLE, GLU_FILL);
 
 		fontUtil.Load(SysRes.SYSTEM_FONT_DIRECTORY, true);
-
-#ifdef USE_CUSTOM_FONT
-		int TotalSize = sizeof(FONT_PATH);
-		int ElementSize = sizeof(FONT_PATH[0]);
-		int Length = TotalSize / ElementSize;
-		for (int i = 0; i < Length; ++i)
-			fontUtil.Load(FONT_PATH[i], true);
-#endif
 
 		return 0;
 	}

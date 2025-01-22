@@ -179,13 +179,9 @@ void SoundUtil::StopAllSounds() {
 	FMOD::ChannelGroup* MasterChannelGroup{};
 
 	FMOD_RESULT Result = SoundSystem->getMasterChannelGroup(&MasterChannelGroup);
-	if (Result != FMOD_OK) {
-		printf("FMOD error! (%d) %s\n", Result, FMOD_ErrorString(Result));
+	if (Result != FMOD_OK) 
 		return;
-	}
 
 	Result = MasterChannelGroup->stop();
-	if (Result != FMOD_OK)
-		printf("FMOD error! (%d) %s\n", Result, FMOD_ErrorString(Result));
 }
 #endif

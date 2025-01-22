@@ -159,10 +159,12 @@
     <ClCompile Include="Library\tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="Library\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="MusicPlayer.cpp" />
     <ClCompile Include="ObstacleShape.cpp" />
     <ClCompile Include="Playerfeedback.cpp" />
     <ClCompile Include="PlayerShape.cpp" />
     <ClCompile Include="PlayScore.cpp" />
+    <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="LineBrush.cpp" />
     <ClCompile Include="MathUtil.cpp" />
@@ -202,6 +204,7 @@
     <ClInclude Include="ErrorMessage.h" />
     <ClInclude Include="HomeMode.h" />
     <ClInclude Include="HomeScreen.h" />
+    <ClInclude Include="MusicPlayer.h" />
     <ClInclude Include="OptionMode.h" />
     <ClInclude Include="OptionWindow.h" />
     <ClInclude Include="PauseMode.h" />

@@ -91,6 +91,15 @@
     <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Home Screen ]">
       <UniqueIdentifier>{8c9863cf-616b-4638-8bae-59158fc49678}</UniqueIdentifier>
     </Filter>
+    <Filter Include="[2]___________[ Object ]\[2][ Floating Object ]\[ Pause Screen ]">
+      <UniqueIdentifier>{b76eab7b-fca6-4ee9-b091-81be050ad835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[2][ Floating Object ]\[ Option Screen ]">
+      <UniqueIdentifier>{3e8f83a6-e235-42a6-9bb4-7611d8893b68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Music Player ]">
+      <UniqueIdentifier>{8ce022d5-fcec-4de5-b081-6130f2b9a3d4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="[5]___________[ System ]\[ Util ]">
       <UniqueIdentifier>{019278b2-60d4-4cad-b935-d813a31f2c87}</UniqueIdentifier>
     </Filter>
@@ -177,12 +186,6 @@
     </Filter>
     <Filter Include="[5]___________[ System ]\[ Util ]\[ Camera Util ]">
       <UniqueIdentifier>{f246ec1e-8aa5-4a4c-86c6-75a511ec4ed6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[2]___________[ Object ]\[2][ Floating Object ]\[ Pause Screen ]">
-      <UniqueIdentifier>{b76eab7b-fca6-4ee9-b091-81be050ad835}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="[2]___________[ Object ]\[2][ Floating Object ]\[ Option Screen ]">
-      <UniqueIdentifier>{3e8f83a6-e235-42a6-9bb4-7611d8893b68}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -323,6 +326,12 @@
     </ClCompile>
     <ClCompile Include="HomeScreen.cpp">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Home Screen ]</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicPlayer.cpp">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Music Player ]</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceLoader.cpp">
+      <Filter>[4]___________[ Resources ]</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -496,6 +505,9 @@
     </ClInclude>
     <ClInclude Include="PauseMode.h">
       <Filter>[1]___________[ GameMode ]</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicPlayer.h">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Music Player ]</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
