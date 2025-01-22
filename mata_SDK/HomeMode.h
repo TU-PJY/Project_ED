@@ -4,6 +4,7 @@
 #include "CameraController.h"
 
 #include "HomeScreen.h"
+#include "ColorChanger.h"
 
 class Home_Mode {
 public:
@@ -22,9 +23,13 @@ public:
 	/////////////////////////////////////////////////////////////
 
 	static void Start() {
-		//System.HideCursor();
+		System.HideCursor();
+
+		System.SetBackColor(0.07, 0.46, 0.96);
+		Global.ObjectColor = glm::vec3(0.85, 0.92, 0.92);
+
+		scene.AddObject(new ColorChanger, "color_changer", LAYER1, OBJECT_TYPE_STATIC);
 		scene.AddObject(new HomeScreen, "home_screen", LAYER2);
-		//scene.AddObject(new Cursor, "cursor", EOL - 1);
 		SetUp();
 	}
 

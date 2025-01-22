@@ -12,6 +12,8 @@ void PlayerFeedback::UpdateFunc(float FrameTime) {
 }
 
 void PlayerFeedback::RenderFunc() {
+	SetColor(Global.ObjectColor);
+
 	BeginRender();
 	transform.Scale(ScaleMatrix, 1.5, 1.5);
 	RenderSprite(Sprite.ImagePlayerFeedBack, Opacity);

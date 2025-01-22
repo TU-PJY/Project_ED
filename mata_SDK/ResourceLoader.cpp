@@ -39,11 +39,13 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 	soundUtil.Load(Audio.GameStartSound, "Assets//Sound//game_start.wav");
 	soundUtil.Load(Audio.GameExitSound, "Assets//Sound//game_exit.wav");
 
-	soundUtil.Load(Audio.Track[0], "Assets//Sound//Track//track_easy.mp3");
-	soundUtil.Load(Audio.Track[1], "Assets//Sound//Track//track_normal.mp3");
-	soundUtil.Load(Audio.Track[2], "Assets//Sound//Track//track_hard.mp3");
-	soundUtil.Load(Audio.Track[3], "Assets//Sound//Track//track_harder.mp3");
-	soundUtil.Load(Audio.Track[4], "Assets//Sound//Track//track_insane.mp3");
+	soundUtil.Load(Audio.Track[0], "Assets//Sound//Track//track_easy.mp3", FMOD_LOOP_NORMAL);
+	soundUtil.Load(Audio.Track[1], "Assets//Sound//Track//track_normal.mp3", FMOD_LOOP_NORMAL);
+	soundUtil.Load(Audio.Track[2], "Assets//Sound//Track//track_hard.mp3", FMOD_LOOP_NORMAL);
+	soundUtil.Load(Audio.Track[3], "Assets//Sound//Track//track_harder.mp3", FMOD_LOOP_NORMAL);
+	soundUtil.Load(Audio.Track[4], "Assets//Sound//Track//track_insane.mp3", FMOD_LOOP_NORMAL);
+
+	soundUtil.Load(Audio.HomeBGM, "Assets//Sound//Track//track_home.mp3", FMOD_LOOP_NORMAL);
 
 	imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//Player//triangle.png", IMAGE_TYPE_LINEAR);
 	imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//Player//square.png", IMAGE_TYPE_LINEAR);

@@ -89,6 +89,8 @@ void ObstacleShape::UpdateFunc(float FrameTime) {
 }
 
 void ObstacleShape::RenderFunc() {
+	SetColor(Global.ObjectColor);
+
 	BeginRender();
 	transform.Rotate(RotateMatrix, Rotation);
 

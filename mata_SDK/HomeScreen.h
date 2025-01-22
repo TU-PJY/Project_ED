@@ -27,6 +27,7 @@ private:
 	glm::vec2 TextPosition{ 0.0, -1.5 };
 
 	SoundChannel Ch{};
+	SoundChannel ChBGM{};
 
 public:
 	HomeScreen();

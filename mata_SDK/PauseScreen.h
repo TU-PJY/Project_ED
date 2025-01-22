@@ -41,13 +41,9 @@ public:
 		if (Event.Type == NORMAL_KEY_DOWN) {
 			switch (Event.NormalKey) {
 			case NK_ESCAPE:
-				if (!ExitToHome && !ExitToDesktop) {
-					soundUtil.PlaySound(Audio.GameStartSound, Ch);
-					scene.EndFloatingMode();
-					ObjectTag = "";
-					Global.PlaySpeed = 1.0;
-					ExitScreenState = true;
-				}
+				if (!ExitToHome && !ExitToDesktop)
+					ExitToGameMode();
+				
 				else if (ExitToHome || ExitToDesktop) {
 					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 					ExitToHome = false;
@@ -57,13 +53,9 @@ public:
 
 			case NK_ENTER:
 				if (!ExitToHome && !ExitToDesktop) {
-					if (CurrentPauseIndex == 0) {
-						soundUtil.PlaySound(Audio.GameStartSound, Ch);
-						scene.EndFloatingMode();
-						ObjectTag = "";
-						Global.PlaySpeed = 1.0;
-						ExitScreenState = true;
-					}
+					if (CurrentPauseIndex == 0) 
+						ExitToGameMode();
+					
 					else if (CurrentPauseIndex == 1) {
 						soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 						ExitToHome = true;
@@ -83,12 +75,9 @@ public:
 				else if (ExitToHome && !ExitToDesktop) {
 					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 
-					if (CurrentQuestionIndex == 0) {
-						scene.SwitchMode(HomeMode.Start);
-						ObjectTag = "";
-						Global.PlaySpeed = 1.0;
-						ExitScreenState = true;
-					}
+					if (CurrentQuestionIndex == 0)
+						ExitToHomeMode();
+					
 					else if (CurrentQuestionIndex == 1)
 						ExitToHome = false;
 				}
@@ -217,5 +206,23 @@ public:
 			Text.Render(0.0, 0.02 + QuestionTextHeight, 0.1, L"예");
 			Text.Render(0.0, -0.16 + 0.02 + QuestionTextHeight, 0.1, L"아니오");
 		}
+	}
+
+	void ExitToHomeMode() {
+		if (Global.MusicPlayOption == 2)
+			soundUtil.StopSound(Global.TrackChannel);
+
+		scene.SwitchMode(HomeMode.Start);
+		ObjectTag = "";
+		Global.PlaySpeed = 1.0;
+		ExitScreenState = true;
+	}
+
+	void ExitToGameMode() {
+		soundUtil.PlaySound(Audio.GameStartSound, Ch);
+		scene.EndFloatingMode();
+		ObjectTag = "";
+		ExitScreenState = true;
+		soundUtil.PauseSound(Global.TrackChannel, false);
 	}
 };

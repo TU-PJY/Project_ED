@@ -29,6 +29,7 @@ public:
 	Sound GameExitSound{};
 
 	Sound Track[5]{};
+	Sound HomeBGM{};
 };
 
 // Data Format list
@@ -61,6 +62,10 @@ public:
 	GLfloat ElapsedTime{};
 	GLfloat PlaySpeed{ 1.0 };
 
+	// object color
+	glm::vec3 ObjectColor{};
+
+	// gmae
 	int Diff{ 0 }; // 0: easy, 1: normal, 2: hard , 3: harder, 4: hardest
 	bool GameOverState{};
 
@@ -76,6 +81,9 @@ public:
 	GLfloat MusicEffectValue{};
 	FileUtil UserSettingData{};
 
+	// music 
+	SoundChannel TrackChannel{};
+	int PrevPlayTime[5]{};
 };
 
 // Load your custom font.

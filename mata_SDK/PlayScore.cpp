@@ -2,7 +2,7 @@
 
 PlayScore::PlayScore() {
 	Text.Init(L"Ronduit Capitals Light", FW_NORMAL);
-	Text.SetColor(0.7, 0.7, 0.7);
+	Text.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
 	Text.SetAlign(ALIGN_MIDDLE);
 	Text.SetHeightAlign(HEIGHT_ALIGN_MIDDLE);
 	Text.SetRenderType(RENDER_TYPE_DEFAULT);

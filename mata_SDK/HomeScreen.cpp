@@ -21,6 +21,8 @@ HomeScreen::HomeScreen() {
 	CurrentPage = Global.Diff;
 
 	SetColor(1.0, 1.0, 1.0);
+
+	soundUtil.PlaySound(Audio.HomeBGM, ChBGM);
 }
 
 void HomeScreen::InputKey(KeyEvent& Event) {
@@ -32,6 +34,7 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 			--CurrentPage;
 			TextPosition.x = 0.5;
 			ArrowFeedback[0] = -0.1;
+			Global.Diff = CurrentPage;
 			break;
 
 		case SK_ARROW_RIGHT:
@@ -40,6 +43,7 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 			++CurrentPage;
 			TextPosition.x = -0.5;
 			ArrowFeedback[1] = 0.1;
+			Global.Diff = CurrentPage;
 			break;
 		}
 	}
@@ -48,8 +52,8 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 	else if (Event.Type == NORMAL_KEY_DOWN) {
 		switch (Event.NormalKey) {
 		case NK_ENTER:
+			soundUtil.StopSound(ChBGM);
 			soundUtil.PlaySound(Audio.GameStartSound, Ch);
-			Global.Diff = CurrentPage;
 			scene.SwitchMode(PlayMode.Start);
 			break;
 
@@ -72,13 +76,10 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 
 void HomeScreen::RenderFunc() {
 	// diff text
+	DiffText.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
 	DiffText.RenderStr(TextPosition.x, TextPosition.y, 0.2, DiffString[CurrentPage]);
 
-	// title
-	BeginRender();
-	transform.Move(TranslateMatrix, 0.0, 0.6);
-	transform.Scale(ScaleMatrix, TitleSize, TitleSize);
-	RenderSprite(Sprite.Title);
+	SetColor(Global.ObjectColor);
 
 	// arrow left
 	BeginRender();
@@ -92,6 +93,12 @@ void HomeScreen::RenderFunc() {
 	transform.Move(TranslateMatrix, ArrowPosition + ArrowFeedback[1], 0.0);
 	transform.Scale(ScaleMatrix, 0.3, 0.3);
 	RenderSprite(Sprite.ArrowRight, ArrowOpacity[1]);
+
+	// title
+	BeginRender();
+	transform.Move(TranslateMatrix, 0.0, 0.6);
+	transform.Scale(ScaleMatrix, TitleSize, TitleSize);
+	RenderSprite(Sprite.Title);
 }
 
 void HomeScreen::UpdateArrow(float FrameTime) {

@@ -6,36 +6,36 @@ SpeedManager::SpeedManager(){
 	switch (Global.Diff) {
 	case 0: // easy
 		IncreaseSpeed = 0.5; 
-		LessGenerateTime = 0.4;
-		MaxMoveSpeed = 2.8;
+		LessGenerateTime = 0.45;
+		MaxMoveSpeed = 2.4;
 		MaxRotateSpeed = 60.0;
 		break;
 
 	case 1: // normal
 		IncreaseSpeed = 1.0; 
-		LessGenerateTime = 0.38;
-		MaxMoveSpeed = 2.8;
+		LessGenerateTime = 0.42;
+		MaxMoveSpeed = 2.4;
 		MaxRotateSpeed = 80.0;
 		break;
 
 	case 2: // hard
 		IncreaseSpeed = 2.0; 
-		LessGenerateTime = 0.35;
-		MaxMoveSpeed = 2.8;
+		LessGenerateTime = 0.4;
+		MaxMoveSpeed = 2.5;
 		MaxRotateSpeed = 100.0;
 		break;
 
 	case 3: // harder
 		IncreaseSpeed = 5.0; 
-		LessGenerateTime = 0.35;
-		MaxMoveSpeed = 3.0;
+		LessGenerateTime = 0.38;
+		MaxMoveSpeed = 2.6;
 		MaxRotateSpeed = 140.0;
 		break;
 
 	case 4:  // insane
 		IncreaseSpeed = 50.0; 
-		LessGenerateTime = 0.3;
-		MaxMoveSpeed = 3.0;
+		LessGenerateTime = 0.35;
+		MaxMoveSpeed = 2.8;
 		MaxRotateSpeed = 170.0;
 		break;
 	}
