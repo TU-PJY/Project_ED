@@ -211,8 +211,8 @@ public:
 	}
 
 	void ExitToHomeMode() {
-		if (Global.MusicPlayOption == 2)
-			soundUtil.StopSound(Global.TrackChannel);
+		soundUtil.StopSound(Global.TrackChannel);
+		soundUtil.StopSound(Global.BeatChannel);
 
 		scene.SwitchMode(HomeMode.Start);
 		ObjectTag = "";
@@ -226,5 +226,6 @@ public:
 		ObjectTag = "";
 		ExitScreenState = true;
 		soundUtil.PauseSound(Global.TrackChannel, false);
+		soundUtil.PauseSound(Global.BeatChannel, false);
 	}
 };

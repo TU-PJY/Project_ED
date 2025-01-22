@@ -9,11 +9,10 @@ PlayScore::PlayScore() {
 
 void PlayScore::PlusScore() {
 	Score += 1;
-	Feedback = 0.2;
 }
 
 void PlayScore::UpdateFunc(float FrameTime) {
-	mathUtil.UpdateLerp(Feedback, 0.0, 5.0, FrameTime * Global.PlaySpeed);
+	mathUtil.UpdateLerp(Feedback, Global.BeatDetectValue * 0.05, 40.0, FrameTime * Global.PlaySpeed);
 }
 
 void PlayScore::RenderFunc() {

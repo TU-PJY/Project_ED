@@ -74,17 +74,23 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 
 
 
-	soundUtil.Load(Audio.KeyMoveSound, "Assets//Sound//key_click.wav");
-	soundUtil.Load(Audio.KeySelectSound, "Assets//Sound//key_select.wav");
-	soundUtil.Load(Audio.OptionSelectSound, "Assets//Sound//option_select.wav");
-	soundUtil.Load(Audio.GameStartSound, "Assets//Sound//game_start.wav");
-	soundUtil.Load(Audio.GameExitSound, "Assets//Sound//game_exit.wav");
+	soundUtil.Load(Audio.KeyMoveSound, "Assets//Sound//UI//key_click.wav");
+	soundUtil.Load(Audio.KeySelectSound, "Assets//Sound//UI//key_select.wav");
+	soundUtil.Load(Audio.OptionSelectSound, "Assets//Sound//UI//option_select.wav");
+	soundUtil.Load(Audio.GameStartSound, "Assets//Sound//UI//game_start.wav");
+	soundUtil.Load(Audio.GameExitSound, "Assets//Sound//UI//game_exit.wav");
 
 	soundUtil.Load(Audio.Track[0], "Assets//Sound//Track//track_easy.mp3", FMOD_LOOP_NORMAL);
 	soundUtil.Load(Audio.Track[1], "Assets//Sound//Track//track_normal.mp3", FMOD_LOOP_NORMAL);
 	soundUtil.Load(Audio.Track[2], "Assets//Sound//Track//track_hard.mp3", FMOD_LOOP_NORMAL);
 	soundUtil.Load(Audio.Track[3], "Assets//Sound//Track//track_harder.mp3", FMOD_LOOP_NORMAL);
 	soundUtil.Load(Audio.Track[4], "Assets//Sound//Track//track_insane.mp3", FMOD_LOOP_NORMAL);
+
+	soundUtil.Load(Audio.Beat[0], "Assets//Sound//Beat//track_easy_beat.mp3", FMOD_LOOP_NORMAL);
+	soundUtil.Load(Audio.Beat[1], "Assets//Sound//Beat//track_normal_beat.mp3", FMOD_LOOP_NORMAL);
+	soundUtil.Load(Audio.Beat[2], "Assets//Sound//Beat//track_hard_beat.mp3", FMOD_LOOP_NORMAL);
+	soundUtil.Load(Audio.Beat[3], "Assets//Sound//Beat//track_harder_beat.mp3", FMOD_LOOP_NORMAL);
+	soundUtil.Load(Audio.Beat[4], "Assets//Sound//Beat//track_insane_beat.mp3", FMOD_LOOP_NORMAL);
 
 	soundUtil.Load(Audio.HomeBGM, "Assets//Sound//Track//track_home.mp3", FMOD_LOOP_NORMAL);
 

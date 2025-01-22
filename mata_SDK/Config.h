@@ -29,7 +29,7 @@ constexpr int FRAME_LIMITS = 0;
 constexpr bool SHOW_CONSOLE = true;
 
 // FPS indicator option
-constexpr bool SHOW_FPS = true;
+constexpr bool SHOW_FPS = false;
 
 // show boundbox option
 #define SHOW_BOUND_BOX

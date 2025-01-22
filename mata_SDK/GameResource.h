@@ -33,6 +33,7 @@ public:
 	Sound GameExitSound{};
 
 	Sound Track[5]{};
+	Sound Beat[5]{};
 	Sound HomeBGM{};
 };
 
@@ -87,6 +88,7 @@ public:
 
 	// music 
 	SoundChannel TrackChannel{};
+	SoundChannel BeatChannel{};
 	int PrevPlayTime[5]{};
 	GLfloat BeatDetectValue{};
 	GLfloat EffectStrength{};
