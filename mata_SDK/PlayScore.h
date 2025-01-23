@@ -8,6 +8,8 @@ private:
 	int Score{};
 
 	GLfloat Feedback{};
+	GLfloat Size{};
+	GLfloat Opacity{};
 
 	bool OverHighScore{};
 

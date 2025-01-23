@@ -133,5 +133,6 @@ void ObstacleShape::ExitToHome(float FrameTime) {
 
 void ObstacleShape::SetExitState() {
 	Rotation += CameraControl->GetRotation();
+	ObjectTag = "";
 	ExitState = true;
 }

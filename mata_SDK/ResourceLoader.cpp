@@ -73,7 +73,6 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 	imageUtil.PreLoad(Sprite.ArrowRight, "Assets//Image//UI//arrow_right.png", IMAGE_TYPE_LINEAR);
 
 
-
 	soundUtil.Load(Audio.KeyMoveSound, "Assets//Sound//UI//key_click.wav");
 	soundUtil.Load(Audio.KeySelectSound, "Assets//Sound//UI//key_select.wav");
 	soundUtil.Load(Audio.OptionSelectSound, "Assets//Sound//UI//option_select.wav");

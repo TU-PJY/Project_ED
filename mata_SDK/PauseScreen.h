@@ -221,6 +221,9 @@ public:
 				Object->SetExitState();
 		}
 
+		if (auto Object = scene.Find("player_shape"); Object)
+			Object->SetExitState();
+
 		scene.SwitchMode(HomeMode.Start);
 		ObjectTag = "";
 		ExitScreenState = true;

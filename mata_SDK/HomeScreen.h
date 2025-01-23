@@ -18,6 +18,7 @@ private:
 
 	PopBounce TitleBounce{};
 	GLfloat TitleSize{};
+	GLfloat TitleHeight{0.6};
 
 	GLfloat ArrowPosition = WindowRect.rx + 0.2;
 	GLfloat ArrowFeedback[2]{};
@@ -29,10 +30,13 @@ private:
 	SoundChannel Ch{};
 	SoundChannel ChBGM{};
 
+	bool ExitState{};
+
 public:
 	HomeScreen();
 	void UpdateFunc(float FrameTime);
 	void RenderFunc();
 	void UpdateArrow(float FrameTime);
+	void EnterToGame(float FrameTime);
 	void InputKey(KeyEvent& Event);
 };

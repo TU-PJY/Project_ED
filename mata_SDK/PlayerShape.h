@@ -18,9 +18,13 @@ private:
 	// triangle, square, pentagon
 	GLfloat ShapeRotationValue[3]{ 0.0, -90.0, -144.0 };
 
-	GLfloat ShapeSize{ 1.0 };
+	GLfloat ShapeSize{ 5.0 };
 
 	GLfloat ThreasHold{};
+
+	GLfloat Opacity{};
+
+	bool ExitState{};
 
 public:
 	PlayerShape();
@@ -28,4 +32,6 @@ public:
 	void ChangeShapeRotationDest();
 	void UpdateFunc(float FrameTime);
 	void RenderFunc();
+	void ExitToHome(float FrameTime);
+	void SetExitState();
 };

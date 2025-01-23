@@ -75,8 +75,7 @@ public:
 	bool GameOverState{};
 
 	// score
-	int HighScore[5]{};// 0: easy, 1: normal, 2: hard , 3: harder, 4: hardest
-	int PrevHighScore[5]{}; // 0: easy, 1: normal, 2: hard, 3: harder, 4: hardest
+	int HighScore[5]{}; // 0: easy, 1: normal, 2: hard, 3: harder, 4: hardest
 	FileUtil HighScoreData{};
 
 	// user settings

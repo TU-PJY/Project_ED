@@ -29,7 +29,7 @@ public:
 		Global.ObjectColor = glm::vec3(0.85, 0.92, 0.92);
 
 		scene.AddObject(new ColorChanger, "color_changer", LAYER1, OBJECT_TYPE_STATIC);
-		scene.AddObject(new HomeScreen, "home_screen", LAYER2);
+		scene.AddObject(new HomeScreen, "home_screen", LAYER2, OBJECT_TYPE_STATIC);
 		SetUp();
 	}
 
