@@ -112,7 +112,10 @@ public:
 	virtual void PlusScore() {}
 
 	// obstacle shape function
-	virtual void Stop() {}
+	virtual void SetExitState() {}
+
+	// camera function
+	virtual GLfloat GetRotation() { return{}; }
 
 private:
 	void PrepareRender(Image& ImageStruct);

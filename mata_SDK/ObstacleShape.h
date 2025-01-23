@@ -16,9 +16,12 @@ private:
 	bool DestroyState{};
 	bool MoveState{ true };
 
+	bool ExitState{};
+
 public:
 	ObstacleShape(int Type);
 	void UpdateFunc(float FrameTime);
 	void RenderFunc();
-	void Stop();
+	void ExitToHome(float FrameTime);
+	void SetExitState();
 };

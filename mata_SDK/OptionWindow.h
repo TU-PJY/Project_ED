@@ -46,16 +46,14 @@ public:
 			switch (Event.NormalKey) {
 			case NK_ESCAPE:
 				soundUtil.PlaySound(Audio.KeySelectSound, Ch);
+
 				if (!SettingScreen) {
 					scene.EndFloatingMode();
 					ExitScreenState = true;
 					ObjectTag = "";
 				}
 				else if(SettingScreen && !ResetWarning) {
-					Global.UserSettingData.UpdateDigitData("Option", "FullscreenMode", Global.FullscreenMode);
-					Global.UserSettingData.UpdateDigitData("Option", "MusicPlayOption", Global.MusicPlayOption);
-					Global.UserSettingData.UpdateDigitData("Option", "UseMusicEffect", Global.UseMusicEffect);
-					Global.UserSettingData.UpdateDigitData("Option", "MusicEffectValue", Global.MusicEffectValue);
+					SaveSettings();
 					SettingScreen = false;
 				}
 				else if (SettingScreen && ResetWarning) 
@@ -87,10 +85,7 @@ public:
 					switch (CurrentSettingIndex) {
 					case 0:
 						soundUtil.PlaySound(Audio.KeySelectSound, Ch);
-						Global.UserSettingData.UpdateDigitData("Option", "FullscreenMode", Global.FullscreenMode);
-						Global.UserSettingData.UpdateDigitData("Option", "MusicPlayOption", Global.MusicPlayOption);
-						Global.UserSettingData.UpdateDigitData("Option", "UseMusicEffect", Global.UseMusicEffect);
-						Global.UserSettingData.UpdateDigitData("Option", "MusicEffectValue", Global.MusicEffectValue);
+						SaveSettings();
 						SettingScreen = false;
 						break;
 
@@ -286,6 +281,7 @@ public:
 				mathUtil.UpdateLerp(SettingTextOpacity, 0.0, 20.0, FrameTime);
 				mathUtil.UpdateLerp(WarningTextOpacity, 0.0, 20.0, FrameTime);
 			}
+
 			else if(SettingScreen && !ResetWarning) {
 				mathUtil.UpdateLerp(MenuTextOpacity, 0.0, 20.0, FrameTime);
 				mathUtil.UpdateLerp(WarningTextOpacity, 0.0, 20.0, FrameTime);
@@ -376,5 +372,12 @@ public:
 		Text.SetAlign(ALIGN_MIDDLE);
 		Text.Render(0.0, 0.0 + WarningTextHeight + 0.02, 0.1, L"아니오");
 		Text.Render(0.0, -0.16 + WarningTextHeight + 0.02, 0.1, L"예");
+	}
+
+	void SaveSettings() {
+		Global.UserSettingData.UpdateDigitData("Option", "FullscreenMode", Global.FullscreenMode);
+		Global.UserSettingData.UpdateDigitData("Option", "MusicPlayOption", Global.MusicPlayOption);
+		Global.UserSettingData.UpdateDigitData("Option", "UseMusicEffect", Global.UseMusicEffect);
+		Global.UserSettingData.UpdateDigitData("Option", "MusicEffectValue", Global.MusicEffectValue);
 	}
 };

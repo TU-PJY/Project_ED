@@ -1,8 +1,6 @@
 #include "SpeedManager.h"
 
 SpeedManager::SpeedManager(){
-	Global.ElapsedTime = 0.0;
-
 	switch (Global.Diff) {
 	case 0: // easy
 		IncreaseSpeed = 0.5; 

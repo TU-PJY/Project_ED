@@ -61,7 +61,7 @@ ObstacleShape::ObstacleShape(int Type) {
 }
 
 void ObstacleShape::UpdateFunc(float FrameTime) {
-	if (MoveState) {
+	if (!Global.GameOverState) {
 		if (!DestroyState) {
 			CurrentSize -= Global.ShapeMoveSpeed * CurrentSize * FrameTime * Global.PlaySpeed;
 			mathUtil.UpdateLerp(Opacity, 1.0, Global.ShapeMoveSpeed * 5.0, FrameTime * Global.PlaySpeed);
@@ -86,6 +86,9 @@ void ObstacleShape::UpdateFunc(float FrameTime) {
 				scene.DeleteObject(this);
 		}
 	}
+
+	if(ExitState && Global.GameOverState)
+		ExitToHome(FrameTime);
 }
 
 void ObstacleShape::RenderFunc() {
@@ -121,6 +124,14 @@ void ObstacleShape::RenderFunc() {
 	}
 }
 
-void ObstacleShape::Stop() {
-	MoveState = false;
+void ObstacleShape::ExitToHome(float FrameTime) {
+	CurrentSize += CurrentSize * FrameTime * 4.0;
+	Opacity -= FrameTime * 3.0;
+	if (Opacity <= 0.0)
+		scene.DeleteObject(this);
+}
+
+void ObstacleShape::SetExitState() {
+	Rotation += CameraControl->GetRotation();
+	ExitState = true;
 }

@@ -91,7 +91,6 @@ public:
 	SoundChannel BeatChannel{};
 	int PrevPlayTime[5]{};
 	GLfloat BeatDetectValue{};
-	GLfloat EffectStrength{};
 };
 
 // Load your custom font.

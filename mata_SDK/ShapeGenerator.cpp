@@ -7,7 +7,7 @@ void ShapeGenerator::UpdateFunc(float FrameTime) {
 	if (Timer.CheckMiliSec(Global.ShapeGenerateTime, 1, CHECK_AND_INTERPOLATE)) {
 		switch (PrevShape) {
 		case -1:
-			scene.AddObject(new ObstacleShape(ObTriangle), "obstacle_shape", LAYER2);
+			scene.AddObject(new ObstacleShape(ObTriangle), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
 			PrevShape = ObTriangle;
 			break;
 
@@ -29,7 +29,7 @@ void ShapeGenerator::UpdateFunc(float FrameTime) {
 				SameShapeCount = 0;
 			}
 
-			scene.AddObject(new ObstacleShape(RandomType), "obstacle_shape", LAYER2);
+			scene.AddObject(new ObstacleShape(RandomType), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
 			PrevShape = RandomType;
 		}
 		break;
@@ -47,7 +47,7 @@ void ShapeGenerator::UpdateFunc(float FrameTime) {
 				SameShapeCount = 0;
 			}
 
-			scene.AddObject(new ObstacleShape(RandomType), "obstacle_shape", LAYER2);
+			scene.AddObject(new ObstacleShape(RandomType), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
 			PrevShape = RandomType;
 		}
 		break;
@@ -66,7 +66,7 @@ void ShapeGenerator::UpdateFunc(float FrameTime) {
 				SameShapeCount = 0;
 			}
 
-			scene.AddObject(new ObstacleShape(RandomType), "obstacle_shape", LAYER2);
+			scene.AddObject(new ObstacleShape(RandomType), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
 			PrevShape = RandomType;
 		}
 		break;

@@ -75,7 +75,7 @@ public:
 				else if (ExitToHome && !ExitToDesktop) {
 					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 
-					if (CurrentQuestionIndex == 0)
+					if (CurrentQuestionIndex == 0) 
 						ExitToHomeMode();
 					
 					else if (CurrentQuestionIndex == 1)
@@ -214,9 +214,15 @@ public:
 		soundUtil.StopSound(Global.TrackChannel);
 		soundUtil.StopSound(Global.BeatChannel);
 
+		Global.GameOverState = true;
+		size_t Size = scene.LayerSize(LAYER2);
+		for (int i = 0; i < Size; ++i) {
+			if (auto Object = scene.FindMulti("obstacle_shape", LAYER2, i); Object)
+				Object->SetExitState();
+		}
+
 		scene.SwitchMode(HomeMode.Start);
 		ObjectTag = "";
-		Global.PlaySpeed = 1.0;
 		ExitScreenState = true;
 	}
 

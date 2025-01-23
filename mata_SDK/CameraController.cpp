@@ -61,6 +61,10 @@ void CameraController::ChangeRotateDirection() {
 	RotateDirection *= -1;
 }
 
+GLfloat CameraController::GetRotation() {
+	return Rotation;
+}
+
 ///////////////////////////////////////// private
 
 void CameraController::ComputeCameraMatrix(){

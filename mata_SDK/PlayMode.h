@@ -30,6 +30,10 @@ public:
 	/////////////////////////////////////////////////////////////
 
 	static void Start() {
+		Global.ElapsedTime = 0.0;
+		Global.GameOverState = false;
+		Global.PlaySpeed = 1.0;
+
 		scene.AddObject(new SpeedManager, "speed_manager", LAYER1);
 		scene.AddObject(new ShapeGenerator, "shape_generator", LAYER1);
 		scene.AddObject(new PlayScore, "play_score", LAYER1);

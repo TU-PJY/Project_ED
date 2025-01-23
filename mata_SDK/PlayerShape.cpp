@@ -24,24 +24,6 @@ PlayerShape::PlayerShape() {
 	}
 
 	soundUtil.SetBeatDetect(Global.BeatChannel);
-
-	switch (Global.Diff) {
-	case 0:
-		Global.EffectStrength = 1.0;
-		break;
-	case 1:
-		Global.EffectStrength = 1.0;
-		break;
-	case 2:
-		Global.EffectStrength = 1.0;
-		break;
-	case 3:
-		Global.EffectStrength = 1.0;
-		break;
-	case 4:
-		Global.EffectStrength = 1.0;
-		break;
-	}
 }
 
 void PlayerShape::InputKey(KeyEvent& Event) {

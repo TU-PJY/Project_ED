@@ -16,6 +16,7 @@ public:
 	GLfloat ComputeNextZoom(int ZoomType, GLfloat ZoomValue);
 
 	void ChangeRotateDirection();
+	GLfloat GetRotation();
 	int RotateDirection{ 1 };
 
 private:
