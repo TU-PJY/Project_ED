@@ -27,6 +27,8 @@ private:
 
 	glm::vec2 TextPosition{ 0.0, -1.5 };
 
+	GLfloat HighLightRotation{};
+
 	SoundChannel Ch{};
 	SoundChannel ChBGM{};
 

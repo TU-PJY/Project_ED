@@ -13,25 +13,25 @@ HomeScreen::HomeScreen() {
 	CurrentPage = Global.Diff;
 
 	// high score udate
-	if (Global.HighScore[CurrentPage] > Global.PrevHighScore[CurrentPage]) {
+	if (Global.HighScore[CurrentPage] < Global.CurrentScore) {
 		NewHighScore[CurrentPage] = true;
-		Global.PrevHighScore[CurrentPage] = Global.HighScore[CurrentPage];
+		Global.HighScore[CurrentPage] = Global.CurrentScore;
 
 		switch (CurrentPage) {
 		case 0:
-			Global.HighScoreData.UpdateDigitData("HighScore", "EasyModeHighScore", Global.HighScore[CurrentPage]);
+			Global.HighScoreData.UpdateDigitData("HighScore", "EasyModeHighScore", Global.CurrentScore);
 			break;
 		case 1:
-			Global.HighScoreData.UpdateDigitData("HighScore", "NormalModeHighScore", Global.HighScore[CurrentPage]);
+			Global.HighScoreData.UpdateDigitData("HighScore", "NormalModeHighScore", Global.CurrentScore);
 			break;
 		case 2:
-			Global.HighScoreData.UpdateDigitData("HighScore", "HardModeHighScore", Global.HighScore[CurrentPage]);
+			Global.HighScoreData.UpdateDigitData("HighScore", "HardModeHighScore", Global.CurrentScore);
 			break;
 		case 3:
-			Global.HighScoreData.UpdateDigitData("HighScore", "HarderModeHighScore", Global.HighScore[CurrentPage]);
+			Global.HighScoreData.UpdateDigitData("HighScore", "HarderModeHighScore", Global.CurrentScore);
 			break;
 		case 4:
-			Global.HighScoreData.UpdateDigitData("HighScore", "HardestModeHighScore", Global.HighScore[CurrentPage]);
+			Global.HighScoreData.UpdateDigitData("HighScore", "HardestModeHighScore", Global.CurrentScore);
 			break;
 		}
 	}
@@ -84,9 +84,10 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 }
 
 void HomeScreen::UpdateFunc(float FrameTime) {
-	if (!ExitState) {
-		TitleSize = TitleBounce.Update(1.5, 2.0, 20.0, 20.0, 10.0, FrameTime);
+	TitleSize = TitleBounce.Update(1.5, 2.0, 20.0, 20.0, 10.0, FrameTime);
+	HighLightRotation += FrameTime * 10.0;
 
+	if (!ExitState) {
 		mathUtil.UpdateLerp(TextPosition.x, 0.0, 10.0, FrameTime);
 		mathUtil.UpdateLerp(TextPosition.y, -0.8, 10.0, FrameTime);
 
@@ -97,12 +98,20 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 }
 
 void HomeScreen::RenderFunc() {
+	SetColor(Global.ObjectColor);
+
+	//if (NewHighScore[CurrentPage]) {
+		BeginRender(RENDER_TYPE_STATIC);
+		transform.Move(TranslateMatrix, TextPosition.x, TextPosition.y);
+		transform.Scale(TranslateMatrix, 1.0, 1.0);
+		transform.Rotate(TranslateMatrix, HighLightRotation);
+		RenderSprite(Sprite.HighLight, 0.3);
+//	}
+
 	// diff text
 	DiffText.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
 	DiffText.RenderStr(TextPosition.x, TextPosition.y, 0.2, DiffString[CurrentPage]);
 	DiffText.Render(TextPosition.x, TextPosition.y + 0.1, 0.11, L"HIGH SCORE %d", Global.HighScore[CurrentPage]);
-
-	SetColor(Global.ObjectColor);
 
 	// arrow left
 	BeginRender(RENDER_TYPE_STATIC);

@@ -128,11 +128,7 @@ void ObstacleShape::UpdateFunc(float FrameTime) {
 				}
 
 				SetExitState();
-				ObjectTag = "";
-
 				scene.SwitchMode(HomeMode.Start);
-
-				ExitState = true;
 			}
 
 			if (FlickerCount < 6) {

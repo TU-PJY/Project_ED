@@ -21,6 +21,8 @@ public:
 
 	Image Title{};
 	Image ArrowRight{}, ArrowLeft{};
+
+	Image HighLight{};
 };
 
 // Declare the sound resource or directory here. 
@@ -76,8 +78,8 @@ public:
 	bool GameOverState{};
 
 	// score
+	int CurrentScore{};
 	int HighScore[5]{}; // 0: easy, 1: normal, 2: hard, 3: harder, 4: hardest
-	int PrevHighScore[5]{};
 	FileUtil HighScoreData{};
 
 	// user settings

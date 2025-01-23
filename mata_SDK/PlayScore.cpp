@@ -10,8 +10,8 @@ PlayScore::PlayScore() {
 }
 
 void PlayScore::PlusScore() {
-	Score += 1;
-	if (HighScore > 0 && Score > HighScore)
+	Global.CurrentScore += 1;
+	if (HighScore > 0 && Global.CurrentScore > HighScore)
 		OverHighScore = true;
 }
 
@@ -25,5 +25,5 @@ void PlayScore::RenderFunc() {
 	Text.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
 	if (OverHighScore)
 		Text.Render(0.0, -0.4, Size * 0.1 + Feedback * 0.25, L"HIGH SCORE!");
-	Text.Render(0.0, -0.7, Size * 0.2 + Feedback, L"%d", Score);
+	Text.Render(0.0, -0.7, Size * 0.2 + Feedback, L"%d", Global.CurrentScore);
 }

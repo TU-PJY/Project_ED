@@ -33,6 +33,7 @@ public:
 		Global.ElapsedTime = 0.0;
 		Global.GameOverState = false;
 		Global.PlaySpeed = 1.0;
+		Global.CurrentScore = 0;
 		CameraControl->ChangeRotation(0.0);
 		CameraControl->ResetRotateDirection();
 

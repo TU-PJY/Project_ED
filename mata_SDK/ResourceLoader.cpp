@@ -59,10 +59,9 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 	Global.HighScoreData.Load("GameData//Data", Format.HighScoreDataFormat);
 	DigitDataSet HighScoreDataSet = Global.HighScoreData.LoadCategoryDigitData("HighScore");
 	size_t Size = HighScoreDataSet.size();
-	for (int i = 0; i < Size; ++i) {
+	for (int i = 0; i < Size; ++i) 
 		Global.HighScore[i] = HighScoreDataSet[i];
-		Global.PrevHighScore[i] = HighScoreDataSet[i];
-	}
+	
 
 	imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//Player//triangle.png", IMAGE_TYPE_LINEAR);
 	imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//Player//square.png", IMAGE_TYPE_LINEAR);
@@ -78,6 +77,7 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 
 	imageUtil.PreLoad(Sprite.ArrowLeft, "Assets//Image//UI//arrow_left.png", IMAGE_TYPE_LINEAR);
 	imageUtil.PreLoad(Sprite.ArrowRight, "Assets//Image//UI//arrow_right.png", IMAGE_TYPE_LINEAR);
+	imageUtil.PreLoad(Sprite.HighLight, "Assets//Image//UI//fanfare.png", IMAGE_TYPE_LINEAR);
 
 
 	soundUtil.Load(Audio.KeyMoveSound, "Assets//Sound//UI//key_click.wav");

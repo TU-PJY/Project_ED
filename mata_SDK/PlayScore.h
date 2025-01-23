@@ -5,7 +5,6 @@ class PlayScore : public GameObject {
 private:
 	TextUtil Text{};
 	int HighScore{};
-	int Score{};
 
 	GLfloat Feedback{};
 	GLfloat Size{};
