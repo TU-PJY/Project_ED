@@ -100,13 +100,13 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 void HomeScreen::RenderFunc() {
 	SetColor(Global.ObjectColor);
 
-	//if (NewHighScore[CurrentPage]) {
+	if (NewHighScore[CurrentPage]) {
 		BeginRender(RENDER_TYPE_STATIC);
 		transform.Move(TranslateMatrix, TextPosition.x, TextPosition.y);
 		transform.Scale(TranslateMatrix, 1.0, 1.0);
 		transform.Rotate(TranslateMatrix, HighLightRotation);
 		RenderSprite(Sprite.HighLight, 0.3);
-//	}
+	}
 
 	// diff text
 	DiffText.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
