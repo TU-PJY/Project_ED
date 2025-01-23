@@ -5,9 +5,15 @@ class CameraController : public GameObject {
 public:
 	glm::vec2 Position{};
 	GLfloat Rotation{};
+	glm::vec2 ShakePosition{};
+	GLfloat ShakeValue{};
+
+	RandomUtil Random{};
 
 	void InputKey(KeyEvent& Event);
 	void UpdateFunc(float FT);
+	void AddShakeValue(GLfloat Value);
+	void ShakeCamera(float FrameTime);
 	void MoveCamera(GLfloat X, GLfloat Y);
 	void MoveCamera(glm::vec2& PositionValue);
 	void RotateCamera(GLfloat Degree);

@@ -8,10 +8,27 @@ void CameraController::InputKey(KeyEvent& Event) {
 }
 
 void CameraController::UpdateFunc(float FT){
-	if (scene.Mode() == "PlayMode") 
-		Rotation += Global.CameraRotateSpeed * RotateDirection * FT * Global.PlaySpeed;
+	if (scene.Mode() == "PlayMode") {
+		if (Global.GameOverState) {
+			ShakeCamera(FT);
+			MoveCamera(ShakePosition);
+		}
+		else
+			Rotation += Global.CameraRotateSpeed * RotateDirection * FT * Global.PlaySpeed;
+	}
 	
 	ComputeCameraMatrix();
+}
+
+void CameraController::AddShakeValue(GLfloat Value) {
+	ShakeValue += Value;
+}
+
+void CameraController::ShakeCamera(float FrameTime) {
+	ShakePosition.x = Random.Gen(RANDOM_TYPE_REAL, -ShakeValue, ShakeValue);
+	ShakePosition.y = Random.Gen(RANDOM_TYPE_REAL, -ShakeValue, ShakeValue);
+	ShakeValue -= FrameTime;
+	EX.ClampValue(ShakeValue, 0.0, CLAMP_LESS);
 }
 
 void CameraController::MoveCamera(GLfloat X, GLfloat Y){

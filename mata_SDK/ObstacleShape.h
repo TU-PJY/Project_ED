@@ -16,12 +16,17 @@ private:
 	bool DestroyState{};
 	bool MoveState{ true };
 
+	bool ExitReady{};
 	bool ExitState{};
 	bool Focused{};
+
+	bool Flicker{true};
+	int FlickerCount{};
 
 	SoundChannel Ch{};
 
 	TimerUtil GameOverTimer{};
+	TimerUtil FlickerTimer{};
 
 public:
 	ObstacleShape(int Type);
@@ -29,4 +34,5 @@ public:
 	void RenderFunc();
 	void ExitToHome(float FrameTime);
 	void SetExitState();
+	void SetExitReady();
 };

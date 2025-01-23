@@ -63,7 +63,7 @@ ObstacleShape::ObstacleShape(int Type) {
 }
 
 void ObstacleShape::UpdateFunc(float FrameTime) {
-	if (!Global.GameOverState) {
+	if (!ExitReady) {
 		if (!DestroyState) {
 			CurrentSize -= Global.ShapeMoveSpeed * CurrentSize * FrameTime * Global.PlaySpeed;
 			mathUtil.UpdateLerp(Opacity, 1.0, Global.ShapeMoveSpeed * 5.0, FrameTime * Global.PlaySpeed);
@@ -71,10 +71,19 @@ void ObstacleShape::UpdateFunc(float FrameTime) {
 			if (CurrentSize <= 1.15) {
 				if (PlayerShapePtr) {
 					if (PlayerShapePtr->GetCurrentShape() != ShapeType) {
+						CameraControl->AddShakeValue(0.2);
+
 						Global.GameOverState = true;
 						Focused = true;
+						ExitReady = true;
+
 						Global.PlaySpeed = 0.0;
 						scene.SwapLayer(this, LAYER3);
+
+						for (int i = 0; i < scene.LayerSize(LAYER2); ++i) {
+							if (auto Object = scene.FindMulti("obstacle_shape", LAYER2, i); Object)
+								Object->SetExitReady();
+						}
 
 						soundUtil.PlaySound(Audio.GameOverSound, Ch);
 
@@ -106,28 +115,53 @@ void ObstacleShape::UpdateFunc(float FrameTime) {
 	}
 
 	// game over
-	if (!ExitState && Global.GameOverState) {
-		GameOverTimer.Update(FrameTime);
-		if (GameOverTimer.Sec() >= 1) {
-			if (PlayerShapePtr)
-				PlayerShapePtr->SetExitState();
+	else {
+		if (Focused) {
+			GameOverTimer.Update(FrameTime);
+			if (GameOverTimer.Sec() >= 1 && !ExitState) {
+				if (PlayerShapePtr)
+					PlayerShapePtr->SetExitState();
 
-			SetExitState();
-			ObjectTag = "";
+				for (int i = 0; i < scene.LayerSize(LAYER2); ++i) {
+					if (auto Object = scene.FindMulti("obstacle_shape", LAYER2, i); Object)
+						Object->SetExitState();
+				}
 
-			if (Focused) 
+				SetExitState();
+				ObjectTag = "";
+
 				scene.SwitchMode(HomeMode.Start);
+
+				ExitState = true;
+			}
+
+			if (FlickerCount < 6) {
+				FlickerTimer.Update(FrameTime);
+				if (FlickerTimer.CheckMiliSec(0.1, 1, CHECK_AND_INTERPOLATE)) {
+					EX.SwitchBool(Flicker);
+					++FlickerCount;
+				}
+			}
 		}
 	}
 
-	if(ExitState && Global.GameOverState)
+	if (ExitState)
 		ExitToHome(FrameTime);
 }
 
 void ObstacleShape::RenderFunc() {
-	SetColor(Global.ObjectColor);
-	if (Focused)
-		SetColor(1.0, 0.0, 0.0);
+	if (Focused) {
+		if(Flicker)
+			if(Global.Diff == 2)
+				SetColor(1.0, 1.0, 0.0);
+			else
+				SetColor(1.0, 0.0, 0.0);
+		else
+			SetColor(Global.ObjectColor);
+	}
+
+	else 
+		SetColor(Global.ObjectColor);
 
 	BeginRender();
 	transform.Rotate(RotateMatrix, Rotation);
@@ -169,4 +203,8 @@ void ObstacleShape::ExitToHome(float FrameTime) {
 void ObstacleShape::SetExitState() {
 	ObjectTag = "";
 	ExitState = true;
+}
+
+void ObstacleShape::SetExitReady() {
+	ExitReady = true;
 }

@@ -70,21 +70,23 @@ void PlayerShape::UpdateFunc(float FrameTime) {
 	// Shape Rotation
 	mathUtil.UpdateLerp(ShapeRotation, RotationDest, 35.0, FrameTime * Global.PlaySpeed);
 
-	if (!Global.GameOverState) {
+	if (!ExitState) {
 		if (scene.Mode() == "PlayMode") {
-			Global.PlaySpeed += FrameTime * 0.5;
-			mathUtil.UpdateLerp(Opacity, 1.0, 5.0, FrameTime * Global.PlaySpeed);
-			mathUtil.UpdateLerp(ShapeSize, 1.0, 5.0, FrameTime * Global.PlaySpeed);
-			soundUtil.SetPlaySpeed(Global.TrackChannel, Global.PlaySpeed);
-			soundUtil.SetPlaySpeed(Global.BeatChannel, Global.PlaySpeed);
-			EX.ClampValue(Global.PlaySpeed, 1.0, CLAMP_GREATER);
+			if (!Global.GameOverState) {
+				Global.PlaySpeed += FrameTime * 0.5;
+				mathUtil.UpdateLerp(Opacity, 1.0, 5.0, FrameTime * Global.PlaySpeed);
+				mathUtil.UpdateLerp(ShapeSize, 1.0, 5.0, FrameTime * Global.PlaySpeed);
+				soundUtil.SetPlaySpeed(Global.TrackChannel, Global.PlaySpeed);
+				soundUtil.SetPlaySpeed(Global.BeatChannel, Global.PlaySpeed);
+				EX.ClampValue(Global.PlaySpeed, 1.0, CLAMP_GREATER);
 
-			if (Global.UseMusicEffect)
-				mathUtil.UpdateLerp(Global.BeatDetectValue, soundUtil.DetectBeat(0.4, 10) * Global.MusicEffectValue * 2.0, 20.0 * Global.PlaySpeed, FrameTime);
+				if (Global.UseMusicEffect)
+					mathUtil.UpdateLerp(Global.BeatDetectValue, soundUtil.DetectBeat(0.4, 10) * Global.MusicEffectValue * 2.0, 20.0 * Global.PlaySpeed, FrameTime);
+			}
 		}
 	}
 
-	if(ExitState && Global.GameOverState)
+	else
 		ExitToHome(FrameTime);
 }
 
