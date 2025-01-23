@@ -7,6 +7,8 @@ enum ShapeEnum {
 	Pentagon
 };
 
+extern GameObject* PlayerShapePtr;
+
 class PlayerShape : public GameObject {
 private:
 	int CurrentShape{}; // 0: triangle, 1: sauqre, 2: pentagon
@@ -34,4 +36,5 @@ public:
 	void RenderFunc();
 	void ExitToHome(float FrameTime);
 	void SetExitState();
+	int GetCurrentShape();
 };

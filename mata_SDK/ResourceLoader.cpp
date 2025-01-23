@@ -48,14 +48,21 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 		imageUtil.PreLoad(Sprite.PentagonLight[i], FileName);
 	}
 
-
+	// user data load
 	Global.UserSettingData.Load("GameData//UserSetting", Format.UsetSettingDataFormat);
 	Global.FullscreenMode = Global.UserSettingData.LoadDigitData("Option", "FullscreenMode");
 	Global.MusicPlayOption = Global.UserSettingData.LoadDigitData("Option", "MusicPlayOption");
 	Global.UseMusicEffect = Global.UserSettingData.LoadDigitData("Option", "UseMusicEffect");
 	Global.MusicEffectValue = Global.UserSettingData.LoadDigitData("Option", "MusicEffectValue");
 
-
+	// HighScore Data Load
+	Global.HighScoreData.Load("GameData//Data", Format.HighScoreDataFormat);
+	DigitDataSet HighScoreDataSet = Global.HighScoreData.LoadCategoryDigitData("HighScore");
+	size_t Size = HighScoreDataSet.size();
+	for (int i = 0; i < Size; ++i) {
+		Global.HighScore[i] = HighScoreDataSet[i];
+		Global.PrevHighScore[i] = HighScoreDataSet[i];
+	}
 
 	imageUtil.PreLoad(Sprite.ImagePlayerShape[0], "Assets//Image//Player//triangle.png", IMAGE_TYPE_LINEAR);
 	imageUtil.PreLoad(Sprite.ImagePlayerShape[1], "Assets//Image//Player//square.png", IMAGE_TYPE_LINEAR);
@@ -78,6 +85,7 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 	soundUtil.Load(Audio.OptionSelectSound, "Assets//Sound//UI//option_select.wav");
 	soundUtil.Load(Audio.GameStartSound, "Assets//Sound//UI//game_start.wav");
 	soundUtil.Load(Audio.GameExitSound, "Assets//Sound//UI//game_exit.wav");
+	soundUtil.Load(Audio.GameOverSound, "Assets//Sound//UI//game_over.mp3");
 
 	soundUtil.Load(Audio.Track[0], "Assets//Sound//Track//track_easy.mp3", FMOD_LOOP_NORMAL);
 	soundUtil.Load(Audio.Track[1], "Assets//Sound//Track//track_normal.mp3", FMOD_LOOP_NORMAL);

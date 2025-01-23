@@ -17,6 +17,8 @@ public:
 
 	void ChangeRotateDirection();
 	GLfloat GetRotation();
+	void ChangeRotation(GLfloat Value);
+	void ResetRotateDirection();
 	int RotateDirection{ 1 };
 
 private:

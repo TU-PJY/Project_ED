@@ -2,6 +2,8 @@
 #include "CameraController.h"
 #include "PlayerFeedback.h"
 #include "ShapeGenerator.h"
+#include "HomeMode.h"
+#include "PlayerShape.h"
 
 ObstacleShape::ObstacleShape(int Type) {
 	SetColor(1.0, 1.0, 1.0);
@@ -67,6 +69,22 @@ void ObstacleShape::UpdateFunc(float FrameTime) {
 			mathUtil.UpdateLerp(Opacity, 1.0, Global.ShapeMoveSpeed * 5.0, FrameTime * Global.PlaySpeed);
 
 			if (CurrentSize <= 1.15) {
+				if (PlayerShapePtr) {
+					if (PlayerShapePtr->GetCurrentShape() != ShapeType) {
+						Global.GameOverState = true;
+						Focused = true;
+						Global.PlaySpeed = 0.0;
+						scene.SwapLayer(this, LAYER3);
+
+						soundUtil.PlaySound(Audio.GameOverSound, Ch);
+
+						Global.PrevPlayTime[Global.Diff] = soundUtil.GetPlayTime(Global.TrackChannel);
+						soundUtil.StopSound(Global.TrackChannel);
+						soundUtil.StopSound(Global.BeatChannel);
+						return;
+					}
+				}
+
 				if (RotateDirectionChanger)
 					CameraControl->ChangeRotateDirection();
 
@@ -87,12 +105,29 @@ void ObstacleShape::UpdateFunc(float FrameTime) {
 		}
 	}
 
+	// game over
+	if (!ExitState && Global.GameOverState) {
+		GameOverTimer.Update(FrameTime);
+		if (GameOverTimer.Sec() >= 1) {
+			if (PlayerShapePtr)
+				PlayerShapePtr->SetExitState();
+
+			SetExitState();
+			ObjectTag = "";
+
+			if (Focused) 
+				scene.SwitchMode(HomeMode.Start);
+		}
+	}
+
 	if(ExitState && Global.GameOverState)
 		ExitToHome(FrameTime);
 }
 
 void ObstacleShape::RenderFunc() {
 	SetColor(Global.ObjectColor);
+	if (Focused)
+		SetColor(1.0, 0.0, 0.0);
 
 	BeginRender();
 	transform.Rotate(RotateMatrix, Rotation);
@@ -132,7 +167,6 @@ void ObstacleShape::ExitToHome(float FrameTime) {
 }
 
 void ObstacleShape::SetExitState() {
-	Rotation += CameraControl->GetRotation();
 	ObjectTag = "";
 	ExitState = true;
 }

@@ -25,10 +25,10 @@ public:
 	static void Start() {
 		System.HideCursor();
 
-		System.SetBackColor(0.07, 0.46, 0.96);
-		Global.ObjectColor = glm::vec3(0.85, 0.92, 0.92);
+		auto Object = scene.Find("color_changer");
+		if(!Object)
+			scene.AddObject(new ColorChanger, "color_changer", LAYER1, OBJECT_TYPE_STATIC);
 
-		scene.AddObject(new ColorChanger, "color_changer", LAYER1, OBJECT_TYPE_STATIC);
 		scene.AddObject(new HomeScreen, "home_screen", LAYER2, OBJECT_TYPE_STATIC);
 		SetUp();
 	}

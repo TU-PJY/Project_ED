@@ -10,11 +10,6 @@ void CameraController::InputKey(KeyEvent& Event) {
 void CameraController::UpdateFunc(float FT){
 	if (scene.Mode() == "PlayMode") 
 		Rotation += Global.CameraRotateSpeed * RotateDirection * FT * Global.PlaySpeed;
-
-	else if (scene.Mode() == "HomeMode") {
-		RotateDirection = 1;
-		Rotation = 0.0;
-	}
 	
 	ComputeCameraMatrix();
 }
@@ -63,6 +58,14 @@ void CameraController::ChangeRotateDirection() {
 
 GLfloat CameraController::GetRotation() {
 	return Rotation;
+}
+
+void CameraController::ChangeRotation(GLfloat Value) {
+	Rotation = Value;
+}
+
+void CameraController::ResetRotateDirection() {
+	RotateDirection = 1;
 }
 
 ///////////////////////////////////////// private

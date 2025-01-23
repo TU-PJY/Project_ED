@@ -17,6 +17,11 @@ private:
 	bool MoveState{ true };
 
 	bool ExitState{};
+	bool Focused{};
+
+	SoundChannel Ch{};
+
+	TimerUtil GameOverTimer{};
 
 public:
 	ObstacleShape(int Type);

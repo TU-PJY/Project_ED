@@ -211,6 +211,7 @@ public:
 	}
 
 	void ExitToHomeMode() {
+		Global.PrevPlayTime[Global.Diff] = soundUtil.GetPlayTime(Global.TrackChannel);
 		soundUtil.StopSound(Global.TrackChannel);
 		soundUtil.StopSound(Global.BeatChannel);
 

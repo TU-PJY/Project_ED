@@ -35,6 +35,7 @@ public:
 	Sound Track[5]{};
 	Sound Beat[5]{};
 	Sound HomeBGM{};
+	Sound GameOverSound{};
 };
 
 // Data Format list
@@ -76,6 +77,7 @@ public:
 
 	// score
 	int HighScore[5]{}; // 0: easy, 1: normal, 2: hard, 3: harder, 4: hardest
+	int PrevHighScore[5]{};
 	FileUtil HighScoreData{};
 
 	// user settings

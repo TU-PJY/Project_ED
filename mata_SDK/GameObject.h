@@ -114,8 +114,13 @@ public:
 	// obstacle shape function
 	virtual void SetExitState() {}
 
+	// player shape function
+	virtual int GetCurrentShape() { return{}; }
+
 	// camera function
 	virtual GLfloat GetRotation() { return{}; }
+	virtual void ChangeRotation(GLfloat Value) {}
+	virtual void ResetRotateDirection() {}
 
 private:
 	void PrepareRender(Image& ImageStruct);

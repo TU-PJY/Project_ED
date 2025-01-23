@@ -2,7 +2,11 @@
 #include "Scene.h"
 #include "PauseMode.h"
 
+GameObject* PlayerShapePtr;
+
 PlayerShape::PlayerShape() {
+	PlayerShapePtr = this; 
+
 	SetColor(1.0, 1.0, 1.0);
 
 	switch (Global.MusicPlayOption) {
@@ -27,6 +31,9 @@ PlayerShape::PlayerShape() {
 }
 
 void PlayerShape::InputKey(KeyEvent& Event) {
+	if (Global.GameOverState)
+		return;
+
 	if (Event.Type == SPECIAL_KEY_DOWN) {
 		switch (Event.SpecialKey) {
 		case SK_ARROW_RIGHT:
@@ -72,8 +79,6 @@ void PlayerShape::UpdateFunc(float FrameTime) {
 			soundUtil.SetPlaySpeed(Global.BeatChannel, Global.PlaySpeed);
 			EX.ClampValue(Global.PlaySpeed, 1.0, CLAMP_GREATER);
 
-			Global.PrevPlayTime[Global.Diff] = soundUtil.GetPlayTime(Global.TrackChannel);
-
 			if (Global.UseMusicEffect)
 				mathUtil.UpdateLerp(Global.BeatDetectValue, soundUtil.DetectBeat(0.4, 10) * Global.MusicEffectValue * 2.0, 20.0 * Global.PlaySpeed, FrameTime);
 		}
@@ -97,13 +102,18 @@ void PlayerShape::RenderFunc() {
 void PlayerShape::ExitToHome(float FrameTime) {
 	ShapeSize += ShapeSize * FrameTime * 4.0;
 	Opacity -= FrameTime * 3.0;
-	if (Opacity <= 0.0)
+	if (Opacity <= 0.0) {
 		scene.DeleteObject(this);
+	}
 }
-
 
 void PlayerShape::SetExitState() {
 	ExitState = true;
 	ObjectTag = "";
-	ShapeRotation += CameraControl->GetRotation();
+	Global.GameOverState = true;
+	PlayerShapePtr = nullptr;
+}
+
+int PlayerShape::GetCurrentShape() {
+	return CurrentShape;
 }

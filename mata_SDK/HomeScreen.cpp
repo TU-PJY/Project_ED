@@ -7,18 +7,34 @@
 HomeScreen::HomeScreen() {
 	// text init
 	DiffText.Init(L"Ronduit Capitals Light", FW_NORMAL);
-	DiffText.SetColor(1.0, 1.0, 1.0);
 	DiffText.SetAlign(ALIGN_MIDDLE);
 	DiffText.SetHeightAlign(HEIGHT_ALIGN_MIDDLE);
 
-	// HighScore Data Load
-	Global.HighScoreData.Load("GameData//Data", Format.HighScoreDataFormat);
-	DigitDataSet HighScoreDataSet = Global.HighScoreData.LoadCategoryDigitData("HighScore");
-	size_t Size = HighScoreDataSet.size();
-	for (int i = 0; i < Size; ++i)
-		Global.HighScore[i] = HighScoreDataSet[i];
-
 	CurrentPage = Global.Diff;
+
+	// high score udate
+	if (Global.HighScore[CurrentPage] > Global.PrevHighScore[CurrentPage]) {
+		NewHighScore[CurrentPage] = true;
+		Global.PrevHighScore[CurrentPage] = Global.HighScore[CurrentPage];
+
+		switch (CurrentPage) {
+		case 0:
+			Global.HighScoreData.UpdateDigitData("HighScore", "EasyModeHighScore", Global.HighScore[CurrentPage]);
+			break;
+		case 1:
+			Global.HighScoreData.UpdateDigitData("HighScore", "NormalModeHighScore", Global.HighScore[CurrentPage]);
+			break;
+		case 2:
+			Global.HighScoreData.UpdateDigitData("HighScore", "HardModeHighScore", Global.HighScore[CurrentPage]);
+			break;
+		case 3:
+			Global.HighScoreData.UpdateDigitData("HighScore", "HarderModeHighScore", Global.HighScore[CurrentPage]);
+			break;
+		case 4:
+			Global.HighScoreData.UpdateDigitData("HighScore", "HardestModeHighScore", Global.HighScore[CurrentPage]);
+			break;
+		}
+	}
 
 	SetColor(1.0, 1.0, 1.0);
 
@@ -84,7 +100,7 @@ void HomeScreen::RenderFunc() {
 	// diff text
 	DiffText.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
 	DiffText.RenderStr(TextPosition.x, TextPosition.y, 0.2, DiffString[CurrentPage]);
-	DiffText.Render(TextPosition.x, TextPosition.y + 0.1, 0.1, L"HIGH SCORE %d", Global.HighScore[CurrentPage]);
+	DiffText.Render(TextPosition.x, TextPosition.y + 0.1, 0.11, L"HIGH SCORE %d", Global.HighScore[CurrentPage]);
 
 	SetColor(Global.ObjectColor);
 
