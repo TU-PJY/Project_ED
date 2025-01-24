@@ -27,27 +27,6 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 		imageUtil.PreLoad(Sprite.Pentagon[i], FileName);
 	}
 
-	for (int i = 0; i < 3; ++i) {
-		std::string FileName = "Assets//Image//Shapes//Triangle//obstacle_triangle_light_";
-		FileName += std::to_string(i + 1);
-		FileName += ".png";
-		imageUtil.PreLoad(Sprite.TriangleLight[i], FileName);
-	}
-
-	for (int i = 0; i < 5; ++i) {
-		std::string FileName = "Assets//Image//Shapes//Square//obstacle_square_light_";
-		FileName += std::to_string(i + 1);
-		FileName += ".png";
-		imageUtil.PreLoad(Sprite.SquareLight[i], FileName);
-	}
-
-	for (int i = 0; i < 5; ++i) {
-		std::string FileName = "Assets//Image//Shapes//Pentagon//obstacle_pentagon_light_";
-		FileName += std::to_string(i + 1);
-		FileName += ".png";
-		imageUtil.PreLoad(Sprite.PentagonLight[i], FileName);
-	}
-
 	// user data load
 	Global.UserSettingData.Load("GameData//UserSetting", Format.UsetSettingDataFormat);
 	Global.FullscreenMode = Global.UserSettingData.LoadDigitData("Option", "FullscreenMode");

@@ -49,6 +49,11 @@ GLfloat MathUtil::Lerp(GLfloat Value, GLfloat Dest, GLfloat Speed, float FrameTi
 }
 
 void MathUtil::UpdateLerp(GLfloat& DestValue, GLfloat Dest, GLfloat Speed, float FrameTime) {
+	if (abs(DestValue - Dest) < 0.0001) {
+		DestValue = Dest;
+		return;
+	}
+
 	GLfloat t = Speed * FrameTime;
 	EX.ClampValue(t, 1.0, CLAMP_GREATER);
 	DestValue = std::lerp(DestValue, Dest, t);

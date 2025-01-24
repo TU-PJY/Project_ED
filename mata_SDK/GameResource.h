@@ -11,9 +11,6 @@ public:
 	Image Triangle[3]{};
 	Image Square[5]{};
 	Image Pentagon[5]{};
-	Image TriangleLight[3]{};
-	Image SquareLight[5]{};
-	Image PentagonLight[5]{};
 
 	Image ImagePlayerShape[3]{};
 	Image ImagePlayerShapeLight[3]{};
