@@ -95,7 +95,7 @@ void PlayerShape::RenderFunc() {
 	transform.Rotate(RotateMatrix, ShapeRotation);
 	transform.Scale(ScaleMatrix, ShapeSize, ShapeSize);
 	RenderSprite(Sprite.ImagePlayerShape[CurrentShape], Opacity);
-	RenderSprite(Sprite.ImagePlayerShapeLight[CurrentShape], Opacity * 0.8);
+	RenderSprite(Sprite.ImagePlayerShapeLight[CurrentShape], Opacity);
 
 	if (Global.UseMusicEffect)
 		RenderSprite(Sprite.ImagePlayerShapeLight[CurrentShape], Global.BeatDetectValue * Opacity);

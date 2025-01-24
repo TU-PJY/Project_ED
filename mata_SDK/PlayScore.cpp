@@ -16,7 +16,9 @@ void PlayScore::PlusScore() {
 }
 
 void PlayScore::UpdateFunc(float FrameTime) {
-	mathUtil.UpdateLerp(Feedback, Global.BeatDetectValue * 0.05, 40.0, FrameTime * Global.PlaySpeed);
+	if(Global.UseMusicEffect)
+		mathUtil.UpdateLerp(Feedback, Global.BeatDetectValue * 0.05, 40.0, FrameTime * Global.PlaySpeed);
+
 	mathUtil.UpdateLerp(Opacity, 1.0, 5.0, FrameTime * Global.PlaySpeed);
 	mathUtil.UpdateLerp(Size, 1.0, 5.0, FrameTime * Global.PlaySpeed);
 }

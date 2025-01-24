@@ -23,11 +23,13 @@ void ClassED::UpdateFunc(float FrameTime) {
 		
 		MovePosition.y = HeightLoop.Update(0.03, 2.0, FrameTime);
 
-		mathUtil.UpdateLerp(Size, 1.2, 10.0, FrameTime);
-		mathUtil.UpdateLerp(MachinePosition.y, -0.1, 10.0, FrameTime);
+		mathUtil.UpdateLerp(Size, 1.2, 5.0, FrameTime);
+		mathUtil.UpdateLerp(MachinePosition.y, -0.1, 5.0, FrameTime);
 		mathUtil.UpdateLerp(Rotation, 0.0, 10.0, FrameTime);
 		mathUtil.UpdateLerp(SmileRotation, DestSmileRotation, 10.0, FrameTime);
 		mathUtil.UpdateLerp(MusicEffectValue, 0.0, 10.0, FrameTime);
+		mathUtil.UpdateLerp(EDPosition.y, MovePosition.y + MachinePosition.y, 3.0, FrameTime);
+		mathUtil.UpdateLerp(EDRotation, DestSmileRotation, 3.0, FrameTime);
 		DestSmileRotation = RotationLoop.Update(6.0, 1.0, FrameTime);
 
 		if (!SmileState)
@@ -37,10 +39,12 @@ void ClassED::UpdateFunc(float FrameTime) {
 	else if (scene.Mode() == "PlayMode" || scene.Mode() == "PauseMode") {
 		SmileState = false;
 		RotationLoop.Reset();
+		mathUtil.UpdateLerp(EDPosition.y, MachinePosition.y, 10.0, FrameTime);
 		mathUtil.UpdateLerp(MovePosition.y, 0.0, 10.0, FrameTime);
 		mathUtil.UpdateLerp(Size, 0.4, 10.0, FrameTime);
 		mathUtil.UpdateLerp(MachinePosition.y, 0.0, 10.0, FrameTime);
 		mathUtil.UpdateLerp(SmileRotation, 0.0, 10.0, FrameTime);
+		mathUtil.UpdateLerp(EDRotation, 0.0, 10.0, FrameTime);
 		Rotation = CameraControl->GetRotation();
 		MusicEffectValue = Global.BeatDetectValue * 0.05;
 
@@ -63,12 +67,15 @@ void ClassED::RenderFunc() {
 		BeginRender(RENDER_TYPE_STATIC);
 		RenderSprite(Sprite.MachineBack, 1.0, true);
 
-		// ED
+		// ED, not apply unit transform
 		BeginRender(RENDER_TYPE_STATIC);
+		transform.Move(TranslateMatrix, EDPosition);
+		transform.Rotate(RotateMatrix, Rotation + EDRotation);
+		transform.Scale(ScaleMatrix, Size + MusicEffectValue + (camera.ZoomValue - 1.0) * 0.5, Size + MusicEffectValue + (camera.ZoomValue - 1.0) * 0.5);
 		if(!SmileState)
-			RenderSprite(Sprite.ED[EDIndex], 1.0, true);
+			RenderSprite(Sprite.ED[EDIndex], 1.0);
 		else
-			RenderSprite(Sprite.ED[EDIndex + 2], 1.0, true);
+			RenderSprite(Sprite.ED[EDIndex + 2], 1.0);
 
 		// Machine Front
 		BeginRender(RENDER_TYPE_STATIC);

@@ -10,9 +10,6 @@ void CameraController::InputKey(KeyEvent& Event) {
 void CameraController::UpdateFunc(float FT){
 	if (scene.Mode() == "PlayMode") {
 		if (Global.GameOverState) {
-			//ShakeCamera(FT);
-			//MoveCamera(ShakePosition);
-
 			if (!ZoomCompleted) {
 				ZoomValue += FT * 40.0;
 				ChangeCameraZoom(ZoomValue);
@@ -26,8 +23,11 @@ void CameraController::UpdateFunc(float FT){
 			}
 		}
 
-		else
+		else {
+			mathUtil.UpdateLerp(ZoomValue, 1.0, 10.0, FT);
+			ChangeCameraZoom(ZoomValue);
 			Rotation += Global.CameraRotateSpeed * RotateDirection * FT * Global.PlaySpeed;
+		}
 	}
 
 	else {
