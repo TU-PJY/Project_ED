@@ -3,7 +3,7 @@
 
 //////////////////////////////////// Window options
 // window name
-constexpr const char* WINDOW_NAME = "ED: DREAM OF SHAPES";
+constexpr const char* WINDOW_NAME = "ED: SUPER DREAM";
 
 // window size
 constexpr int WINDOW_WIDTH = 1200;

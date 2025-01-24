@@ -34,6 +34,8 @@ public:
 		Global.GameOverState = false;
 		Global.PlaySpeed = 1.0;
 		Global.CurrentScore = 0;
+		for (int i = 0; i < 5; ++i)
+			Global.NewHighScore[i] = false;
 		CameraControl->ChangeRotation(0.0);
 		CameraControl->ResetRotateDirection();
 
