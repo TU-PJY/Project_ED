@@ -50,10 +50,8 @@ void ClassED::UpdateFunc(float FrameTime) {
 		CamRotation = CameraControl->GetRotation();
 		MusicEffectValue = Global.BeatDetectValue * 0.05;
 
-		if (Global.GameOverState) {
+		if (Global.GameOverState) 
 			EDIndex = 4;
-			ShakePosition = -CameraControl->GetShakePosition();
-		}
 		else
 			EDIndex = 1;
 	}
@@ -61,7 +59,7 @@ void ClassED::UpdateFunc(float FrameTime) {
 
 void ClassED::RenderFunc() {
 	ResetUnitTransform();
-	transform.Move(UnitTranslateMatrix, MovePosition + MachinePosition + ShakePosition);
+	transform.Move(UnitTranslateMatrix, MovePosition + MachinePosition);
 	transform.Rotate(UnitRotateMatrix, CamRotation + SmileRotation); 
 	transform.Scale(UnitScaleMatrix, Size + MusicEffectValue + (camera.ZoomValue - 1.0) * 0.5, Size + MusicEffectValue + (camera.ZoomValue - 1.0) * 0.5);
 	{

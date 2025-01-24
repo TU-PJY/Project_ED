@@ -24,7 +24,7 @@ void CameraController::UpdateFunc(float FT){
 		}
 
 		else {
-			mathUtil.UpdateLerp(ZoomValue, 1.0, 10.0, FT);
+			mathUtil.UpdateLerp(ZoomValue, 1.0, 10.0, FT * Global.PlaySpeed);
 			ChangeCameraZoom(ZoomValue);
 			Rotation += Global.CameraRotateSpeed * RotateDirection * FT * Global.PlaySpeed;
 		}

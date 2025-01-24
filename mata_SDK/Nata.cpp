@@ -24,15 +24,12 @@ void ClassNata::UpdateFunc(float FrameTime) {
 		MovePosition.y = MoveLoop.Update(0.5, 1.0, FrameTime * Global.PlaySpeed);
 		mathUtil.UpdateLerp(Position.x, -1.5, 10.0, FrameTime * Global.PlaySpeed);
 		mathUtil.UpdateLerp(Position.y, ED->GetPosition().y + 1.2, 10.0, FrameTime * Global.PlaySpeed);
-
-		if(Global.GameOverState)
-			ShakePosition = -CameraControl->GetShakePosition();
 	}
 }
 
 void ClassNata::RenderFunc() {
 	BeginRender(RENDER_TYPE_STATIC);
 	transform.Scale(TranslateMatrix, ED->GetSize() * 0.4 + (camera.ZoomValue - 1.0) * 0.5, ED->GetSize() * 0.4 + (camera.ZoomValue - 1.0) * 0.5);
-	transform.Move(TranslateMatrix, Position + MovePosition + ShakePosition);
+	transform.Move(TranslateMatrix, Position + MovePosition);
 	RenderSprite(Sprite.Nata[Index]);
 }

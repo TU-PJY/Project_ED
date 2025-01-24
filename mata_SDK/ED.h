@@ -6,7 +6,6 @@ private:
 	glm::vec2 MachinePosition{0.0, -0.1};
 	glm::vec2 MovePosition{};
 	glm::vec2 Position{ 0.0, -0.1 };
-	glm::vec2 ShakePosition{};
 
 	GLfloat Size{ 0.0 };
 	GLfloat CamRotation{};

@@ -27,7 +27,8 @@ PlayerShape::PlayerShape() {
 		break;
 	}
 
-	soundUtil.SetBeatDetect(Global.BeatChannel);
+	if(Global.UseMusicEffect)
+		soundUtil.SetBeatDetect(Global.BeatChannel);
 }
 
 void PlayerShape::InputKey(KeyEvent& Event) {
