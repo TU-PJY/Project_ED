@@ -23,6 +23,12 @@ public:
 	Image ArrowRight{}, ArrowLeft{};
 
 	Image HighLight{};
+
+	Image ED[5]{};
+	Image Nata[5]{};
+	Image MachineFront{};
+	Image MachineBack{};
+	Image MachineLight{};
 };
 
 // Declare the sound resource or directory here. 

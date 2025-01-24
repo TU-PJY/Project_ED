@@ -187,6 +187,9 @@
     <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Color Changer ]">
       <UniqueIdentifier>{f4036834-6359-4fd6-b34b-772277315615}</UniqueIdentifier>
     </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ ED ]">
+      <UniqueIdentifier>{842a521a-036b-4073-b8a8-1e07d69c4bfb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -329,6 +332,9 @@
     </ClCompile>
     <ClCompile Include="ResourceLoader.cpp">
       <Filter>[4]___________[ Resources ]</Filter>
+    </ClCompile>
+    <ClCompile Include="ED.cpp">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ ED ]</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -505,6 +511,9 @@
     </ClInclude>
     <ClInclude Include="ColorChanger.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Color Changer ]</Filter>
+    </ClInclude>
+    <ClInclude Include="ED.h">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ ED ]</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ private:
 
 	PopBounce TitleBounce{};
 	GLfloat TitleSize{};
-	GLfloat TitleHeight{0.6};
+	GLfloat TitleHeight{0.7};
 
 	GLfloat ArrowPosition = WindowRect.rx + 0.2;
 	GLfloat ArrowFeedback[2]{};

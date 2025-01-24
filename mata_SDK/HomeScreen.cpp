@@ -84,7 +84,7 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 }
 
 void HomeScreen::UpdateFunc(float FrameTime) {
-	TitleSize = TitleBounce.Update(1.5, 2.0, 20.0, 20.0, 10.0, FrameTime);
+	TitleSize = TitleBounce.Update(1.2, 2.0, 20.0, 20.0, 10.0, FrameTime);
 	HighLightRotation += FrameTime * 10.0;
 
 	if (!ExitState) {
