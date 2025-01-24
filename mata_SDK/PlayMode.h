@@ -40,9 +40,9 @@ public:
 		CameraControl->ResetRotateDirection();
 
 		scene.AddObject(new PlayerShape, "player_shape", LAYER3, OBJECT_TYPE_STATIC);
+		scene.AddObject(new PlayScore, "play_score", LAYER1);
 		scene.AddObject(new SpeedManager, "speed_manager", LAYER1);
 		scene.AddObject(new ShapeGenerator, "shape_generator", LAYER1);
-		scene.AddObject(new PlayScore, "play_score", LAYER1);
 		SetUp();
 	}
 

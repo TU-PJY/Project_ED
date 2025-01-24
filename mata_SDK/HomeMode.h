@@ -5,6 +5,7 @@
 
 #include "HomeScreen.h"
 #include "ColorChanger.h"
+#include "ED.h"
 
 class Home_Mode {
 public:
@@ -25,11 +26,13 @@ public:
 	static void Start() {
 		System.HideCursor();
 
-		auto Object = scene.Find("color_changer");
-		if(!Object)
+		if(auto Changer = scene.Find("color_changer"); !Changer)
 			scene.AddObject(new ColorChanger, "color_changer", LAYER1, OBJECT_TYPE_STATIC);
 
-		scene.AddObject(new HomeScreen, "home_screen", LAYER2, OBJECT_TYPE_STATIC);
+		if (auto ED = scene.Find("ED"); !ED)
+			scene.AddObject(new ClassED, "ED", LAYER2, OBJECT_TYPE_STATIC);
+
+		scene.AddObject(new HomeScreen, "home_screen", LAYER3, OBJECT_TYPE_STATIC);
 		SetUp();
 	}
 

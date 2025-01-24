@@ -71,7 +71,7 @@ void ObstacleShape::UpdateFunc(float FrameTime) {
 			if (CurrentSize <= 1.15) {
 				if (PlayerShapePtr) {
 					if (PlayerShapePtr->GetCurrentShape() != ShapeType) {
-						CameraControl->AddShakeValue(0.2);
+						//CameraControl->AddShakeValue(0.1);
 
 						Global.GameOverState = true;
 						Focused = true;

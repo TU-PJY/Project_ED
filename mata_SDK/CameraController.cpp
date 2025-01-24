@@ -10,11 +10,30 @@ void CameraController::InputKey(KeyEvent& Event) {
 void CameraController::UpdateFunc(float FT){
 	if (scene.Mode() == "PlayMode") {
 		if (Global.GameOverState) {
-			ShakeCamera(FT);
-			MoveCamera(ShakePosition);
+			//ShakeCamera(FT);
+			//MoveCamera(ShakePosition);
+
+			if (!ZoomCompleted) {
+				ZoomValue += FT * 40.0;
+				ChangeCameraZoom(ZoomValue);
+				if (EX.CheckClampValue(ZoomValue, 6.5, CLAMP_GREATER)) 
+					ZoomCompleted = true;
+			}
+			else {
+				ZoomValue -= FT * 40.0;
+				EX.ClampValue(ZoomValue, 4.0, CLAMP_LESS);
+				ChangeCameraZoom(ZoomValue);
+			}
 		}
+
 		else
 			Rotation += Global.CameraRotateSpeed * RotateDirection * FT * Global.PlaySpeed;
+	}
+
+	else {
+		mathUtil.UpdateLerp(ZoomValue, 1.0, 10.0, FT);
+		ChangeCameraZoom(ZoomValue);
+		ZoomCompleted = false;
 	}
 	
 	ComputeCameraMatrix();
@@ -27,7 +46,7 @@ void CameraController::AddShakeValue(GLfloat Value) {
 void CameraController::ShakeCamera(float FrameTime) {
 	ShakePosition.x = Random.Gen(RANDOM_TYPE_REAL, -ShakeValue, ShakeValue);
 	ShakePosition.y = Random.Gen(RANDOM_TYPE_REAL, -ShakeValue, ShakeValue);
-	ShakeValue -= FrameTime;
+	ShakeValue -= FrameTime * 0.2;
 	EX.ClampValue(ShakeValue, 0.0, CLAMP_LESS);
 }
 
@@ -83,6 +102,10 @@ void CameraController::ChangeRotation(GLfloat Value) {
 
 void CameraController::ResetRotateDirection() {
 	RotateDirection = 1;
+}
+
+glm::vec2 CameraController::GetShakePosition() {
+	return ShakePosition;
 }
 
 ///////////////////////////////////////// private

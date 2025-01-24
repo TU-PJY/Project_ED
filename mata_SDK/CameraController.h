@@ -10,6 +10,9 @@ public:
 
 	RandomUtil Random{};
 
+	GLfloat ZoomValue{1.0};
+	bool ZoomCompleted{};
+
 	void InputKey(KeyEvent& Event);
 	void UpdateFunc(float FT);
 	void AddShakeValue(GLfloat Value);
@@ -25,6 +28,8 @@ public:
 	GLfloat GetRotation();
 	void ChangeRotation(GLfloat Value);
 	void ResetRotateDirection();
+	glm::vec2 GetShakePosition();
+
 	int RotateDirection{ 1 };
 
 private:

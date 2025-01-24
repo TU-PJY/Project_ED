@@ -123,6 +123,7 @@ public:
 	virtual void ChangeRotation(GLfloat Value) {}
 	virtual void ResetRotateDirection() {}
 	virtual void AddShakeValue(GLfloat Value) {}
+	virtual glm::vec2 GetShakePosition() { return {}; }
 
 private:
 	void PrepareRender(Image& ImageStruct);
