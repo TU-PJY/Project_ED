@@ -14,7 +14,6 @@ private:
 	};
 
 	int CurrentPage{};
-	bool NewHighScore[5]{};
 
 	PopBounce TitleBounce{};
 	GLfloat TitleSize{};

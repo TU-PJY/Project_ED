@@ -79,6 +79,7 @@ public:
 
 	// score
 	int CurrentScore{};
+	bool NewHighScore[5]{};
 	int HighScore[5]{}; // 0: easy, 1: normal, 2: hard, 3: harder, 4: hardest
 	FileUtil HighScoreData{};
 

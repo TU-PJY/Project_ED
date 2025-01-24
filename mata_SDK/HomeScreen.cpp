@@ -14,7 +14,7 @@ HomeScreen::HomeScreen() {
 
 	// high score udate
 	if (Global.HighScore[CurrentPage] < Global.CurrentScore) {
-		NewHighScore[CurrentPage] = true;
+		Global.NewHighScore[CurrentPage] = true;
 		Global.HighScore[CurrentPage] = Global.CurrentScore;
 
 		switch (CurrentPage) {
@@ -100,7 +100,7 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 void HomeScreen::RenderFunc() {
 	SetColor(Global.ObjectColor);
 
-	if (NewHighScore[CurrentPage]) {
+	if (Global.NewHighScore[CurrentPage]) {
 		BeginRender(RENDER_TYPE_STATIC);
 		transform.Move(TranslateMatrix, TextPosition.x, TextPosition.y);
 		transform.Scale(TranslateMatrix, 1.0, 1.0);

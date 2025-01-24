@@ -108,6 +108,12 @@ public:
 
 					case 1:
 						Global.HighScoreData.ResetData();
+						DigitDataSet HighScoreDataSet = Global.HighScoreData.LoadCategoryDigitData("HighScore");
+						size_t Size = HighScoreDataSet.size();
+						for (int i = 0; i < Size; ++i) {
+							Global.HighScore[i] = HighScoreDataSet[i];
+							Global.NewHighScore[i] = false;
+						}
 						ResetWarning = false;
 						break;
 					}
