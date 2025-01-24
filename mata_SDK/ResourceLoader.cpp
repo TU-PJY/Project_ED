@@ -86,8 +86,8 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 	imageUtil.PreLoad(Sprite.ED[4], "Assets//Image//Player//ED//gameover.png", IMAGE_TYPE_LINEAR);
 
 	imageUtil.PreLoad(Sprite.Nata[0], "Assets//Image//Player//Nata//normal.png", IMAGE_TYPE_LINEAR);
-	imageUtil.PreLoad(Sprite.Nata[1], "Assets//Image//Player//Nata//normal.png", IMAGE_TYPE_LINEAR);
-	imageUtil.PreLoad(Sprite.Nata[2], "Assets//Image//Player//Nata//highscore.png", IMAGE_TYPE_LINEAR);
+	imageUtil.PreLoad(Sprite.Nata[1], "Assets//Image//Player//Nata//highscore.png", IMAGE_TYPE_LINEAR);
+	imageUtil.PreLoad(Sprite.Nata[2], "Assets//Image//Player//Nata//GameOver.png", IMAGE_TYPE_LINEAR);
 
 	imageUtil.PreLoad(Sprite.MachineFront, "Assets//Image//Player//ED//machine_front.png", IMAGE_TYPE_LINEAR);
 	imageUtil.PreLoad(Sprite.MachineBack, "Assets//Image//Player//ED//machine_back.png", IMAGE_TYPE_LINEAR);

@@ -1,4 +1,5 @@
 #include "PlayScore.h"
+#include "Scene.h"
 
 PlayScore::PlayScore() {
 	Text.Init(L"Ronduit Capitals Light", FW_NORMAL);
@@ -24,8 +25,10 @@ void PlayScore::UpdateFunc(float FrameTime) {
 }
 
 void PlayScore::RenderFunc() {
-	Text.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
-	if (OverHighScore)
-		Text.Render(0.0, -0.4, Size * 0.1 + Feedback * 0.25, L"HIGH SCORE!");
-	Text.Render(0.0, -0.7, Size * 0.2 + Feedback, L"%d", Global.CurrentScore);
+	if (scene.Mode() == "PlayMode") {
+		Text.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
+		if (OverHighScore)
+			Text.Render(0.0, -0.4, Size * 0.1 + Feedback * 0.25, L"HIGH SCORE!");
+		Text.Render(0.0, -0.7, Size * 0.2 + Feedback, L"%d", Global.CurrentScore);
+	}
 }

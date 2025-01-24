@@ -18,7 +18,7 @@ vec4 ComputeBlur() {
     vec4 TotalColor = vec4(0.0);
     float TotalAlpha = 0.0;
     float TotalWeight = 0.0;
-    int BlurExecution = 4;
+    int BlurExecution = 5;
     int KernelSize = (BlurExecution * 2 + 1) * (BlurExecution * 2 + 1);
 
     for (int Y = -BlurExecution; Y <= BlurExecution; ++Y) {

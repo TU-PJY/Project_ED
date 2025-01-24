@@ -77,6 +77,8 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 
 		case NK_ESCAPE:
 			soundUtil.PlaySound(Audio.KeySelectSound, Ch);
+			soundUtil.SetFreqCutOff(ChBGM, 200);
+			CutOffSet = true;
 			scene.StartFloatingMode(OptionMode.Start);
 			break;
 		}
@@ -95,41 +97,48 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 	}
 	else
 		EnterToGame(FrameTime);
+	
+	if (CutOffSet && scene.Mode() == "HomeMode") {
+		soundUtil.UnSetFreqCutOff(ChBGM);
+		CutOffSet = false;
+	}
 }
 
 void HomeScreen::RenderFunc() {
-	SetColor(Global.ObjectColor);
+	if (scene.Mode() != "OptionMode") {
+		SetColor(Global.ObjectColor);
 
-	if (Global.NewHighScore[CurrentPage]) {
+		if (Global.NewHighScore[CurrentPage]) {
+			BeginRender(RENDER_TYPE_STATIC);
+			transform.Move(TranslateMatrix, TextPosition.x, TextPosition.y);
+			transform.Scale(TranslateMatrix, 1.0, 1.0);
+			transform.Rotate(TranslateMatrix, HighLightRotation);
+			RenderSprite(Sprite.HighLight, 0.3);
+		}
+
+		// diff text
+		DiffText.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
+		DiffText.RenderStr(TextPosition.x, TextPosition.y, 0.2, DiffString[CurrentPage]);
+		DiffText.Render(TextPosition.x, TextPosition.y + 0.1, 0.11, L"HIGH SCORE %d", Global.HighScore[CurrentPage]);
+
+		// arrow left
 		BeginRender(RENDER_TYPE_STATIC);
-		transform.Move(TranslateMatrix, TextPosition.x, TextPosition.y);
-		transform.Scale(TranslateMatrix, 1.0, 1.0);
-		transform.Rotate(TranslateMatrix, HighLightRotation);
-		RenderSprite(Sprite.HighLight, 0.3);
+		transform.Move(TranslateMatrix, -ArrowPosition + ArrowFeedback[0], 0.0);
+		transform.Scale(ScaleMatrix, 0.3, 0.3);
+		RenderSprite(Sprite.ArrowLeft, ArrowOpacity[0]);
+
+		// arrow right
+		BeginRender(RENDER_TYPE_STATIC);
+		transform.Move(TranslateMatrix, ArrowPosition + ArrowFeedback[1], 0.0);
+		transform.Scale(ScaleMatrix, 0.3, 0.3);
+		RenderSprite(Sprite.ArrowRight, ArrowOpacity[1]);
+
+		// title
+		BeginRender(RENDER_TYPE_STATIC);
+		transform.Move(TranslateMatrix, 0.0, TitleHeight);
+		transform.Scale(ScaleMatrix, TitleSize, TitleSize);
+		RenderSprite(Sprite.Title);
 	}
-
-	// diff text
-	DiffText.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
-	DiffText.RenderStr(TextPosition.x, TextPosition.y, 0.2, DiffString[CurrentPage]);
-	DiffText.Render(TextPosition.x, TextPosition.y + 0.1, 0.11, L"HIGH SCORE %d", Global.HighScore[CurrentPage]);
-
-	// arrow left
-	BeginRender(RENDER_TYPE_STATIC);
-	transform.Move(TranslateMatrix, -ArrowPosition + ArrowFeedback[0], 0.0);
-	transform.Scale(ScaleMatrix, 0.3, 0.3);
-	RenderSprite(Sprite.ArrowLeft, ArrowOpacity[0]);
-
-	// arrow right
-	BeginRender(RENDER_TYPE_STATIC);
-	transform.Move(TranslateMatrix, ArrowPosition + ArrowFeedback[1], 0.0);
-	transform.Scale(ScaleMatrix, 0.3, 0.3);
-	RenderSprite(Sprite.ArrowRight, ArrowOpacity[1]);
-
-	// title
-	BeginRender(RENDER_TYPE_STATIC);
-	transform.Move(TranslateMatrix, 0.0, TitleHeight);
-	transform.Scale(ScaleMatrix, TitleSize, TitleSize);
-	RenderSprite(Sprite.Title);
 }
 
 void HomeScreen::UpdateArrow(float FrameTime) {

@@ -32,6 +32,7 @@ private:
 	SoundChannel ChBGM{};
 
 	bool ExitState{};
+	bool CutOffSet{};
 
 public:
 	HomeScreen();
