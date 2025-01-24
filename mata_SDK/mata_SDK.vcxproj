@@ -160,6 +160,7 @@
     <ClCompile Include="Library\tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="Library\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Nata.cpp" />
     <ClCompile Include="ObstacleShape.cpp" />
     <ClCompile Include="Playerfeedback.cpp" />
     <ClCompile Include="PlayerShape.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="ErrorMessage.h" />
     <ClInclude Include="HomeMode.h" />
     <ClInclude Include="HomeScreen.h" />
+    <ClInclude Include="Nata.h" />
     <ClInclude Include="OptionMode.h" />
     <ClInclude Include="OptionWindow.h" />
     <ClInclude Include="PauseMode.h" />

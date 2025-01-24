@@ -15,8 +15,6 @@ void PlayerFeedback::RenderFunc() {
 	SetColor(Global.ObjectColor);
 
 	BeginRender();
-	if (scene.Mode() == "OptionMode" || scene.Mode() == "PauseMode")
-		SetBlur(2.0);
 	transform.Scale(ScaleMatrix, 2.5, 2.5);
 	RenderSprite(Sprite.ImagePlayerFeedBack, Opacity);
 }

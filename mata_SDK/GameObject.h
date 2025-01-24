@@ -125,6 +125,10 @@ public:
 	virtual void AddShakeValue(GLfloat Value) {}
 	virtual glm::vec2 GetShakePosition() { return {}; }
 
+	// ED function
+	virtual glm::vec2 GetPosition() { return {};}
+	virtual GLfloat GetSize() { return{}; }
+
 private:
 	void PrepareRender(Image& ImageStruct);
 	void PrepareRender(SpriteSheet& SpriteSheetStruct);

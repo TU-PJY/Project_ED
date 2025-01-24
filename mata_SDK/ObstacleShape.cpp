@@ -160,8 +160,6 @@ void ObstacleShape::RenderFunc() {
 		SetColor(Global.ObjectColor);
 
 	BeginRender();
-	if (scene.Mode() == "OptionMode" || scene.Mode() == "PauseMode")
-		SetBlur(2.0);
 	transform.Rotate(RotateMatrix, Rotation);
 
 	switch (ShapeType) {

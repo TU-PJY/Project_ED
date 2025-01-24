@@ -92,8 +92,6 @@ void PlayerShape::UpdateFunc(float FrameTime) {
 
 void PlayerShape::RenderFunc() {
 	BeginRender();
-	if (scene.Mode() == "OptionMode" || scene.Mode() == "PauseMode")
-		SetBlur(2.0);
 	transform.Rotate(RotateMatrix, ShapeRotation);
 	transform.Scale(ScaleMatrix, ShapeSize, ShapeSize);
 	RenderSprite(Sprite.ImagePlayerShape[CurrentShape], Opacity);

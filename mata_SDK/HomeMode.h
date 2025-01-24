@@ -6,6 +6,7 @@
 #include "HomeScreen.h"
 #include "ColorChanger.h"
 #include "ED.h"
+#include "Nata.h"
 
 class Home_Mode {
 public:
@@ -32,7 +33,10 @@ public:
 		if (auto ED = scene.Find("ED"); !ED)
 			scene.AddObject(new ClassED, "ED", LAYER2, OBJECT_TYPE_STATIC);
 
-		scene.AddObject(new HomeScreen, "home_screen", LAYER3, OBJECT_TYPE_STATIC);
+		if(auto Nata = scene.Find("Nata"); !Nata)
+			scene.AddObject(new ClassNata, "Nata", LAYER4, OBJECT_TYPE_STATIC);
+
+		scene.AddObject(new HomeScreen, "home_screen", LAYER5, OBJECT_TYPE_STATIC);
 		SetUp();
 	}
 
