@@ -279,7 +279,7 @@ public:
 
 	void UpdateMenu(float FrameTime) {
 		if (!ExitScreenState) {
-			mathUtil.UpdateLerp(BackOpacity, 0.6, 20.0, FrameTime);
+			mathUtil.UpdateLerp(BackOpacity, 0.8, 20.0, FrameTime);
 			mathUtil.UpdateLerp(BlockOpacity, 0.2, 20.0, FrameTime);
 
 			if (!SettingScreen) {

@@ -45,6 +45,7 @@ void ClassED::UpdateFunc(float FrameTime) {
 		mathUtil.UpdateLerp(MachinePosition.y, 0.0, 10.0, FrameTime * Global.PlaySpeed);
 		mathUtil.UpdateLerp(SmileRotation, 0.0, 10.0, FrameTime * Global.PlaySpeed);
 		mathUtil.UpdateLerp(EDRotation, 0.0, 10.0, FrameTime * Global.PlaySpeed);
+		mathUtil.UpdateLerp(MovePosition.y, 0.0, 10.0, FrameTime * Global.PlaySpeed);
 
 		CamRotation = CameraControl->GetRotation();
 		MusicEffectValue = Global.BeatDetectValue * 0.05;

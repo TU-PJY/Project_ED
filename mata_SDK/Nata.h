@@ -12,6 +12,7 @@ private:
 	int Index{};
 
 public:
+	ClassNata();
 	void UpdateFunc(float FrameTime);
 	void RenderFunc();
 };
