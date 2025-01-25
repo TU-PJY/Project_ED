@@ -4,72 +4,62 @@
 void ShapeGenerator::UpdateFunc(float FrameTime) {
 	Timer.Update(FrameTime * Global.PlaySpeed);
 
+	int RandomShape{};
+
 	if (Timer.CheckMiliSec(Global.ShapeGenerateTime, 1, CHECK_AND_INTERPOLATE)) {
-		switch (PrevShape) {
-		case -1:
+		if (!Created) {
 			scene.AddObject(new ObstacleShape(ObTriangle), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
+			Created = true;
 			PrevShape = ObTriangle;
-			break;
-
-		case ObSquare:
-		{
-			int RandomType = Random.Gen(RANDOM_TYPE_INT, ObTriangle, ObPentagon);
-			if (RandomType == ObSquare)
-				++SameShapeCount;
-			else
-				SameShapeCount = 0;
-
-			if (SameShapeCount == 2) {
-				int RandomNum = Random.Gen(RANDOM_TYPE_INT, 0, 1);
-				if (RandomNum == 0)
-					--RandomType;
-				else if (RandomNum == 1)
-					++RandomType;
-
-				SameShapeCount = 0;
+		}
+		else {
+			if (PrevShape == ObTriangle) {
+				RandomShape = Random.Gen(RANDOM_TYPE_INT, ObTriangle, ObSquare);
+				CheckSameShape(RandomShape, ObTriangle);
+				scene.AddObject(new ObstacleShape(RandomShape), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
 			}
 
-			scene.AddObject(new ObstacleShape(RandomType), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
-			PrevShape = RandomType;
-		}
-		break;
-
-		case ObTriangle:
-		{
-			int RandomType = Random.Gen(RANDOM_TYPE_INT, ObTriangle, ObSquare);
-			if (RandomType == ObTriangle)
-				++SameShapeCount;
-			else
-				SameShapeCount = 0;
-
-			if (SameShapeCount == 2) {
-				++RandomType;
-				SameShapeCount = 0;
+			else if (PrevShape == ObSquare) {
+				RandomShape = Random.Gen(RANDOM_TYPE_INT, ObTriangle, ObPentagon);
+				CheckSameShape(RandomShape, ObSquare);
+				scene.AddObject(new ObstacleShape(RandomShape), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
 			}
 
-			scene.AddObject(new ObstacleShape(RandomType), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
-			PrevShape = RandomType;
-		}
-		break;
-
-		case ObPentagon:
-		{
-			int RandomType = Random.Gen(RANDOM_TYPE_INT, ObSquare, ObPentagon);
-
-			if (RandomType == ObPentagon)
-				++SameShapeCount;
-			else
-				SameShapeCount = 0;
-
-			if (SameShapeCount == 2) {
-				--RandomType;
-				SameShapeCount = 0;
+			else if (PrevShape == ObPentagon) {
+				RandomShape = Random.Gen(RANDOM_TYPE_INT, ObSquare, ObPentagon);
+				CheckSameShape(RandomShape, ObPentagon);
+				scene.AddObject(new ObstacleShape(RandomShape), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
 			}
 
-			scene.AddObject(new ObstacleShape(RandomType), "obstacle_shape", LAYER2, OBJECT_TYPE_STATIC);
-			PrevShape = RandomType;
-		}
-		break;
+			PrevShape = RandomShape;
 		}
 	}
+}
+
+void ShapeGenerator::CheckSameShape(int& RandomType, int PrevShape) {
+	if (RandomType == PrevShape) {
+		++SameShapeCount;
+		if (SameShapeCount > 1) {
+			switch (PrevShape) {
+			case ObTriangle:
+				++RandomType;
+				break;
+
+			case ObSquare:
+				if (Random.Gen(RANDOM_TYPE_INT, 0, 1) == 0)
+					--RandomType;
+				else
+					++RandomType;
+				break;
+
+			case ObPentagon:
+				--RandomType;
+				break;
+			}
+
+			SameShapeCount = 0;
+		}
+	}
+	else
+		SameShapeCount = 0;
 }

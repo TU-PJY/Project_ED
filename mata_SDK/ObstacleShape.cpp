@@ -12,11 +12,13 @@ ObstacleShape::ObstacleShape(int Type) {
 
 	bool VariationGenerate{};
 
-	if (Global.Diff == 1 && Global.ElapsedTime >= 20.0) 
+	if (Global.Diff == 0 && Global.ElapsedTime >= 20.0) 
 		VariationGenerate = true;
 	
-	else if (Global.Diff > 1)
+	else if (Global.Diff > 0 && Global.ElapsedTime >= 5.0) {
 		VariationGenerate = true;
+	}
+
 
 	// direction changer shape has low probability to spawn
 	// if direction changer shape destroied, it changes camera rotate direction

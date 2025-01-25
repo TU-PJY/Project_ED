@@ -192,7 +192,7 @@ void TextUtil::PrepareRender() {
 
 	glUniform1f(TEXT_OPACITY_LOCATION, Opacity);
 	glUniform3f(TEXT_COLOR_LOCATION, TextColor.r, TextColor.g, TextColor.b);
-	glUniformMatrix4fv(TEXT_MODEL_LOCATION, 1, GL_FALSE, value_ptr(ResultMatrix));
+	//glUniformMatrix4fv(TEXT_MODEL_LOCATION, 1, GL_FALSE, value_ptr(ResultMatrix));
 }
 
 void TextUtil::ProcessGlyphCache(wchar_t* Text) {

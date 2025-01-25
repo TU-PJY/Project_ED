@@ -15,3 +15,12 @@ GLfloat RandomUtil::Gen(int DistType, GLfloat Min, GLfloat Max) {
 
 	return 0.0;
 }
+
+GLfloat RandomUtil::Select(GLfloat Value1, GLfloat Value2) {
+	std::uniform_int_distribution UID{ 0, 1 };
+	int RandomNum = UID(RD);
+	if (RandomNum == 0)
+		return Value1;
+	else
+		return Value2;
+}

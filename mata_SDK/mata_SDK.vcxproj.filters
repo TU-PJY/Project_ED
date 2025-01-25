@@ -70,9 +70,6 @@
     <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]">
       <UniqueIdentifier>{afcdf49e-0875-4ec0-a2da-ed1926162779}</UniqueIdentifier>
     </Filter>
-    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ ShapeGenerator ]">
-      <UniqueIdentifier>{94cf7465-9668-4aae-a278-1a689d3f73b7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]">
       <UniqueIdentifier>{d2d0893b-69ae-4ace-94d2-278665d3d3a0}</UniqueIdentifier>
     </Filter>
@@ -192,6 +189,12 @@
     </Filter>
     <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ Nata ]">
       <UniqueIdentifier>{9c18ca9f-f121-419c-8de9-a2e391b8753a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]\[ ShapeGenerator ]">
+      <UniqueIdentifier>{94cf7465-9668-4aae-a278-1a689d3f73b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]\[ Shape ]">
+      <UniqueIdentifier>{63845853-9c6c-4002-8116-166a5bcdadcf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -313,10 +316,7 @@
       <Filter>[1]___________[ GameMode ]</Filter>
     </ClCompile>
     <ClCompile Include="ShapeGenerator.cpp">
-      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ ShapeGenerator ]</Filter>
-    </ClCompile>
-    <ClCompile Include="ObstacleShape.cpp">
-      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]</Filter>
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]\[ ShapeGenerator ]</Filter>
     </ClCompile>
     <ClCompile Include="Playerfeedback.cpp">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerFeedback ]</Filter>
@@ -341,6 +341,9 @@
     </ClCompile>
     <ClCompile Include="Nata.cpp">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ Nata ]</Filter>
+    </ClCompile>
+    <ClCompile Include="ObstacleShape.cpp">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]\[ Shape ]</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -480,10 +483,7 @@
       <Filter>[5]___________[ System ]\[ System Object ]</Filter>
     </ClInclude>
     <ClInclude Include="ShapeGenerator.h">
-      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ ShapeGenerator ]</Filter>
-    </ClInclude>
-    <ClInclude Include="ObstacleShape.h">
-      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]</Filter>
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]\[ ShapeGenerator ]</Filter>
     </ClInclude>
     <ClInclude Include="PlayerFeedback.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ PlayerFeedback ]</Filter>
@@ -523,6 +523,9 @@
     </ClInclude>
     <ClInclude Include="Nata.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Player ]\[ Nata ]</Filter>
+    </ClInclude>
+    <ClInclude Include="ObstacleShape.h">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]\[ Shape ]</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

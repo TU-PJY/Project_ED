@@ -16,7 +16,9 @@ private:
 
 	int PrevShape{-1};
 	int SameShapeCount{};
+	bool Created{};
 
 public:
 	void UpdateFunc(float FrameTime);
+	void CheckSameShape(int& RandomType, int PrevShape);
 };
