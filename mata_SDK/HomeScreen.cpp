@@ -3,6 +3,7 @@
 
 #include "PlayMode.h"
 #include "OptionMode.h"
+#include "Dot.h"
 
 HomeScreen::HomeScreen() {
 	// text init
@@ -72,8 +73,15 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 			soundUtil.PlaySound(Audio.GameStartSound, Ch);
 			ExitState = true;
 			ObjectTag = "";
+
 			if (auto Object = scene.Find("background"); Object)
 				Object->SetExitState();
+
+			for (int i = 0; i < scene.LayerSize(LAYER3); ++i) {
+				if (auto Object = scene.FindMulti("dot", LAYER3, i); Object)
+					Object->SetExitState();
+			}
+
 			scene.SwitchMode(PlayMode.Start);
 			break;
 
@@ -96,6 +104,10 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 		mathUtil.UpdateLerp(TextPosition.y, -0.8, 10.0, FrameTime);
 
 		UpdateArrow(FrameTime);
+
+		DotGenTimer.Update(FrameTime);
+		if (DotGenTimer.CheckMiliSec(0.5, 1, CHECK_AND_INTERPOLATE)) 
+			scene.AddObject(new Dot, "dot", LAYER3);
 	}
 	else
 		EnterToGame(FrameTime);

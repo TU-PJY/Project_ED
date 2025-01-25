@@ -33,6 +33,8 @@ private:
 	SoundChannel Ch{};
 	SoundChannel ChBGM{};
 
+	TimerUtil DotGenTimer{};
+
 	bool ExitState{};
 	bool CutOffSet{};
 
