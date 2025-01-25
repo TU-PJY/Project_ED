@@ -38,8 +38,12 @@ void ShapeGenerator::UpdateFunc(float FrameTime) {
 
 void ShapeGenerator::CheckSameShape(int& RandomType, int PrevShape) {
 	if (RandomType == PrevShape) {
-		++SameShapeCount;
-		if (SameShapeCount > 1) {
+		if (Random.Gen(RANDOM_TYPE_INT, 0, 1) == 0)
+			++SameShapeCount;
+		else
+			SameShapeCount = 3;
+
+		if (SameShapeCount > 2) {
 			switch (PrevShape) {
 			case ObTriangle:
 				++RandomType;

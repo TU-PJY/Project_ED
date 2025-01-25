@@ -48,8 +48,6 @@ void ClassED::UpdateFunc(float FrameTime) {
 		mathUtil.UpdateLerp(MovePosition.y, 0.0, 10.0, FrameTime * Global.PlaySpeed);
 
 		CamRotation = CameraControl->GetRotation();
-		if (CamRotation > 360.0 || CamRotation < -360.0)
-			CamRotation = 0.0;
 		MusicEffectValue = Global.BeatDetectValue * 0.05;
 
 		if (Global.GameOverState) 
