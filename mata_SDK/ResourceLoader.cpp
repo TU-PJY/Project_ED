@@ -26,16 +26,21 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 		FileName += ".png";
 		imageUtil.PreLoad(Sprite.Pentagon[i], FileName);
 	}
-
+	
 	// user data load
-	Global.UserSettingData.Load("GameData//UserSetting", Format.UsetSettingDataFormat);
+	Global.UserData.Load("GameData//UserData", Format.UserDataFormat);
+	if (Global.UserData.LoadDigitData("Tutorial", "Need") == 1)
+		Global.NeedTutorial = true;
+
+	// config data load
+	Global.UserSettingData.Load("GameData//ConfigData", Format.UsetSettingDataFormat);
 	Global.FullscreenMode = Global.UserSettingData.LoadDigitData("Option", "FullscreenMode");
 	Global.MusicPlayOption = Global.UserSettingData.LoadDigitData("Option", "MusicPlayOption");
 	Global.UseMusicEffect = Global.UserSettingData.LoadDigitData("Option", "UseMusicEffect");
 	Global.MusicEffectValue = Global.UserSettingData.LoadDigitData("Option", "MusicEffectValue");
 
 	// HighScore Data Load
-	Global.HighScoreData.Load("GameData//Data", Format.HighScoreDataFormat);
+	Global.HighScoreData.Load("GameData//ScoreData", Format.HighScoreDataFormat);
 	DigitDataSet HighScoreDataSet = Global.HighScoreData.LoadCategoryDigitData("HighScore");
 	size_t Size = HighScoreDataSet.size();
 	for (int i = 0; i < Size; ++i) 
@@ -84,6 +89,9 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 	imageUtil.PreLoad(Sprite.EnterIcon, "Assets//Image//UI//key//enter.png");
 	imageUtil.PreLoad(Sprite.ShiftIcon, "Assets//Image//UI//key//shift.png");
 	imageUtil.PreLoad(Sprite.EscapeIcon, "Assets//Image//UI//key//esc.png");
+
+	imageUtil.PreLoad(Sprite.TutorialImage[0], "Assets//Image//UI//tutorial_o.png");
+	imageUtil.PreLoad(Sprite.TutorialImage[1], "Assets//Image//UI//tutorial_x.png");
 
 	soundUtil.Load(Audio.KeyMoveSound, "Assets//Sound//UI//key_click.wav");
 	soundUtil.Load(Audio.KeySelectSound, "Assets//Sound//UI//key_select.wav");

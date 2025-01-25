@@ -4,6 +4,7 @@
 #include "PlayMode.h"
 #include "OptionMode.h"
 #include "Dot.h"
+#include "Tutorial.h"
 
 HomeScreen::HomeScreen() {
 	// text init
@@ -50,6 +51,9 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 	if (Event.Type == SPECIAL_KEY_DOWN) {
 		switch (Event.SpecialKey) {
 		case SK_ARROW_LEFT:
+			if (TutorialScreen)
+				break;
+
 			if (CurrentPage == 0) break;
 			soundUtil.PlaySound(Audio.KeyMoveSound, Ch);
 			--CurrentPage;
@@ -59,6 +63,9 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 			break;
 
 		case SK_ARROW_RIGHT:
+			if (TutorialScreen)
+				break;
+
 			if (CurrentPage == 4) break;
 			soundUtil.PlaySound(Audio.KeyMoveSound, Ch);
 			++CurrentPage;
@@ -73,23 +80,59 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 	else if (Event.Type == NORMAL_KEY_DOWN) {
 		switch (Event.NormalKey) {
 		case NK_ENTER:
-			soundUtil.StopSound(ChBGM);
-			soundUtil.PlaySound(Audio.GameStartSound, Ch);
-			ExitState = true;
-			ObjectTag = "";
+			if (!Global.NeedTutorial) {
+				soundUtil.StopSound(ChBGM);
+				soundUtil.PlaySound(Audio.GameStartSound, Ch);
+				ExitState = true;
+				ObjectTag = "";
 
-			if (auto Object = scene.Find("background"); Object)
-				Object->SetExitState();
-
-			for (int i = 0; i < scene.LayerSize(LAYER3); ++i) {
-				if (auto Object = scene.FindMulti("dot", LAYER3, i); Object)
+				if (auto Object = scene.Find("background"); Object)
 					Object->SetExitState();
+
+				for (int i = 0; i < scene.LayerSize(LAYER3); ++i) {
+					if (auto Object = scene.FindMulti("dot", LAYER3, i); Object)
+						Object->SetExitState();
+				}
+
+				scene.SwitchMode(PlayMode.Start);
 			}
 
-			scene.SwitchMode(PlayMode.Start);
+			else {
+				if (!TutorialScreen) {
+					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
+					scene.AddObject(new Tutorial, "tutorial", LAYER5, OBJECT_TYPE_STATIC);
+					TutorialScreen = true;
+				}
+
+				else {
+					soundUtil.StopSound(ChBGM);
+					soundUtil.PlaySound(Audio.GameStartSound, Ch);
+					ExitState = true;
+					ObjectTag = "";
+
+					if (auto Object = scene.Find("tutorial"); Object)
+						Object->SetExitState();
+
+					if (auto Object = scene.Find("background"); Object)
+						Object->SetExitState();
+
+					for (int i = 0; i < scene.LayerSize(LAYER3); ++i) {
+						if (auto Object = scene.FindMulti("dot", LAYER3, i); Object)
+							Object->SetExitState();
+					}
+
+					Global.UserData.UpdateDigitData("Tutorial", "Need", 0.0);
+					Global.NeedTutorial = false;
+
+					scene.SwitchMode(PlayMode.Start);
+				}
+			}
 			break;
 
 		case NK_ESCAPE:
+			if (TutorialScreen)
+				break;
+
 			soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 			soundUtil.SetFreqCutOff(ChBGM, 200);
 			CutOffSet = true;

@@ -26,8 +26,6 @@ public:
 	/////////////////////////////////////////////////////////////
 
 	static void Start() {
-		System.HideCursor();
-
 		if(auto Changer = scene.Find("color_changer"); !Changer)
 			scene.AddObject(new ColorChanger, "color_changer", LAYER1, OBJECT_TYPE_STATIC);
 

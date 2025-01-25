@@ -33,6 +33,8 @@ public:
 	Image MataLogo{};
 
 	Image ArrowIconRight, ArrowIconLeft, ArrowIconUp, ArrowIconDown, EnterIcon, EscapeIcon, ShiftIcon;
+
+	Image TutorialImage[2]{};
 };
 
 // Declare the sound resource or directory here. 
@@ -109,6 +111,10 @@ public:
 	SoundChannel BeatChannel{};
 	int PrevPlayTime[5]{};
 	GLfloat BeatDetectValue{};
+
+	// user data
+	FileUtil UserData{};
+	bool NeedTutorial{};
 };
 
 // Load your custom font.

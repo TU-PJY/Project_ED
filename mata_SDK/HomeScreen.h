@@ -42,6 +42,8 @@ private:
 	GLfloat KeyOpacity{};
 	GLfloat Size{ 0.1 };
 
+	bool TutorialScreen{};
+
 public:
 	HomeScreen();
 	void UpdateFunc(float FrameTime);

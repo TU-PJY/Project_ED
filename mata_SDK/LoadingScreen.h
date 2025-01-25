@@ -45,22 +45,6 @@ public:
 			if(SystemResourceLoadEnd && UserResourceLoadEnd) {
 				imageUtil.Map();
 
-				int FullscreenOption = Global.UserSettingData.LoadDigitData("Option", "FullscreenMode");
-				if (FullscreenOption == 1)
-					System.SwitchScreenState();
-				else {
-					RECT WorkArea;
-
-					if (SystemParametersInfo(SPI_GETWORKAREA, 0, &WorkArea, 0)) {
-						int AREA_H = WorkArea.right - WorkArea.left;
-						int AREA_V = WorkArea.bottom - WorkArea.top;
-						WIDTH = AREA_H;
-						HEIGHT = AREA_V;
-						glutReshapeWindow(WIDTH, HEIGHT);
-						glutPositionWindow(0, 0);
-					}
-				}
-
 				if (!ENABLE_INTRO_SCREEN) {
 #ifdef USE_SOUND_SYSTEM
 					soundUtil.Release(SysRes.INTRO_SOUND);
@@ -75,6 +59,23 @@ public:
 				else {
 					SpinnerOpacity -= FrameTime * 2.0;
 					if (EX.CheckClampValue(SpinnerOpacity, 0.0, CLAMP_LESS)) {
+						Global.FullscreenMode = (int)Global.UserSettingData.LoadDigitData("Option", "FullscreenMode");
+						if (Global.FullscreenMode == 1)
+							System.SwitchScreenState();
+
+						else {
+							RECT WorkArea;
+
+							if (SystemParametersInfo(SPI_GETWORKAREA, 0, &WorkArea, 0)) {
+								int AREA_H = WorkArea.right - WorkArea.left;
+								int AREA_V = WorkArea.bottom - WorkArea.top;
+								WIDTH = AREA_H;
+								HEIGHT = AREA_V;
+								glutReshapeWindow(WIDTH, HEIGHT);
+								glutPositionWindow(0, 0);
+							}
+						}
+
 						if (SHOW_FPS) {
 							scene.AddObject(new FPS_Indicator, "SDK_OBJECT_FPS_INDICATOR", EOL - 1, OBJECT_TYPE_STATIC);
 							Indicator = scene.Find("SDK_OBJECT_FPS_INDICATOR");

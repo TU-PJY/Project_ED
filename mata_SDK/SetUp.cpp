@@ -58,6 +58,8 @@ void SDKSystem::SetupWindow() {
 
 	const GLubyte* Version = glGetString(GL_VERSION);
 	std::cout << Version << std::endl;
+
+	System.HideCursor();
 }
 
 void SDKSystem::LoadShader() {

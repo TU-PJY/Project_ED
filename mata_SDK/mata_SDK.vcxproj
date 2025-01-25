@@ -257,6 +257,7 @@
     <ClInclude Include="ThreadUtil.h" />
     <ClInclude Include="TimerUtil.h" />
     <ClInclude Include="TransformUtil.h" />
+    <ClInclude Include="Tutorial.h" />
     <ClInclude Include="UiUtil.h" />
     <ClInclude Include="UtilPack.h" />
   </ItemGroup>

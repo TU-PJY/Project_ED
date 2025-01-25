@@ -134,6 +134,8 @@ public:
 							Global.HighScore[i] = HighScoreDataSet[i];
 							Global.NewHighScore[i] = false;
 						}
+						Global.UserData.UpdateDigitData("Tutorial", "Need", 1.0);
+						Global.NeedTutorial = true;
 						ResetWarning = false;
 						break;
 					}
@@ -454,7 +456,7 @@ public:
 		Text.Render(0.0, CreditTextHeight - 1.0, 0.1, L"음악 및 효과음");
 		Text.Render(0.0, CreditTextHeight - 1.1, 0.07, L"DJ Striden\nViraMiller\nPixabay");
 
-		Text.Render(0.0, CreditTextHeight - 1.5, 0.1, L"Made using FMOD Studio by Firelight Technologies Pty Ltd.");
+		Text.Render(0.0, CreditTextHeight - 1.5, 0.1, L"Made using FMOD API by Firelight Technologies Pty Ltd.");
 
 		BeginRender(RENDER_TYPE_STATIC);
 		transform.Move(TranslateMatrix, 0.0, CreditTextHeight - 1.75);
@@ -464,7 +466,7 @@ public:
 
 		BeginRender(RENDER_TYPE_STATIC);
 		SetColor(0.0, 0.0, 0.0);
-		transform.Move(TranslateMatrix, 0.0, CreditTextHeight - 2.4);
+		transform.Move(TranslateMatrix, 0.0, CreditTextHeight - 2.45);
 		RenderSprite(Sprite.MataLogo, CreditOpacity);
 	}
 
