@@ -155,6 +155,7 @@
     <ClCompile Include="FileUtil.cpp" />
     <ClCompile Include="FontUtil.cpp" />
     <ClCompile Include="HomeScreen.cpp" />
+    <ClCompile Include="KeyInfo.cpp" />
     <ClCompile Include="Library\tinyxml\tinystr.cpp" />
     <ClCompile Include="Library\tinyxml\tinyxml.cpp" />
     <ClCompile Include="Library\tinyxml\tinyxmlerror.cpp" />
@@ -200,7 +201,6 @@
     <ClInclude Include="CameraController.h" />
     <ClInclude Include="CameraUtil.h" />
     <ClInclude Include="CircleBrush.h" />
-    <ClInclude Include="Credit.h" />
     <ClInclude Include="Dot.h" />
     <ClInclude Include="ED.h" />
     <ClInclude Include="ClippingUtil.h" />
@@ -210,6 +210,7 @@
     <ClInclude Include="ErrorMessage.h" />
     <ClInclude Include="HomeMode.h" />
     <ClInclude Include="HomeScreen.h" />
+    <ClInclude Include="KeyInfo.h" />
     <ClInclude Include="Nata.h" />
     <ClInclude Include="OptionMode.h" />
     <ClInclude Include="OptionWindow.h" />

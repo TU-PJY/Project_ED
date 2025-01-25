@@ -45,6 +45,22 @@ public:
 			if(SystemResourceLoadEnd && UserResourceLoadEnd) {
 				imageUtil.Map();
 
+				int FullscreenOption = Global.UserSettingData.LoadDigitData("Option", "FullscreenMode");
+				if (FullscreenOption == 1)
+					System.SwitchScreenState();
+				else {
+					RECT WorkArea;
+
+					if (SystemParametersInfo(SPI_GETWORKAREA, 0, &WorkArea, 0)) {
+						int AREA_H = WorkArea.right - WorkArea.left;
+						int AREA_V = WorkArea.bottom - WorkArea.top;
+						WIDTH = AREA_H;
+						HEIGHT = AREA_V;
+						glutReshapeWindow(WIDTH, HEIGHT);
+						glutPositionWindow(0, 0);
+					}
+				}
+
 				if (!ENABLE_INTRO_SCREEN) {
 #ifdef USE_SOUND_SYSTEM
 					soundUtil.Release(SysRes.INTRO_SOUND);

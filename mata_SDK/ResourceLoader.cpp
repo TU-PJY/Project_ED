@@ -75,6 +75,16 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 	imageUtil.PreLoad(Sprite.Gradation, "Assets//Image//UI//gradation.png");
 	imageUtil.PreLoad(Sprite.Dot, "Assets//Image//UI//dot.png");
 
+	imageUtil.PreLoad(Sprite.MataLogo, "Assets//Image//UI//mata_logo.png");
+
+	imageUtil.PreLoad(Sprite.ArrowIconRight, "Assets//Image//UI//key//arrow-right.png");
+	imageUtil.PreLoad(Sprite.ArrowIconLeft, "Assets//Image//UI//key//arrow-left.png");
+	imageUtil.PreLoad(Sprite.ArrowIconUp, "Assets//Image//UI//key//arrow-up.png");
+	imageUtil.PreLoad(Sprite.ArrowIconDown, "Assets//Image//UI//key//arrow-down.png");
+	imageUtil.PreLoad(Sprite.EnterIcon, "Assets//Image//UI//key//enter.png");
+	imageUtil.PreLoad(Sprite.ShiftIcon, "Assets//Image//UI//key//shift.png");
+	imageUtil.PreLoad(Sprite.EscapeIcon, "Assets//Image//UI//key//esc.png");
+
 	soundUtil.Load(Audio.KeyMoveSound, "Assets//Sound//UI//key_click.wav");
 	soundUtil.Load(Audio.KeySelectSound, "Assets//Sound//UI//key_select.wav");
 	soundUtil.Load(Audio.OptionSelectSound, "Assets//Sound//UI//option_select.wav");
@@ -95,8 +105,6 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 	soundUtil.Load(Audio.Beat[4], "Assets//Sound//Beat//track_insane_beat.mp3", FMOD_LOOP_NORMAL);
 
 	soundUtil.Load(Audio.HomeBGM, "Assets//Sound//Track//track_home.mp3", FMOD_LOOP_NORMAL);
-
-	Global.CreditData.Load("Assets//Script//credit.xml");
 
 #ifdef USE_CUSTOM_FONT
 	fontUtil.LoadUserFont();

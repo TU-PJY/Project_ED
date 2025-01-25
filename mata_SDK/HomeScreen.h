@@ -4,6 +4,7 @@
 class HomeScreen : public GameObject {
 private:
 	TextUtil DiffText{};
+	TextUtil Text{};
 
 	std::string DiffString[5]{
 		"EASY",
@@ -38,11 +39,15 @@ private:
 	bool ExitState{};
 	bool CutOffSet{};
 
+	GLfloat KeyOpacity{};
+	GLfloat Size{ 0.1 };
+
 public:
 	HomeScreen();
 	void UpdateFunc(float FrameTime);
 	void RenderFunc();
 	void UpdateArrow(float FrameTime);
 	void EnterToGame(float FrameTime);
+	void RenderKeyInfo();
 	void InputKey(KeyEvent& Event);
 };

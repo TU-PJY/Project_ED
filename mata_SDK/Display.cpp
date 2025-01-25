@@ -41,11 +41,19 @@ void SDKSystem::SwitchScreenState() {
 		break;
 
 	case true:
-		WIDTH = WINDOW_WIDTH;
-		HEIGHT = WINDOW_HEIGHT;
-		glutReshapeWindow(WIDTH, HEIGHT);
-		glutPositionWindow(0, 0);
+	{
+		RECT WorkArea;
+
+		if (SystemParametersInfo(SPI_GETWORKAREA, 0, &WorkArea, 0)) {
+			int AREA_H = WorkArea.right - WorkArea.left;
+			int AREA_V = WorkArea.bottom - WorkArea.top;
+			WIDTH = AREA_H;
+			HEIGHT = AREA_V;
+			glutReshapeWindow(WIDTH, HEIGHT);
+			glutPositionWindow(0, 0);
+		}
 		FullscreenState = false;
+	}
 		break;
 	}
 }

@@ -40,6 +40,7 @@ public:
 			scene.AddObject(new ClassNata, "Nata", LAYER4, OBJECT_TYPE_STATIC);
 
 		scene.AddObject(new HomeScreen, "home_screen", LAYER5, OBJECT_TYPE_STATIC);
+
 		SetUp();
 	}
 

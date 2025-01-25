@@ -29,6 +29,10 @@ public:
 	Image MachineFront{};
 	Image MachineBack{};
 	Image MachineLight{};
+
+	Image MataLogo{};
+
+	Image ArrowIconRight, ArrowIconLeft, ArrowIconUp, ArrowIconDown, EnterIcon, EscapeIcon, ShiftIcon;
 };
 
 // Declare the sound resource or directory here. 
@@ -63,7 +67,11 @@ public:
 		{DATA_TYPE_DIGIT, "Option", "FullscreenMode", 1.0, ""},
 		{DATA_TYPE_DIGIT, "Option", "MusicPlayOption", 0, ""},
 		{DATA_TYPE_DIGIT, "Option", "UseMusicEffect", 1.0, ""},
-		{DATA_TYPE_DIGIT, "Option", "MusicEffectValue", 1.0, ""},
+		{DATA_TYPE_DIGIT, "Option", "MusicEffectValue", 1.0, ""}
+	};
+
+	DataFormat UserDataFormat = {
+		{DATA_TYPE_DIGIT, "Tutorial", "Need", 1.0, ""}
 	};
 };
 
@@ -101,8 +109,6 @@ public:
 	SoundChannel BeatChannel{};
 	int PrevPlayTime[5]{};
 	GLfloat BeatDetectValue{};
-
-	ScriptUtil CreditData{};
 };
 
 // Load your custom font.

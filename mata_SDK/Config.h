@@ -6,8 +6,8 @@
 constexpr const char* WINDOW_NAME = "ED: SUPER DREAM";
 
 // window size
-constexpr int WINDOW_WIDTH = 1200;
-constexpr int WINDOW_HEIGHT = 800;
+constexpr int WINDOW_WIDTH = 1000;
+constexpr int WINDOW_HEIGHT = 600;
 
 // fullscreen option
 constexpr bool FULL_SCREEN_OPTION = false;

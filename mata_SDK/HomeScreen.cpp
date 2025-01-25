@@ -11,6 +11,10 @@ HomeScreen::HomeScreen() {
 	DiffText.SetAlign(ALIGN_MIDDLE);
 	DiffText.SetHeightAlign(HEIGHT_ALIGN_MIDDLE);
 
+	Text.Init(L"에스코어 드림 3 Light", FW_DONTCARE);
+	Text.SetAlign(ALIGN_MIDDLE);
+	Text.SetHeightAlign(HEIGHT_ALIGN_MIDDLE);
+
 	CurrentPage = Global.Diff;
 
 	// high score udate
@@ -102,6 +106,7 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 	if (!ExitState) {
 		mathUtil.UpdateLerp(TextPosition.x, 0.0, 10.0, FrameTime);
 		mathUtil.UpdateLerp(TextPosition.y, -0.8, 10.0, FrameTime);
+		mathUtil.UpdateLerp(KeyOpacity, 1.0, 10.0, FrameTime);
 
 		UpdateArrow(FrameTime);
 
@@ -152,6 +157,8 @@ void HomeScreen::RenderFunc() {
 		transform.Move(TranslateMatrix, 0.0, TitleHeight);
 		transform.Scale(ScaleMatrix, TitleSize, TitleSize);
 		RenderSprite(Sprite.Title);
+
+		RenderKeyInfo();
 	}
 }
 
@@ -180,7 +187,36 @@ void HomeScreen::EnterToGame(float FrameTime) {
 	mathUtil.UpdateLerp(TextPosition.y, -1.5, 5.0, FrameTime);
 	mathUtil.UpdateLerp(ArrowPosition, WindowRect.rx + 0.5, 5.0, FrameTime);
 	mathUtil.UpdateLerp(GradationOpacity, 0.0, 5.0, FrameTime);
+	mathUtil.UpdateLerp(KeyOpacity, 0.0, 5.0, FrameTime);
 
 	if (TitleHeight >= 1.499)
 		scene.DeleteObject(this);
+}
+
+void HomeScreen::RenderKeyInfo() {
+	Text.SetOpacity(KeyOpacity);
+	Text.SetColor(Global.ObjectColor.x + 0.2, Global.ObjectColor.y + 0.2, Global.ObjectColor.z + 0.2);
+	Text.SetAlign(ALIGN_DEFAULT);
+
+	BeginRender(RENDER_TYPE_STATIC);
+	SetColor(Global.ObjectColor.x + 0.2, Global.ObjectColor.y + 0.2, Global.ObjectColor.z + 0.2);
+
+	transform.Move(TranslateMatrix, WindowRect.lx + 0.15, -0.65);
+	transform.Scale(ScaleMatrix, Size, Size);
+	RenderSprite(Sprite.ArrowIconLeft, KeyOpacity);
+
+	transform.Move(TranslateMatrix, Size, 0.0);
+	RenderSprite(Sprite.ArrowIconRight, KeyOpacity);
+
+	transform.Move(TranslateMatrix, -Size * 0.5, -Size);
+	RenderSprite(Sprite.EnterIcon, KeyOpacity);
+
+	transform.Move(TranslateMatrix, 0.0, -Size);
+	RenderSprite(Sprite.EscapeIcon, KeyOpacity);
+
+	Text.Render(WindowRect.lx + 0.15 + Size * 2.0, -0.65 + 0.01, 0.05, L"난이도 선택");
+	Text.Render(WindowRect.lx + 0.15 + Size * 2.0, -0.65 - Size + 0.01, 0.05, L"꿈꾸기 시작");
+	Text.Render(WindowRect.lx + 0.15 + Size * 2.0, -0.65 - Size * 2.0 + 0.01, 0.05, L"메인메뉴");
+
+	Text.SetAlign(ALIGN_MIDDLE);
 }

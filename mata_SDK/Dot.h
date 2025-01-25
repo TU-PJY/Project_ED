@@ -5,7 +5,7 @@
 class Dot : public GameObject {
 private:
 	glm::vec2 Position{};
-	GLfloat Opacity{1.0};
+	GLfloat Opacity{1.5};
 	GLfloat Speed{};
 	bool ExitState{};
 
@@ -14,13 +14,13 @@ private:
 public:
 	Dot() {
 		Position.x = Random.Gen(RANDOM_TYPE_REAL, WindowRect.lx + 0.05, WindowRect.rx - 0.05);
-		Position.y = -1.2;
+		Position.y = -1.15;
 		Speed = Random.Gen(RANDOM_TYPE_REAL, 0.3, 1.0);
 	}
 
 	void UpdateFunc(float FrameTime) {
 		if (!ExitState) {
-			Opacity -= FrameTime * 0.3;
+			Opacity -= FrameTime * 0.4;
 			Position.y += FrameTime * Speed;
 		}
 		else 

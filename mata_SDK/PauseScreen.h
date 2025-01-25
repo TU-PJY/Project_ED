@@ -24,6 +24,9 @@ private:
 
 	int CurrentPauseIndex{}, CurrentQuestionIndex{};
 
+	GLfloat KeyOpacity{};
+	GLfloat Size{ 0.1 };
+
 	bool ExitScreenState{};
 
 	SoundChannel Ch{};
@@ -156,6 +159,7 @@ public:
 
 			mathUtil.UpdateLerp(PauseTextHeight, DestPauseTextHeight, 20.0, FrameTime);
 			mathUtil.UpdateLerp(QuestionTextHeight, DestQuestionTextHeight, 20.0, FrameTime);
+			mathUtil.UpdateLerp(KeyOpacity, 1.0, 20.0, FrameTime);
 		}
 
 		else {
@@ -163,6 +167,7 @@ public:
 			mathUtil.UpdateLerp(BlockOpacity, 0.0, 20.0, FrameTime);
 			mathUtil.UpdateLerp(PauseTextOpacity, 0.0, 20.0, FrameTime);
 			mathUtil.UpdateLerp(QuestionTextOpacity, 0.0, 20.0, FrameTime);
+			mathUtil.UpdateLerp(KeyOpacity, 0.0, 20.0, FrameTime);
 
 			if (BackOpacity <= 0.0001)
 				scene.DeleteObject(this);
@@ -208,6 +213,8 @@ public:
 			Text.Render(0.0, 0.02 + QuestionTextHeight, 0.1, L"예");
 			Text.Render(0.0, -0.16 + 0.02 + QuestionTextHeight, 0.1, L"아니오");
 		}
+
+		RenderKeyInfo();
 	}
 
 	void ExitToHomeMode() {
@@ -237,5 +244,34 @@ public:
 		ExitScreenState = true;
 		soundUtil.PauseSound(Global.TrackChannel, false);
 		soundUtil.PauseSound(Global.BeatChannel, false);
+	}
+
+	void RenderKeyInfo() {
+		Text.SetOpacity(KeyOpacity);
+		Text.SetAlign(ALIGN_DEFAULT);
+		BeginRender(RENDER_TYPE_STATIC);
+		SetColor(1.0, 1.0, 1.0);
+		transform.Move(TranslateMatrix, WindowRect.lx + 0.15, -0.65);
+		transform.Scale(ScaleMatrix, Size, Size);
+		RenderSprite(Sprite.ArrowIconLeft, KeyOpacity);
+
+		transform.Move(TranslateMatrix, Size, 0.0);
+		RenderSprite(Sprite.ArrowIconRight, KeyOpacity);
+
+		transform.Move(TranslateMatrix, -Size * 0.5, -Size);
+		RenderSprite(Sprite.EnterIcon, KeyOpacity);
+
+		transform.Move(TranslateMatrix, 0.0, -Size);
+		RenderSprite(Sprite.EscapeIcon, KeyOpacity);
+
+		Text.Render(WindowRect.lx + 0.15 + Size * 2.0, -0.65 + 0.01, 0.05, L"이동");
+		Text.Render(WindowRect.lx + 0.15 + Size * 2.0, -0.65 - Size + 0.01, 0.05, L"선택");
+
+		if (ExitToHome || ExitToDesktop)
+			Text.Render(WindowRect.lx + 0.15 + Size * 2.0, -0.65 - Size * 2.0 + 0.01, 0.05, L"뒤로가기");
+		else
+			Text.Render(WindowRect.lx + 0.15 + Size * 2.0, -0.65 - Size * 2.0 + 0.01, 0.05, L"게임으로 돌아가기");
+
+		Text.SetAlign(ALIGN_MIDDLE);
 	}
 };
