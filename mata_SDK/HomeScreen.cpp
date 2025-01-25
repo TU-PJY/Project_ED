@@ -92,6 +92,7 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 	if (!ExitState) {
 		mathUtil.UpdateLerp(TextPosition.x, 0.0, 10.0, FrameTime);
 		mathUtil.UpdateLerp(TextPosition.y, -0.8, 10.0, FrameTime);
+		mathUtil.UpdateLerp(GradationOpacity, 1.0, 10.0, FrameTime);
 
 		UpdateArrow(FrameTime);
 	}
@@ -105,9 +106,13 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 }
 
 void HomeScreen::RenderFunc() {
-	if (scene.Mode() != "OptionMode") {
-		SetColor(Global.ObjectColor);
+	SetColor(Global.ObjectColor);
+	BeginRender(RENDER_TYPE_STATIC);
+	transform.Move(TranslateMatrix, 0.0, -0.5);
+	transform.Scale(ScaleMatrix, WindowRect.rx - WindowRect.lx, 2.0);
+	RenderSprite(Sprite.Gradation, GradationOpacity);
 
+	if (scene.Mode() != "OptionMode") {
 		if (Global.NewHighScore[CurrentPage]) {
 			BeginRender(RENDER_TYPE_STATIC);
 			transform.Move(TranslateMatrix, TextPosition.x, TextPosition.y);
@@ -117,7 +122,7 @@ void HomeScreen::RenderFunc() {
 		}
 
 		// diff text
-		DiffText.SetColor(Global.ObjectColor.x, Global.ObjectColor.y, Global.ObjectColor.z);
+		DiffText.SetColor(Global.ObjectColor.x + 0.2, Global.ObjectColor.y + 0.2, Global.ObjectColor.z + 0.2);
 		DiffText.RenderStr(TextPosition.x, TextPosition.y, 0.2, DiffString[CurrentPage]);
 		DiffText.Render(TextPosition.x, TextPosition.y + 0.1, 0.11, L"HIGH SCORE %d", Global.HighScore[CurrentPage]);
 
@@ -165,6 +170,7 @@ void HomeScreen::EnterToGame(float FrameTime) {
 	mathUtil.UpdateLerp(TitleHeight, 1.5, 5.0, FrameTime);
 	mathUtil.UpdateLerp(TextPosition.y, -1.5, 5.0, FrameTime);
 	mathUtil.UpdateLerp(ArrowPosition, WindowRect.rx + 0.5, 5.0, FrameTime);
+	mathUtil.UpdateLerp(GradationOpacity, 0.0, 5.0, FrameTime);
 
 	if (TitleHeight >= 1.499)
 		scene.DeleteObject(this);

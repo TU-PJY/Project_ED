@@ -18,6 +18,8 @@ public:
 
 	Image Title{};
 	Image ArrowRight{}, ArrowLeft{};
+	Image Gradation{};
+	Image Dot{};
 
 	Image HighLight{};
 

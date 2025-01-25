@@ -24,6 +24,8 @@ private:
 	bool CursorOnArrow[2]{};
 	GLfloat ArrowOpacity[2]{};
 
+	GLfloat GradationOpacity{};
+
 	glm::vec2 TextPosition{ 0.0, -1.5 };
 
 	GLfloat HighLightRotation{};

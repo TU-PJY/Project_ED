@@ -166,9 +166,6 @@
     <Filter Include="[5]___________[ System ]\[ Util ]\[ Math Util ]">
       <UniqueIdentifier>{4a85a4fd-aaad-4cd4-9601-add0201898fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="[5]___________[ System ]\[ Util ]\[ Compute Util ]">
-      <UniqueIdentifier>{f7456d94-6103-44fc-b1c5-33fe9e736f54}</UniqueIdentifier>
-    </Filter>
     <Filter Include="[5]___________[ System ]\[ Util ]\[ String Util ]">
       <UniqueIdentifier>{0d426163-3f7a-4344-9513-1c4da459934c}</UniqueIdentifier>
     </Filter>
@@ -195,6 +192,9 @@
     </Filter>
     <Filter Include="[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]\[ Shape ]">
       <UniqueIdentifier>{63845853-9c6c-4002-8116-166a5bcdadcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="[5]___________[ System ]\[ Util ]\[ Compute Util ]">
+      <UniqueIdentifier>{f7456d94-6103-44fc-b1c5-33fe9e736f54}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
