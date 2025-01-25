@@ -7,6 +7,7 @@
 #include "ColorChanger.h"
 #include "ED.h"
 #include "Nata.h"
+#include "BackGround.h"
 
 class Home_Mode {
 public:
@@ -29,6 +30,8 @@ public:
 
 		if(auto Changer = scene.Find("color_changer"); !Changer)
 			scene.AddObject(new ColorChanger, "color_changer", LAYER1, OBJECT_TYPE_STATIC);
+
+		scene.AddObject(new BackGround, "background", LAYER1, OBJECT_TYPE_STATIC);
 
 		if (auto ED = scene.Find("ED"); !ED)
 			scene.AddObject(new ClassED, "ED", LAYER2, OBJECT_TYPE_STATIC);

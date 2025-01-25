@@ -527,6 +527,9 @@
     <ClInclude Include="ObstacleShape.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Obstacle Shape ]\[ Shape ]</Filter>
     </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Home Screen ]</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ModeTemplate_Manual.txt">

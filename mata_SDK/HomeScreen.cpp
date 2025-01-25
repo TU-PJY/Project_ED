@@ -72,6 +72,8 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 			soundUtil.PlaySound(Audio.GameStartSound, Ch);
 			ExitState = true;
 			ObjectTag = "";
+			if (auto Object = scene.Find("background"); Object)
+				Object->SetExitState();
 			scene.SwitchMode(PlayMode.Start);
 			break;
 
@@ -92,7 +94,6 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 	if (!ExitState) {
 		mathUtil.UpdateLerp(TextPosition.x, 0.0, 10.0, FrameTime);
 		mathUtil.UpdateLerp(TextPosition.y, -0.8, 10.0, FrameTime);
-		mathUtil.UpdateLerp(GradationOpacity, 1.0, 10.0, FrameTime);
 
 		UpdateArrow(FrameTime);
 	}
@@ -107,10 +108,6 @@ void HomeScreen::UpdateFunc(float FrameTime) {
 
 void HomeScreen::RenderFunc() {
 	SetColor(Global.ObjectColor);
-	BeginRender(RENDER_TYPE_STATIC);
-	transform.Move(TranslateMatrix, 0.0, -0.5);
-	transform.Scale(ScaleMatrix, WindowRect.rx - WindowRect.lx, 2.0);
-	RenderSprite(Sprite.Gradation, GradationOpacity);
 
 	if (scene.Mode() != "OptionMode") {
 		if (Global.NewHighScore[CurrentPage]) {
