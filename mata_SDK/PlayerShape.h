@@ -28,6 +28,10 @@ private:
 
 	bool ExitState{};
 
+	RandomUtil Random{};
+	int RandomIndex{};
+	unsigned int PlayLocation{};
+
 public:
 	PlayerShape();
 	void InputKey(KeyEvent& Event);

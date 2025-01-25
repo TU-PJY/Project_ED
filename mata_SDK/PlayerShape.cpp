@@ -1,8 +1,28 @@
 #include "PlayerShape.h"
 #include "Scene.h"
 #include "PauseMode.h"
+#include <array>
+
+typedef struct {
+	unsigned int Minute;
+	unsigned int Second;
+}PlayPosition;
+
+unsigned int ToMiliSec(unsigned int minutes, unsigned int seconds) {
+	return (minutes * 60 + seconds) * 1000;
+}
+
+std::array<std::vector<PlayPosition>, 5> RandomPlayPoint =
+{
+	std::vector<PlayPosition>{{0, 4}, {0, 19}, {1, 6}, {3, 10}}, // easy, 4
+	std::vector<PlayPosition>{{0, 0}, {0, 28}, {0, 55 }, {1, 22}, {2, 18}, {3, 26}}, // normal 6
+	std::vector<PlayPosition>{{0, 15}, {0, 29}, {0, 57}, {1, 24}, {2, 18}, {4, 13}}, // hard 6
+	std::vector<PlayPosition>{{0, 12}, {0, 24}, {0, 48}, {1, 48}}, // harder 4
+	std::vector<PlayPosition>{{0, 12}, {0, 36}, { 1, 12 }, {1, 36}} // insane 4
+};
 
 GameObject* PlayerShapePtr;
+
 
 PlayerShape::PlayerShape() {
 	PlayerShapePtr = this; 
@@ -16,8 +36,14 @@ PlayerShape::PlayerShape() {
 		break;
 
 	case 1:
-		soundUtil.PlaySound(Audio.Track[Global.Diff], Global.TrackChannel, Global.PrevPlayTime[Global.Diff]);
-		soundUtil.PlaySound(Audio.Beat[Global.Diff], Global.BeatChannel, Global.PrevPlayTime[Global.Diff]);
+		if (Global.Diff == 0 || Global.Diff == 3 || Global.Diff == 4)
+			RandomIndex = Random.Gen(RANDOM_TYPE_INT, 0, 3);
+		else if(Global.Diff == 1 || Global.Diff == 2)
+			RandomIndex = Random.Gen(RANDOM_TYPE_INT, 0, 5);
+		
+		PlayLocation = ToMiliSec(RandomPlayPoint[Global.Diff][RandomIndex].Minute, RandomPlayPoint[Global.Diff][RandomIndex].Second);
+		soundUtil.PlaySound(Audio.Track[Global.Diff], Global.TrackChannel, PlayLocation);
+		soundUtil.PlaySound(Audio.Beat[Global.Diff], Global.BeatChannel, PlayLocation);
 		break;
 
 	case 2:
