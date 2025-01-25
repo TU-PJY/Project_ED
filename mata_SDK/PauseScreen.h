@@ -253,10 +253,10 @@ public:
 		SetColor(1.0, 1.0, 1.0);
 		transform.Move(TranslateMatrix, WindowRect.lx + 0.15, -0.65);
 		transform.Scale(ScaleMatrix, Size, Size);
-		RenderSprite(Sprite.ArrowIconLeft, KeyOpacity);
+		RenderSprite(Sprite.ArrowIconUp, KeyOpacity);
 
 		transform.Move(TranslateMatrix, Size, 0.0);
-		RenderSprite(Sprite.ArrowIconRight, KeyOpacity);
+		RenderSprite(Sprite.ArrowIconDown, KeyOpacity);
 
 		transform.Move(TranslateMatrix, -Size * 0.5, -Size);
 		RenderSprite(Sprite.EnterIcon, KeyOpacity);
