@@ -96,6 +96,8 @@ DWORD WINAPI ResourceLoader(LPVOID Param) {
 
 	soundUtil.Load(Audio.HomeBGM, "Assets//Sound//Track//track_home.mp3", FMOD_LOOP_NORMAL);
 
+	Global.CreditData.Load("Assets//Script//credit.xml");
+
 #ifdef USE_CUSTOM_FONT
 	fontUtil.LoadUserFont();
 #endif

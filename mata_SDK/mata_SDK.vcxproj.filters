@@ -196,6 +196,9 @@
     <Filter Include="[5]___________[ System ]\[ Util ]\[ Compute Util ]">
       <UniqueIdentifier>{f7456d94-6103-44fc-b1c5-33fe9e736f54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="[2]___________[ Object ]\[2][ Floating Object ]\[ Credit ]">
+      <UniqueIdentifier>{bb91fee0-363c-4a6f-8e55-859e8ea14d2a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -532,6 +535,9 @@
     </ClInclude>
     <ClInclude Include="Dot.h">
       <Filter>[2]___________[ Object ]\[1][ Main Object ]\[ Home Screen ]</Filter>
+    </ClInclude>
+    <ClInclude Include="Credit.h">
+      <Filter>[2]___________[ Object ]\[2][ Floating Object ]\[ Credit ]</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "GameObject.h"
 #include "Scene.h"
+#include "Credit.h"
 
 class OptionWindow : public GameObject {
 private:
@@ -63,8 +64,15 @@ public:
 			case NK_ENTER:
 				if (!SettingScreen) {
 					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
+					if (CurrentIndex == 3) {
+						scene.AddObject(new Credit, "credit", LAYER4, OBJECT_TYPE_STATIC);
+					//	if (auto Object = scene.Find("credit"); Object)
+						//	OptionMode.AddControlObject(Object);
+						ExitScreenState = true;
+						ObjectTag = "";
+					}
 
-					if (CurrentIndex == 2)
+					else if (CurrentIndex == 2)
 						System.Exit();
 
 					else if (CurrentIndex == 1) {
@@ -132,8 +140,8 @@ public:
 					DestTextHeight -= 0.16;
 
 					if (CurrentIndex < 0) {
-						CurrentIndex = 2;
-						DestTextHeight = 0.16 * 2;
+						CurrentIndex = 3;
+						DestTextHeight = 0.16 * 3;
 					}
 				}
 
@@ -162,7 +170,7 @@ public:
 				if (!SettingScreen) {
 					++CurrentIndex;
 					DestTextHeight += 0.16;
-					if (CurrentIndex > 2) {
+					if (CurrentIndex > 3) {
 						CurrentIndex = 0;
 						DestTextHeight = 0.0;
 					}

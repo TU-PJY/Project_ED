@@ -3,7 +3,7 @@
 #include "CameraController.h"
 
 void ClassED::UpdateFunc(float FrameTime) {
-	if (scene.Mode() == "HomeMode" || scene.Mode() == "OptionMode") {
+	if (scene.Mode() == "HomeMode" || scene.Mode() == "OptionMode" || scene.Mode() == "CreditMode") {
 		if (EDIndex == 4)
 			EDIndex = 0;
 

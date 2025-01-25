@@ -1,7 +1,7 @@
-#include "OptionMode.h"
 #include "HomeMode.h"
 #include "PlayMode.h"
 #include "PauseMode.h"
+#include "OptionMode.h"
 
 //////////////////////////////////// Start Mode Option
 // Specifies the mode to run first when the program starts.

@@ -200,6 +200,7 @@
     <ClInclude Include="CameraController.h" />
     <ClInclude Include="CameraUtil.h" />
     <ClInclude Include="CircleBrush.h" />
+    <ClInclude Include="Credit.h" />
     <ClInclude Include="Dot.h" />
     <ClInclude Include="ED.h" />
     <ClInclude Include="ClippingUtil.h" />

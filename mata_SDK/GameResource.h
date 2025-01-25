@@ -1,6 +1,7 @@
 #pragma once
 #include "SDKHeader.h"
 #include "FileUtil.h"
+#include "ScriptUtil.h"
 #include "SoundUtil.h"
 #include "ImageUtil.h"
 #include "FontUtil.h"
@@ -100,6 +101,8 @@ public:
 	SoundChannel BeatChannel{};
 	int PrevPlayTime[5]{};
 	GLfloat BeatDetectValue{};
+
+	ScriptUtil CreditData{};
 };
 
 // Load your custom font.

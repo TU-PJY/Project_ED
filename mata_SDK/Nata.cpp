@@ -7,7 +7,7 @@ ClassNata::ClassNata(){
 }
 
 void ClassNata::UpdateFunc(float FrameTime) {
-	if (scene.Mode() == "HomeMode" || scene.Mode() == "OptionMode") {
+	if (scene.Mode() == "HomeMode" || scene.Mode() == "OptionMode" || scene.Mode() == "CreditMode") {
 		mathUtil.UpdateLerp(Position.y, ED->GetPosition().y + 0.4, 3.0, FrameTime);
 		mathUtil.UpdateLerp(Position.x, -0.5, 5.0, FrameTime);
 		mathUtil.UpdateLerp(MovePosition.y, 0.0, 5.0, FrameTime);

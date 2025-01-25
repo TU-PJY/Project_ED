@@ -61,7 +61,7 @@ void TextUtil::RenderStr(GLfloat X, GLfloat Y, GLfloat Size, std::string& Str) {
 }
 
 void TextUtil::Render(GLfloat X, GLfloat Y, GLfloat Size, const wchar_t* Format, ...) {
-	wchar_t Text[512]{};
+	wchar_t Text[1024]{};
 	va_list Args{};
 
 	va_start(Args, Format);
