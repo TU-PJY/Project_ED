@@ -129,6 +129,9 @@ public:
 	virtual glm::vec2 GetPosition() { return {};}
 	virtual GLfloat GetSize() { return{}; }
 
+	// tutorial function
+	virtual bool GetContinueAble() { return{}; }
+
 private:
 	void PrepareRender(Image& ImageStruct);
 	void PrepareRender(SpriteSheet& SpriteSheetStruct);

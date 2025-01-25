@@ -8,11 +8,13 @@ private:
 	bool ExitState{};
 	TextUtil Text{};
 	
-	GLfloat TutorialOpacity[4]{};
-	bool TutortialOpacityWork[4]{};
+	GLfloat TutorialOpacity[5]{};
+	bool TutorialOpacityWork[5]{};
 
 	TimerUtil Timer{};
 	int TutorialIndex{};
+
+	bool ContinueAble{};
 
 public:
 	Tutorial() {
@@ -27,17 +29,20 @@ public:
 			mathUtil.UpdateLerp(Opacity, 1.0, 10.0, FrameTime);
 			Timer.Update(FrameTime);
 
-			if (TutorialIndex < 4 && Timer.CheckSec(2, CHECK_AND_INTERPOLATE)) {
-				TutortialOpacityWork[TutorialIndex] = true;
+			if (TutorialIndex < 5 && Timer.CheckSec(2, CHECK_AND_INTERPOLATE)) {
+				TutorialOpacityWork[TutorialIndex] = true;
 				++TutorialIndex;
 			}
 
-			for (int i = 0; i < 4; ++i) {
-				if (TutortialOpacityWork[i]) {
+			for (int i = 0; i < 5; ++i) {
+				if (TutorialOpacityWork[i]) {
 					TutorialOpacity[i] += FrameTime * 1.5;
 					EX.ClampValue(TutorialOpacity[i], 1.0, CLAMP_GREATER);
 				}
 			}
+
+			if (TutorialOpacity[3] >= 1.0) 
+				ContinueAble = true;
 		}
 		else {
 			mathUtil.UpdateLerp(Opacity, 0.0, 10.0, FrameTime);
@@ -47,7 +52,7 @@ public:
 	}
 
 	void RenderFunc() {
-		SetColor(0.0, 0.0, 0.0);
+		SetColor(0.1, 0.1, 0.1);
 		BeginRender(RENDER_TYPE_STATIC);
 		transform.Scale(ScaleMatrix, WindowRect.rx - WindowRect.lx, WindowRect.ry - WindowRect.ly);
 		RenderSprite(SysRes.COLOR_TEXTURE, Opacity);
@@ -61,6 +66,7 @@ public:
 		Text.SetOpacity(TutorialOpacity[2] * Opacity);
 		Text.Render(0.5, 0.6, 0.07, L"만약 다른 도형과 부딪히게 되면\n꿈에서 깨게 될거예요.");
 
+		SetColor(0.0, 0.0, 0.0);
 		BeginRender(RENDER_TYPE_STATIC);
 		transform.Scale(ScaleMatrix, 1.0, 1.0);
 		transform.Move(TranslateMatrix, -0.5, 0.0);
@@ -100,10 +106,24 @@ public:
 
 		transform.Move(TranslateMatrix, 0.2, 0.0);
 		RenderSprite(Sprite.ShiftIcon, TutorialOpacity[3] * Opacity, true);
+
+		BeginRender(RENDER_TYPE_STATIC);
+		transform.Move(TranslateMatrix, WindowRect.rx - 0.2, -0.8);
+		transform.Scale(ScaleMatrix, 0.2, 0.2);
+		RenderSprite(Sprite.EnterIcon, TutorialOpacity[4] * Opacity);
+
+		Text.SetAlign(ALIGN_LEFT);
+		Text.SetOpacity(TutorialOpacity[4] * Opacity);
+		Text.Render(WindowRect.rx - 0.35, -0.8, 0.07, L"꿈 속으로 빠져들기");
+		Text.SetAlign(ALIGN_MIDDLE);
 	}
 
 	void SetExitState() {
 		ExitState = true;
 		ObjectTag = "";
+	}
+
+	bool GetContinueAble() {
+		return ContinueAble;
 	}
 };

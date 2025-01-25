@@ -44,6 +44,8 @@ private:
 
 	bool TutorialScreen{};
 
+	GameObject* TuPtr{};
+
 public:
 	HomeScreen();
 	void UpdateFunc(float FrameTime);

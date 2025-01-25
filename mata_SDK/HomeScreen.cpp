@@ -101,30 +101,35 @@ void HomeScreen::InputKey(KeyEvent& Event) {
 				if (!TutorialScreen) {
 					soundUtil.PlaySound(Audio.KeySelectSound, Ch);
 					scene.AddObject(new Tutorial, "tutorial", LAYER5, OBJECT_TYPE_STATIC);
+					TuPtr = scene.Find("tutorial");
 					TutorialScreen = true;
 				}
 
 				else {
-					soundUtil.StopSound(ChBGM);
-					soundUtil.PlaySound(Audio.GameStartSound, Ch);
-					ExitState = true;
-					ObjectTag = "";
+					if (TuPtr) {
+						if (TuPtr->GetContinueAble()) {
+							soundUtil.StopSound(ChBGM);
+							soundUtil.PlaySound(Audio.GameStartSound, Ch);
+							ExitState = true;
+							ObjectTag = "";
 
-					if (auto Object = scene.Find("tutorial"); Object)
-						Object->SetExitState();
+							TuPtr->SetExitState();
+							TuPtr = nullptr;
 
-					if (auto Object = scene.Find("background"); Object)
-						Object->SetExitState();
+							if (auto Back = scene.Find("background"); Back)
+								Back->SetExitState();
 
-					for (int i = 0; i < scene.LayerSize(LAYER3); ++i) {
-						if (auto Object = scene.FindMulti("dot", LAYER3, i); Object)
-							Object->SetExitState();
+							for (int i = 0; i < scene.LayerSize(LAYER3); ++i) {
+								if (auto Dot = scene.FindMulti("dot", LAYER3, i); Dot)
+									Dot->SetExitState();
+							}
+
+							Global.UserData.UpdateDigitData("Tutorial", "Need", 0.0);
+							Global.NeedTutorial = false;
+
+							scene.SwitchMode(PlayMode.Start);
+						}
 					}
-
-					Global.UserData.UpdateDigitData("Tutorial", "Need", 0.0);
-					Global.NeedTutorial = false;
-
-					scene.SwitchMode(PlayMode.Start);
 				}
 			}
 			break;
