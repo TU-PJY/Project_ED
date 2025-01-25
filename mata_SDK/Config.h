@@ -26,7 +26,7 @@ constexpr int FRAME_LIMITS = 0;
 
 //////////////////////////////////// Development options
 // console window option
-constexpr bool SHOW_CONSOLE = true;
+constexpr bool SHOW_CONSOLE = false;
 
 // FPS indicator option
 constexpr bool SHOW_FPS = false;

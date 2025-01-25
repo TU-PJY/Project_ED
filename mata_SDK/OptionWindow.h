@@ -448,7 +448,7 @@ public:
 		// text
 		Text.Render(0.0, CreditTextHeight - 0.3, 0.1, L"A Trickal Fan Game By mata_");
 
-		Text.Render(0.0, CreditTextHeight - 0.5, 0.1, L"Original Game By EPID GAMES");
+		Text.Render(0.0, CreditTextHeight - 0.5, 0.1, L"Original Game By EPIDGames");
 
 		Text.Render(0.0, CreditTextHeight - 0.7, 0.1, L"프로그래밍 & 아트");
 		Text.Render(0.0, CreditTextHeight - 0.8, 0.07, L"mata_");

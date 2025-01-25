@@ -17,7 +17,20 @@ private:
 	bool    SystemResourceLoadEnd{};
 	bool    UserResourceLoadEnd{};
 
+	TextUtil Text{};
+
+	GLfloat Position{};
+
 public:
+	LoadingScreen() {
+		Text.Init(L"에스코어 드림 3 Light", FW_DONTCARE);
+		Text.SetAlign(ALIGN_MIDDLE);
+		Text.SetHeightAlign(HEIGHT_ALIGN_MIDDLE);
+		Text.SetColor(1.0, 1.0, 1.0);
+
+		Position = WindowRect.lx - 0.75;
+	}
+
 	void InputKey(KeyEvent& Event) {
 #ifdef ENABLE_DEV_EXIT
 		if (Event.Type == NORMAL_KEY_DOWN) {
@@ -30,6 +43,9 @@ public:
 	void UpdateFunc(float FrameTime) {
 		if (LoadStartCommand) {
 			Rotation -= 200 * FrameTime;
+			Position += FrameTime * 2.0;
+			if (Position >= WindowRect.rx + 0.75)
+				Position = WindowRect.lx - 0.75;
 
 			if (!threadUtil.IsRunning(SystemResourceLoadHandle) && !SystemResourceLoadEnd) {
 				threadUtil.Close(SystemResourceLoadHandle);
@@ -57,7 +73,8 @@ public:
 				}
 
 				else {
-					SpinnerOpacity -= FrameTime * 2.0;
+					SpinnerOpacity -= FrameTime;
+
 					if (EX.CheckClampValue(SpinnerOpacity, 0.0, CLAMP_LESS)) {
 						Global.FullscreenMode = (int)Global.UserSettingData.LoadDigitData("Option", "FullscreenMode");
 						if (Global.FullscreenMode == 1)
@@ -100,11 +117,15 @@ public:
 	}
 
 	void RenderFunc() {
+		SetColor(0.0, 0.0, 0.0);
 		BeginRender(RENDER_TYPE_STATIC);
-		transform.Move(TranslateMatrix, WindowRect.rx - 0.15, -0.85);
-		transform.Scale(ScaleMatrix, 0.25, 0.25);
+		transform.Move(TranslateMatrix, Position, 0.0);
+		transform.Scale(ScaleMatrix, 1.5, 1.5);
 		transform.Rotate(RotateMatrix, Rotation);
 		RenderSprite(SysRes.LOADING_SPINNER, SpinnerOpacity);
+
+		Text.SetOpacity(SpinnerOpacity);
+		Text.Render(0.0, -0.9, 0.1, L"리소스 로드 중... 데굴데굴 데구르르....");
 	}
 
 	static DWORD WINAPI SystemResourceCreateThread(LPVOID Param) {
